@@ -1,0 +1,4 @@
+Read Me First
+=============
+
+To see the differences of language files, see the changelog.txt

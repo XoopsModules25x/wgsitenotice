@@ -1,0 +1,67 @@
+==================================================================
+Change Log for wgSitenotice - 2015/08/04 17:32:00 Version 1.26
+==================================================================
+- updated for xoops 2.5.8(goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2015/07/22 16:30:00 Version 1.25
+==================================================================
+- fixed small bug in templates(goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2015/06/08 21:30:00 Version 1.24
+==================================================================
+- moved user templates to folder templates/user(goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2015/04/28 06:30:00 Version 1.23
+==================================================================
+- fixed bug with templates (muki/goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2015/04/21 17:30:00 Version 1.23
+==================================================================
+ - added option for templates
+ - added templates
+ -- default
+ -- block
+ -- table
+ -- xbootstrap
+
+==================================================================
+Change Log for wgSitenotice - 2015/04/15 15:30:00 Version 1.22
+==================================================================
+ - fixed small bugs
+
+==================================================================
+Change Log for wgSitenotice - 2015/03/25 15:30:00 Version 1.21
+==================================================================
+ - fixed bug when downloading versions/contents, which contains hyperlinks
+ - added possibility to change standard server for download
+ - added breadcrumb
+ 
+==================================================================
+Change Log for wgSitenotice - 2015/03/10 18:00:00 Version 1.2
+==================================================================
+ - added field version_online in table mod_wgsitenotice_versions
+ - added block for enabled versions
+ - new defines for language:
+   -- _MB_WGSITENOTICE_ALL_VERSIONS
+   -- _MB_WGSITENOTICE_DISPLAY
+   -- _MB_WGSITENOTICE_TITLELENGTH
+   -- _MB_WGSITENOTICE_SHOW_MORE
+   -- _MI_WGSITENOTICE_B_ALL_VERSIONS
+   -- _MI_WGSITENOTICE_UPGRADEFAILED
+   -- _AM_WGSITENOTICE_VERSION_ONLINE
+   -- _AM_WGSITENOTICE_OC_ERR_NO_VERSIONS
+ - help files updated
+ 
+==================================================================
+Change Log for wgSitenotice - 2015/03/02 12:00:00 Version 1.1
+==================================================================
+ - added form for check online versions
+ 
+==================================================================
+Change Log for wgSitenotice - 2015/02/20 12:43:29 Version 1.0
+==================================================================
+ - Original release wgsitenotice (Goffy (wedega.com))
