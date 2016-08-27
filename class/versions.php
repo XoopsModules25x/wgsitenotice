@@ -93,9 +93,10 @@ class WgsitenoticeVersions extends XoopsObject
 		$editor_configs['editor'] = $this->wgsitenotice->getConfig('wgsitenotice_editor');			
 		$form->addElement( new XoopsFormEditor(_AM_WGSITENOTICE_VERSION_DESCR, 'version_descr', $editor_configs) );
 		// Form Text version_author
-		$form->addElement( new XoopsFormText(_AM_WGSITENOTICE_VERSION_AUTHOR, 'version_author', 50, 255, $this->getVar('version_author')) );
+        $version_author = $this->isNew() ? $GLOBALS['xoopsUser']->getVar('uname') : $this->getVar('version_author');
+		$form->addElement( new XoopsFormText(_AM_WGSITENOTICE_VERSION_AUTHOR, 'version_author', 50, 255, $version_author) );
         // Form Text version_weight
-		$form->addElement( new XoopsFormText(_AM_WGSITENOTICE_VERSION_WEIGHT, 'version_weight', 50, 255, $this->getVar('version_weight')) );
+		$form->addElement( new XoopsFormHidden('version_weight', $this->getVar('version_weight')) );
 		// Form Radio Yes/No version_current
 		$version_current = $this->isNew() ? 0 : $this->getVar('version_current');
 		$form->addElement( new XoopsFormRadioYN(_AM_WGSITENOTICE_VERSION_CURRENT, 'version_current', $version_current), true );

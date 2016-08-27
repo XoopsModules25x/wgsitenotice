@@ -47,7 +47,7 @@ define('_AM_WGSITENOTICE_VERSION_LANG', "Language / Country");
 define('_AM_WGSITENOTICE_VERSION_DESCR', "Description");
 define('_AM_WGSITENOTICE_VERSION_AUTHOR', "Author");
 define('_AM_WGSITENOTICE_VERSION_WEIGHT', "Weight");
-define('_AM_WGSITENOTICE_VERSION_CURRENT', "Show this version (blocks, menu");
+define('_AM_WGSITENOTICE_VERSION_CURRENT', "Show this version");
 define('_AM_WGSITENOTICE_VERSION_ONLINE', "Allow download");
 define('_AM_WGSITENOTICE_VERSION_DATE', "Date");
 // Contents add/edit
