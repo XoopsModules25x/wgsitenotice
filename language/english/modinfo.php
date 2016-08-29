@@ -20,31 +20,33 @@
  * @version         $Id: 1.0 modinfo.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 // ---------------- Admin Main ----------------
-define('_MI_WGSITENOTICE_NAME', "Site notice");
-define('_MI_WGSITENOTICE_DESC', "This module created a site with legal notice (imprint, privacy, dataprotection,...)");
+define('_MI_WGSITENOTICE_NAME', 'Site notice');
+define('_MI_WGSITENOTICE_DESC', 'This module created a site with legal notice (imprint, privacy, dataprotection,...)');
 // ---------------- Admin Menu ----------------
-define('_MI_WGSITENOTICE_ADMENU1', "Dashboard");
-define('_MI_WGSITENOTICE_ADMENU2', "Versions");
-define('_MI_WGSITENOTICE_ADMENU3', "Contents");
-define('_MI_WGSITENOTICE_ADMENU4', "Online versions");
-define('_MI_WGSITENOTICE_ADMENU5', "About");
+define('_MI_WGSITENOTICE_ADMENU1', 'Dashboard');
+define('_MI_WGSITENOTICE_ADMENU2', 'Versions');
+define('_MI_WGSITENOTICE_ADMENU3', 'Contents');
+define('_MI_WGSITENOTICE_ADMENU4', 'Online versions');
+define('_MI_WGSITENOTICE_ADMENU5', 'About');
 // ---------------- Admin Nav ----------------
-define('_MI_WGSITENOTICE_ADMINPAGER', "Admin pager");
-define('_MI_WGSITENOTICE_ADMINPAGER_DESC', "Admin per page list");
+define('_MI_WGSITENOTICE_ADMINPAGER', 'Admin pager');
+define('_MI_WGSITENOTICE_ADMINPAGER_DESC', 'Admin per page list');
 // Config
-define('_MI_WGSITENOTICE_EDITOR', "Editor");
-define('_MI_WGSITENOTICE_EDITOR_DESC', "Select the Editor you want use");
-define('_MI_WGSITENOTICE_TEMPLATE', "Template");
-define('_MI_WGSITENOTICE_TEMPLATE_DESC', "Select the template you want use");
-define('_MI_WGSITENOTICE_KEYWORDS', "Keywords");
-define('_MI_WGSITENOTICE_KEYWORDS_DESC', "Insert here the keywords (separate by comma)");
+define('_MI_WGSITENOTICE_EDITOR', 'Editor');
+define('_MI_WGSITENOTICE_EDITOR_DESC', 'Select the Editor you want use');
+define('_MI_WGSITENOTICE_TEMPLATE', 'Template');
+define('_MI_WGSITENOTICE_TEMPLATE_DESC', 'Select the template you want use');
+define('_MI_WGSITENOTICE_KEYWORDS', 'Keywords');
+define('_MI_WGSITENOTICE_KEYWORDS_DESC', 'Insert here the keywords (separate by comma)');
 
-define('_MI_WGSITENOTICE_OC_SERVER', "Standard server for online check");
-define('_MI_WGSITENOTICE_OC_SERVER_DESC', "Define the standard server, which you want check for new versions of legal notes and download them");
-define('_MI_WGSITENOTICE_OC_ALLOWED', "Allow download of your legal notes");
-define('_MI_WGSITENOTICE_OC_ALLOWED_DESC', "Define, whether you want to allow other xoops developers to download the legal notes of your database");
+define('_MI_WGSITENOTICE_OC_SERVER', 'Standard server for online check');
+define('_MI_WGSITENOTICE_OC_SERVER_DESC',
+       'Define the standard server, which you want check for new versions of legal notes and download them');
+define('_MI_WGSITENOTICE_OC_ALLOWED', 'Allow download of your legal notes');
+define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
+       'Define, whether you want to allow other xoops developers to download the legal notes of your database');
 // blocks
-define('_MI_WGSITENOTICE_B_ALL_VERSIONS', "Show all enabled versions");
+define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Show all enabled versions');
 //update
-define('_MI_WGSITENOTICE_UPGRADEFAILED', "Error while updating module");
+define('_MI_WGSITENOTICE_UPGRADEFAILED', 'Error while updating module');
 // ---------------- End ----------------

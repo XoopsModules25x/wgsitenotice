@@ -19,17 +19,17 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 contents.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-defined('XOOPS_ROOT_PATH') or die("Restricted access");
-/*
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+/**
  * Class Object WgsitenoticeContents
  */
 class WgsitenoticeContents extends XoopsObject
-{ 
-	/*
-	* @var mixed
-	*/
-	private $wgsitenotice = null;
-	/*
+{
+    /**
+    * @var mixed
+    */
+    private $wgsitenotice = null;
+	/**
 	 * Constructor
 	 *
 	 * @param null
@@ -44,19 +44,19 @@ class WgsitenoticeContents extends XoopsObject
 		$this->initVar('cont_weight', XOBJ_DTYPE_INT);
 		$this->initVar('cont_date', XOBJ_DTYPE_INT);
 	}
-	/*
+	/**
 	*  @static function &getInstance
 	*  @param null
 	*/
-	public static function &getInstance()
+	public static function getInstance()
     {
-        static $instance = false;
-        if (!$instance) {
-            $instance = new self();
+        static $instance;
+        if (null === $instance) {
+            $instance = new static();
         }
         return $instance;
     }
-	/*
+	/**
 	 * Get form
 	 *
 	 * @param mixed $action
@@ -103,17 +103,17 @@ class WgsitenoticeContents extends XoopsObject
 	}
 }
 
-/*
+/**
  * Class Object Handler WgsitenoticeContents
  */
-class WgsitenoticeContentsHandler extends XoopsPersistableObjectHandler 
+class WgsitenoticeContentsHandler extends XoopsPersistableObjectHandler
 {
-	/*
+	/**
 	 * Constructor
 	 *
 	 * @param string $db
 	 */
-	public function __construct(&$db) 
+	public function __construct($db)
 	{
 		parent::__construct($db, 'mod_wgsitenotice_contents', 'wgsitenoticecontents', 'cont_id', 'cont_header');
 	}

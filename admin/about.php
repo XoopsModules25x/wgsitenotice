@@ -19,8 +19,8 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 about.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-include 'header.php';
+include __DIR__ . '/header.php';
 $template_main = 'wgsitenotice_admin_about.tpl'; 
-$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('about.php'));
+$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 $GLOBALS['xoopsTpl']->assign('about', $adminMenu->renderAbout('', false));
-include 'footer.php';  
+include __DIR__ . '/footer.php';  

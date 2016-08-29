@@ -20,7 +20,12 @@
  * @version         $Id: 1.0 functions.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 
-/***************Blocks***************/
+/***************Blocks**************/
+
+/** 
+* @param $cats
+ * @return string
+ */
 function wgsitenotice_block_addCatSelect($cats) {
 	if(is_array($cats)) 
 	{
@@ -38,10 +43,10 @@ function wgsitenotice_block_addCatSelect($cats) {
 function wgsitenotice_CleanVars( &$global, $key, $default = '', $type = 'int' ) {
     switch ( $type ) {
         case 'string':
-            $ret = ( isset( $global[$key] ) ) ? filter_var( $global[$key], FILTER_SANITIZE_MAGIC_QUOTES ) : $default;
+            $ret = isset( $global[$key] ) ? filter_var($global[$key], FILTER_SANITIZE_MAGIC_QUOTES ) : $default;
             break;
         case 'int': default:
-            $ret = ( isset( $global[$key] ) ) ? filter_var( $global[$key], FILTER_SANITIZE_NUMBER_INT ) : $default;
+            $ret = isset( $global[$key] ) ? filter_var($global[$key], FILTER_SANITIZE_NUMBER_INT ) : $default;
             break;
     }
     if ( $ret === false ) {

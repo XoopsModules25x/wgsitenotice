@@ -23,8 +23,7 @@
  *  Version : 1 Mon 2012/11/05 14:31:32 :  Exp $
  * ****************************************************************************
  */
-define('_MB_WGSITENOTICE_ALL_VERSIONS', "All versions"); 
-define('_MB_WGSITENOTICE_DISPLAY', "Number of items");
-define('_MB_WGSITENOTICE_TITLELENGTH', "Length of versions text (0 means no limit)");
-define('_MB_WGSITENOTICE_SHOW_MORE', "Show  more...");
-?>
+define('_MB_WGSITENOTICE_ALL_VERSIONS', 'All versions');
+define('_MB_WGSITENOTICE_DISPLAY', 'Number of items');
+define('_MB_WGSITENOTICE_TITLELENGTH', 'Length of versions text (0 means no limit)');
+define('_MB_WGSITENOTICE_SHOW_MORE', 'Show  more...');

@@ -1,6 +1,6 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
 <h1><{$disclaimer}></h1>
-<p style="font-size:120%"><{$disclaimer_desc}></p>
+<p style="font-size:120%;"><{$disclaimer_desc}></p>
 <br/><br/>
 <{if $form}>
 	<!-- Display form (add,edit) -->

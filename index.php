@@ -19,8 +19,9 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 index.php 1 Wed 2015/02/18 16:30:32Z Goffy / wedega.com / XOOPS Development Team $
  */
-include_once 'header.php';
-$GLOBALS['xoopsOption']['template_main'] = "user/".$wgsitenotice->getConfig('wgsitenotice_template')."/wgsitenotice_index_". $wgsitenotice->getConfig('wgsitenotice_template') . ".tpl";
+include_once __DIR__ . '/header.php';
+$GLOBALS['xoopsOption']['template_main'] = 'user/' . $wgsitenotice->getConfig('wgsitenotice_template') . '/wgsitenotice_index_'
+                                           . $wgsitenotice->getConfig('wgsitenotice_template') . '.tpl';
 include_once XOOPS_ROOT_PATH.'/header.php';
 
 // Define Stylesheet
@@ -40,7 +41,7 @@ $versions_arr = $versionsHandler->getAll($criteriaVersions);
 unset($criteriaVersions);
 if ($versions_count > 0) {
     foreach (array_keys($versions_arr) as $v) {
-        $breadcrumb_subdir = "";
+        $breadcrumb_subdir = '';
         if ($version_id > 0) $breadcrumb_subdir = $versions_arr[$v]->getVar('version_name');
         $criteriaContents = new CriteriaCompo();
         $criteriaContents->add(new Criteria('cont_version_id', $versions_arr[$v]->getVar('version_id')));
@@ -72,7 +73,7 @@ if ($versions_count > 0) {
 
 /* create breadcrumb */
 $breadcrumb ='<a href="' . XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
-if ($breadcrumb_subdir == "") {
+if ($breadcrumb_subdir == '') {
     $breadcrumb .= $xoopsModule->name();
 } else {
     $breadcrumb .='<a href="' . WGSITENOTICE_URL . '">' . $xoopsModule->name() . '</a>  &raquo; ' . $breadcrumb_subdir;
@@ -88,4 +89,4 @@ wgsitenotice_meta_description(_MA_WGSITENOTICE_DESC);
 //
 $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGSITENOTICE_URL.'/contents.php');
 //
-include_once 'footer.php';	
+include_once __DIR__ . '/footer.php';	

@@ -20,8 +20,8 @@
  * @version         $Id: 1.0 header.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 
-require_once dirname(dirname(dirname(dirname(__FILE__)))). '/include/cp_header.php';
-$thisPath = dirname(dirname(__FILE__));
+require_once dirname(dirname(dirname(__DIR__))). '/include/cp_header.php';
+$thisPath = dirname(__DIR__);
 include_once $thisPath.'/include/common.php';
 $sysPathIcon16 = '../' . $xoopsModule->getInfo('sysicons16');
 $sysPathIcon32 = '../' . $xoopsModule->getInfo('sysicons32');
@@ -40,7 +40,7 @@ $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-	include_once(XOOPS_ROOT_PATH."/class/template.php");
+	include_once XOOPS_ROOT_PATH . '/class/template.php';
 	$xoopsTpl = new XoopsTpl();
 }
 // System icons path
@@ -54,11 +54,8 @@ $xoopsTpl->assign('modPathIcon32', $modPathIcon32);
 xoops_loadLanguage('admin');
 xoops_loadLanguage('modinfo');
 // Local admin menu class
-if ( file_exists($GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php'))){
-	include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
-}else{
-	redirect_header("../../../admin.php", 5, _AM_MODULEADMIN_MISSING, false);
-}
+include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
+
 xoops_cp_header();
 $adminMenu = new ModuleAdmin();	
 

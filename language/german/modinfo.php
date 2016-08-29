@@ -20,31 +20,34 @@
  * @version         $Id: 1.0 modinfo.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 // ---------------- Admin Main ----------------
-define('_MI_WGSITENOTICE_NAME', "Rechtliche Hinweise");
-define('_MI_WGSITENOTICE_DESC', "Dieses Modul erstellt eine Seite mit rechtlichen Hinweisen (Impressum, Haftungsbestimmungen, Datenschutz,...)");
+define('_MI_WGSITENOTICE_NAME', 'Rechtliche Hinweise');
+define('_MI_WGSITENOTICE_DESC',
+       'Dieses Modul erstellt eine Seite mit rechtlichen Hinweisen (Impressum, Haftungsbestimmungen, Datenschutz,...)');
 // ---------------- Admin Menu ----------------
-define('_MI_WGSITENOTICE_ADMENU1', "Übersicht");
-define('_MI_WGSITENOTICE_ADMENU2', "Versionen");
-define('_MI_WGSITENOTICE_ADMENU3', "Inhalte");
-define('_MI_WGSITENOTICE_ADMENU4', "Online-Versionen");
-define('_MI_WGSITENOTICE_ADMENU5', "Über");
+define('_MI_WGSITENOTICE_ADMENU1', 'Übersicht');
+define('_MI_WGSITENOTICE_ADMENU2', 'Versionen');
+define('_MI_WGSITENOTICE_ADMENU3', 'Inhalte');
+define('_MI_WGSITENOTICE_ADMENU4', 'Online-Versionen');
+define('_MI_WGSITENOTICE_ADMENU5', 'Über');
 // ---------------- Admin Nav ----------------
-define('_MI_WGSITENOTICE_ADMINPAGER', "Listeneinträge Admin-Seiten");
-define('_MI_WGSITENOTICE_ADMINPAGER_DESC', "Anzahl der Einträge bei Listen auf Admin-Seiten");
+define('_MI_WGSITENOTICE_ADMINPAGER', 'Listeneinträge Admin-Seiten');
+define('_MI_WGSITENOTICE_ADMINPAGER_DESC', 'Anzahl der Einträge bei Listen auf Admin-Seiten');
 // Config
-define('_MI_WGSITENOTICE_EDITOR', "Editor");
-define('_MI_WGSITENOTICE_EDITOR_DESC', "Wähle den zu verwendenden Texteditor");
-define('_MI_WGSITENOTICE_TEMPLATE', "Vorlage");
-define('_MI_WGSITENOTICE_TEMPLATE_DESC', "Wähle die zu verwendende Vorlage");
-define('_MI_WGSITENOTICE_KEYWORDS', "Keywords");
-define('_MI_WGSITENOTICE_KEYWORDS_DESC', "Bitte hier die Schlüsselwörter eingeben (getrennt durch ein Komma)");
+define('_MI_WGSITENOTICE_EDITOR', 'Editor');
+define('_MI_WGSITENOTICE_EDITOR_DESC', 'Wähle den zu verwendenden Texteditor');
+define('_MI_WGSITENOTICE_TEMPLATE', 'Vorlage');
+define('_MI_WGSITENOTICE_TEMPLATE_DESC', 'Wähle die zu verwendende Vorlage');
+define('_MI_WGSITENOTICE_KEYWORDS', 'Keywords');
+define('_MI_WGSITENOTICE_KEYWORDS_DESC', 'Bitte hier die Schlüsselwörter eingeben (getrennt durch ein Komma)');
 
-define('_MI_WGSITENOTICE_OC_SERVER', "Standard-Server für Überprüfung auf Online-Versionen");
-define('_MI_WGSITENOTICE_OC_SERVER_DESC', "Definieren Sie bitte den Standard-Server, den Sie für die Überprüfung/den Download von Online-Versionen verwenden möchten");
-define('_MI_WGSITENOTICE_OC_ALLOWED', "Download Ihrer rechtlichen Hinweise zulassen");
-define('_MI_WGSITENOTICE_OC_ALLOWED_DESC', "Definieren Sie bitte, ob andere Xoops-Entwickler die Versionen der rechtlichen Hinweise aus Ihrer Datenbank herunterladen dürfen");
+define('_MI_WGSITENOTICE_OC_SERVER', 'Standard-Server für Überprüfung auf Online-Versionen');
+define('_MI_WGSITENOTICE_OC_SERVER_DESC',
+       'Definieren Sie bitte den Standard-Server, den Sie für die Überprüfung/den Download von Online-Versionen verwenden möchten');
+define('_MI_WGSITENOTICE_OC_ALLOWED', 'Download Ihrer rechtlichen Hinweise zulassen');
+define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
+       'Definieren Sie bitte, ob andere Xoops-Entwickler die Versionen der rechtlichen Hinweise aus Ihrer Datenbank herunterladen dürfen');
 // blocks
-define('_MI_WGSITENOTICE_B_ALL_VERSIONS', "Alle zugelassenden Versionen anzeigen");
+define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Alle zugelassenden Versionen anzeigen');
 //update
-define('_MI_WGSITENOTICE_UPGRADEFAILED', "Fehler beim Updaten des Moduls");
+define('_MI_WGSITENOTICE_UPGRADEFAILED', 'Fehler beim Updaten des Moduls');
 // ---------------- End ----------------

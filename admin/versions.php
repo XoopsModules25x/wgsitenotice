@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 versions.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-include_once 'header.php';
+include_once __DIR__ . '/header.php';
 
 // the value of arguments in URL$
 $op         = XoopsRequest::getString('op', 'list');
@@ -36,7 +36,7 @@ switch ($op)
         $GLOBALS['xoopsTpl']->assign('start', $start);
 		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
 		$template_main = 'wgsitenotice_admin_versions.tpl';
-		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('versions.php'));
+		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$adminMenu->addItemButton(_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new', 'add');		
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
 		$version_crit = new CriteriaCompo();
@@ -69,7 +69,7 @@ switch ($op)
                 // Get Var version_online
 				$version['online'] = $versions_arr[$i]->getVar('version_online')==1 ? $img_yes : $img_no;
 				// Get Var version_date
-				$version['date'] = formatTimeStamp($versions_arr[$i]->getVar('version_date'));
+				$version['date'] = formatTimestamp($versions_arr[$i]->getVar('version_date'));
 				$GLOBALS['xoopsTpl']->append('versions_list', $version);
                 unset($version);
 			}
@@ -88,7 +88,7 @@ switch ($op)
 	case 'new':		
 		$template_main = 'wgsitenotice_admin_versions.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_VERSIONS_LIST, 'versions.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('versions.php'));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
 		// Get Form		
         $versionsObj = $versionsHandler->create();
@@ -160,7 +160,7 @@ switch ($op)
 		$template_main = 'wgsitenotice_admin_versions.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new', 'add');
 		$adminMenu->addItemButton(_AM_WGSITENOTICE_VERSIONS_LIST, 'versions.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('versions.php'));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
 		// Get Form
 		$versionsObj = $versionsHandler->get($version_id);
@@ -192,11 +192,11 @@ switch ($op)
                     
     case 'order':
         $vorder = XoopsRequest::getArray('vorder', array());
-        for ($i = 0; $i < count($vorder); $i++){
+        for ($i = 0, $iMax = count($vorder); $i < $iMax; $i++){
             $versionsObj = $versionsHandler->get($vorder[$i]);
             $versionsObj->setVar('version_weight',$i+1);
             $versionsHandler->insert($versionsObj);
         }
         break;
 }
-include_once 'footer.php';
+include_once __DIR__ . '/footer.php';

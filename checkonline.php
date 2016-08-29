@@ -25,17 +25,15 @@ echo "<?xml version='1.0' encoding='utf-8'?>\n";
 /* <?xml version="1.0" encoding="utf-8"?> */
 echo "<document>\n";
 echo "<status_connect>successful</status_connect>\n";
-include dirname(dirname(dirname(__FILE__))) . "/mainfile.php"; 
-$dirname = basename(dirname(__FILE__)); 
+include dirname(dirname(__DIR__)) . '/mainfile.php';
+$dirname = basename(__DIR__); 
 
-if (!defined("XOOPS_ROOT_PATH")) {
-	die("XOOPS root path not defined");
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-require_once XOOPS_ROOT_PATH."/modules/".$dirname."/header.php"; 
+require_once XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
 
 $version_id = XoopsRequest::getString('version_id', 0);
-echo "<version_id>".$version_id."</version_id>\n";
+echo '<version_id>' . $version_id . "</version_id>\n";
 
 $oc_allowed = $wgsitenotice->getConfig('wgsitenotice_oc_allowed');
 
@@ -48,7 +46,7 @@ if ($oc_allowed == 1) {
     if ($version_id > 0) $version_crit->add(new Criteria('version_id', $version_id));
     $version_crit->add(new Criteria('version_online', '1'));
     $versions_rows = $versionsHandler->getCount($version_crit);
-    echo "<versions_rows>".$versions_rows."</versions_rows>\n";
+    echo '<versions_rows>' . $versions_rows . "</versions_rows>\n";
     $versions_arr = $versionsHandler->getAll($version_crit);
     unset($version_crit);
     if ($versions_rows > 0) 

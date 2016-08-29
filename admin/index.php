@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 index.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-include_once 'header.php';
+include_once __DIR__ . '/header.php';
 // Count elements
 $count_versions = $versionsHandler->getCount();
 $count_contents = $contentsHandler->getCount();
@@ -33,4 +33,4 @@ $adminMenu->addInfoBoxLine(_AM_WGSITENOTICE_STATISTICS, '<label>'._AM_WGSITENOTI
 // Render Index
 echo $adminMenu->addNavigation('index.php');
 echo $adminMenu->renderIndex();
-include_once 'footer.php';
+include_once __DIR__ . '/footer.php';
