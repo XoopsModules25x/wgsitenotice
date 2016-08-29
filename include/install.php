@@ -20,7 +20,7 @@
  * @version         $Id: 1.0 install.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 //
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 // Copy base file
 $indexFile = XOOPS_UPLOAD_PATH.'/index.html';
 $blankFile = XOOPS_UPLOAD_PATH.'/blank.gif';

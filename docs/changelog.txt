@@ -2,6 +2,47 @@
 Change Log for wgSitenotice - 2015/08/04 17:32:00 Version 1.26
 ==================================================================
 - updated for xoops 2.5.8(goffy)
+- added missing semicolon (mamba)
+- Unnecessary double quotes (mamba)
+- removed redundant closing tags (mamba)
+- fixed callable calls in loops termination condition (mamba)
+  from: ($i = 0; $i < count($corder); $i++)  to: ($i = 0, $iMax = count($corder); $i < $iMax; $i++)
+- removed duplicate "licence" in xoops_version.php (mamba)
+- removed reference in getHandler() - objects are already passed by reference (mamba)
+- removed reference in function &getInstance (mamba)
+- removed reference in function __construct(&$db) (mamba)
+- fixed Reference mismatch in $this->config = $configHandler->getConfigsByCat (mamba)
+- removed check for moduleadmin.php (mamba)
+- added missing display_xml_error() (mamba) //taken from http://php.net/manual/de/function.libxml-get-errors.php
+- renamed $hModule to $moduleHandler for consistency (mamba)
+- renamed $hModConfig to $configHandler for consistency (mamba)
+- added type annotations e.g. /** @var XoopsConfigHandler $configHandler */ (mamba)
+- replaced "or die" with " || exit" (mamba)
+- changed to addNavigation(basename(__FILE__)); (mamba)
+- added __DIR__ where needed (mamba)
+- Hardening to type safe (mamba)
+- replaced "_handler' with "Handler" (mamba)
+- changed formatTimeStamp to formatTimestamp (mamba)
+
+TODO:
+1) needs to fix PhpDocs starts: there should be two ** to indicate PhpDocs, eg.
+
+     /**
+      * Constructor
+
+instead of:
+
+	/*
+	 * Constructor
+	 *
+	 * @param null
+	 */
+
+2) remove all @version lines (we don't use @version in GitHub)
+
+3) make functions from /include/functions.php as static class methods of WgsitenoticeUtilities in /class/utilities
+
+
 
 ==================================================================
 Change Log for wgSitenotice - 2015/07/22 16:30:00 Version 1.25

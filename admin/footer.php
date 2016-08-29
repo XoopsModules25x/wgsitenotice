@@ -23,4 +23,3 @@ if ( isset($template_main)  ) {
     $GLOBALS['xoopsTpl']->display("db:{$template_main}");
 }
 xoops_cp_footer();
-?>  

@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 contents.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-include_once 'header.php';
+include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
 $op = XoopsRequest::getString('op', 'list');
 // Request cont_id
@@ -32,7 +32,7 @@ switch ($op)
 		$start = XoopsRequest::getInt('start', 0);
 		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
 		$template_main = 'wgsitenotice_admin_contents.tpl';
-		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('contents.php'));
+		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');		
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
 		$cont_crit = new CriteriaCompo();
@@ -56,9 +56,9 @@ switch ($op)
                 // Get Var cont_version_id
                 $versions_obj = $versionsHandler->get($contents_arr[$i]->getVar('cont_version_id'));
                 if (is_object($versions_obj)) {
-                    $version_name = $versions_obj->getVar('version_name')." ("._AM_WGSITENOTICE_VERSION_ID." ".$contents_arr[$i]->getVar('cont_version_id').")";
+                    $version_name = $versions_obj->getVar('version_name') . ' (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $contents_arr[$i]->getVar('cont_version_id') . ')';
                 } else {
-                    $version_name = "- ("._AM_WGSITENOTICE_VERSION_ID." ".$contents_arr[$i]->getVar('cont_version_id').") ";
+                    $version_name = '- (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $contents_arr[$i]->getVar('cont_version_id') . ') ';
                 }
                 $cont['version_id'] = $version_name;
                 // Get Var cont_header
@@ -66,7 +66,7 @@ switch ($op)
                 // Get Var cont_weight
                 $cont['weight'] = $contents_arr[$i]->getVar('cont_weight');
                 // Get Var cont_date
-                $cont['date'] = formatTimeStamp($contents_arr[$i]->getVar('cont_date'));
+                $cont['date'] = formatTimestamp($contents_arr[$i]->getVar('cont_date'));
                 $GLOBALS['xoopsTpl']->append('contents_list', $cont);
                 unset($cont);
 			}
@@ -82,7 +82,7 @@ switch ($op)
 	case 'new':		
 		$template_main = 'wgsitenotice_admin_contents.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('contents.php'));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
 		// Get Form		
         $contentsObj = $contentsHandler->create();
@@ -122,7 +122,7 @@ switch ($op)
 		$template_main = 'wgsitenotice_admin_contents.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
 		$adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation('contents.php'));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
 		// Get Form
 		$contentsObj = $contentsHandler->get($cont_id);
@@ -141,17 +141,18 @@ switch ($op)
 				echo $contentsObj->getHtmlErrors();
 			}
 		} else {
-			xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n')." (".$contentsObj->getVar('cont_weight').")"));
+			xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' ('
+                                                                                                                                                    . $contentsObj->getVar('cont_weight') . ')'));
 		}
 	break;
         
     case 'order':
         $corder = XoopsRequest::getArray('corder', array());
-        for ($i = 0; $i < count($corder); $i++){
+        for ($i = 0, $iMax = count($corder); $i < $iMax; $i++){
             $contentsObj = $contentsHandler->get($corder[$i]);
             $contentsObj->setVar('cont_weight',$i+1);
             $contentsHandler->insert($contentsObj);
         }
         break;
 }
-include_once 'footer.php';
+include_once __DIR__ . '/footer.php';

@@ -19,17 +19,17 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 checkonline.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-defined('XOOPS_ROOT_PATH') or die("Restricted access");
-/*
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+/**
  * Class Object WgsitenoticeCheckonline
  */
 class WgsitenoticeCheckonline extends XoopsObject
 { 
-	/*
+	/**
 	* @var mixed
 	*/
 	private $wgsitenotice = null;
-	/*
+	/**
 	 * Constructor
 	 *
 	 * @param null
@@ -39,19 +39,19 @@ class WgsitenoticeCheckonline extends XoopsObject
 		$this->wgsitenotice = WgsitenoticeHelper::getInstance();
 		$this->initVar('oc_server', XOBJ_DTYPE_TXTBOX);
 	}
-	/*
+	/**
 	*  @static function &getInstance
 	*  @param null
 	*/
-	public static function &getInstance()
+	public static function getInstance()
     {
-        static $instance = false;
-        if (!$instance) {
-            $instance = new self();
+        static $instance;
+        if (null === $instance) {
+            $instance = new static();
         }
         return $instance;
     }
-	/*
+	/**
 	 * Get form
 	 *
 	 * @param mixed $action
@@ -79,17 +79,17 @@ class WgsitenoticeCheckonline extends XoopsObject
 	}
 }
 
-/*
+/**
  * Class Object Handler WgsitenoticeCheckonline
  */
-class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler 
+class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
 {
-	/*
+	/**
 	 * Constructor
 	 *
 	 * @param string $db
 	 */
-	public function __construct(&$db) 
+	public function __construct($db)
 	{
 		parent::__construct($db, 'mod_wgsitenotice_checkonline', 'wgsitenoticecheckonline', 'onl_id', 'onl_text1');
 	}
@@ -127,7 +127,7 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
             $result = curl_exec($ch);
             // print_r(curl_getinfo($ch));
             if ($result == FALSE)  {
-                echo "<br>unexpected curl_error:".curl_error($ch)."<br>";
+                echo '<br>unexpected curl_error:' . curl_error($ch) . '<br>';
             } 
             
             curl_close($ch);
@@ -149,12 +149,12 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
     /**
 	 * read the given xml string (by getData) and create and array
 	 *
-	 * @param $xml_string
-	 * @return xml as array
+	 * @param string $xml_string
+	 * @return $xml_arr
 	 */
     public function readXML($xml_string){
         // creating temporary string for avoiding entitiy errors
-        $xml_string = str_replace("&", "[[avoid_entity_error]]", $xml_string);
+        $xml_string = str_replace('&', '[[avoid_entity_error]]', $xml_string);
         $search = array('<', '>', '"', '&');
         $replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
         //$xml_string = str_replace($search, $replace, (string)$xml_string);
@@ -164,7 +164,7 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
             $xml = explode("\n", $xml_text);  
             $errors = libxml_get_errors();
             foreach ($errors as $error) {
-                echo display_xml_error($error, $xml);
+                echo $this->display_xml_error($error, $xml);
             }
             libxml_clear_errors();
         }
@@ -179,11 +179,44 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
 	 */
     public function xml2str($xml){
         // replace temporary string for avoiding entitiy errors
-        $str = str_replace("[[avoid_entity_error]]", "&", (string)$xml);
+        $str = str_replace('[[avoid_entity_error]]', '&', (string)$xml);
         // rebuild html tags
         $search  = array('&lt;', '&gt;', '&quot;', '&amp;');
         $replace = array('<', '>', '"', '&');
         $str = str_replace($search, $replace, (string)$str);
         return $str;
+    }
+
+    /**
+     * @param $error
+     * @param $xml
+     * @return string
+     */
+    public function display_xml_error($error, $xml)
+    {
+        $return  = $xml[$error->line - 1] . "\n";
+        $return .= str_repeat('-', $error->column) . "^\n";
+
+        switch ($error->level) {
+            case LIBXML_ERR_WARNING:
+                $return .= "Warning $error->code: ";
+                break;
+            case LIBXML_ERR_ERROR:
+                $return .= "Error $error->code: ";
+                break;
+            case LIBXML_ERR_FATAL:
+                $return .= "Fatal Error $error->code: ";
+                break;
+        }
+
+        $return .= trim($error->message) .
+                   "\n  Line: $error->line" .
+                   "\n  Column: $error->column";
+
+        if ($error->file) {
+            $return .= "\n  File: $error->file";
+        }
+
+        return "$return\n\n--------------------------------------------\n\n";
     }
 }

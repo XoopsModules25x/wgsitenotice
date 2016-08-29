@@ -19,9 +19,9 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 common.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 if (!defined('WGSITENOTICE_MODULE_PATH')) {
-	define('WGSITENOTICE_DIRNAME', basename(dirname(dirname( __FILE__ ))));
+	define('WGSITENOTICE_DIRNAME', basename(dirname(__DIR__)));
 	define('WGSITENOTICE_PATH', XOOPS_ROOT_PATH.'/modules/'.WGSITENOTICE_DIRNAME);
 	define('WGSITENOTICE_URL', XOOPS_URL.'/modules/'.WGSITENOTICE_DIRNAME);	
 	define('WGSITENOTICE_UPLOAD_PATH', XOOPS_UPLOAD_PATH.'/'.WGSITENOTICE_DIRNAME);

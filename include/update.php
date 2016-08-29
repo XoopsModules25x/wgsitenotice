@@ -46,10 +46,10 @@ function xoops_module_update_wgsitenotice(&$module, $prev_version = null)
 function update_wgsitenotice_v120(&$module)
 {
     // add fields 'version_online' to table 'mod_wgsitenotice_versions'
-    $sql = "ALTER TABLE `" . $GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions') . "`";
+    $sql = 'ALTER TABLE `' . $GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions') . '`';
     $sql .= " ADD COLUMN `version_online` int(1) NOT NULL default '0' AFTER `version_current`;";
     if (!$GLOBALS['xoopsDB']->queryF($sql)) {
-        $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED."<br />Error: ".$GLOBALS['xoopsDB']->error() . '<br />SQL command: ' . $sql);
+        $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />SQL command: ' . $sql);
         return false;
     }
     return true;

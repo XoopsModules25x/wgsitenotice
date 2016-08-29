@@ -23,8 +23,7 @@
  *  Version : 1 Mon 2012/11/05 14:31:32 :  Exp $
  * ****************************************************************************
  */
-define('_MB_WGSITENOTICE_ALL_VERSIONS', "Alle Versionen"); 
-define('_MB_WGSITENOTICE_DISPLAY', "Anzahl der Listeneinträge");
-define('_MB_WGSITENOTICE_TITLELENGTH', "Länge des Versionstextes (0 bedeutet kein Limit)");
-define('_MB_WGSITENOTICE_SHOW_MORE', "Weitere anzeigen...");
-?>
+define('_MB_WGSITENOTICE_ALL_VERSIONS', 'Alle Versionen');
+define('_MB_WGSITENOTICE_DISPLAY', 'Anzahl der Listeneinträge');
+define('_MB_WGSITENOTICE_TITLELENGTH', 'Länge des Versionstextes (0 bedeutet kein Limit)');
+define('_MB_WGSITENOTICE_SHOW_MORE', 'Weitere anzeigen...');

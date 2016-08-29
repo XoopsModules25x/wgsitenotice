@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 helper.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-defined('XOOPS_ROOT_PATH') or die('Restricted access');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 class WgsitenoticeHelper
 {
@@ -54,17 +54,17 @@ class WgsitenoticeHelper
     protected function __construct($debug)
     {
         $this->debug = $debug;
-        $this->dirname =  basename(dirname(dirname(__FILE__)));
+        $this->dirname =  basename(dirname(__DIR__));
     }
     /*
 	*  @static function &getInstance
 	*  @param mixed $debug
 	*/
-    public static function &getInstance($debug = false)
+    public static function getInstance($debug = false)
     {
-        static $instance = false;
-        if (!$instance) {
-            $instance = new self($debug);
+        static $instance;
+        if (null === $instance) {
+            $instance = new static($debug);
         }
         return $instance;
     }
@@ -72,7 +72,7 @@ class WgsitenoticeHelper
 	*  @static function getModule
 	*  @param null
 	*/
-    public function &getModule()
+    public function getModule()
     {
         if ($this->module == null) {
             $this->initModule();
@@ -89,7 +89,7 @@ class WgsitenoticeHelper
             $this->initConfig();
         }
         if (!$name) {
-            $this->addLog("Getting all config");
+            $this->addLog('Getting all config');
             return $this->config;
         }
         if (!isset($this->config[$name])) {
@@ -117,13 +117,13 @@ class WgsitenoticeHelper
 	*  @static function getHandler
 	*  @param string $name
 	*/
-    public function &getHandler($name)
+    public function getHandler($name)
     {
-        if (!isset($this->handler[$name . '_handler'])) {
+        if (!isset($this->handler[$name . 'Handler'])) {
             $this->initHandler($name);
         }
         $this->addLog("Getting handler '{$name}'");
-        return $this->handler[$name . '_handler'];
+        return $this->handler[$name . 'Handler'];
     }
     /*
 	*  @static function initModule
@@ -135,8 +135,9 @@ class WgsitenoticeHelper
         if (isset($xoopsModule) && is_object($xoopsModule) && $xoopsModule->getVar('dirname') == $this->dirname) {
             $this->module = $xoopsModule;
         } else {
-            $hModule = xoops_gethandler('module');
-            $this->module = $hModule->getByDirname($this->dirname);
+            /** @var XoopsModuleHandler $moduleHandler */
+            $moduleHandler = xoops_getHandler('module');
+            $this->module = $moduleHandler->getByDirname($this->dirname);
         }
         $this->addLog('INIT MODULE');
     }
@@ -147,8 +148,9 @@ class WgsitenoticeHelper
     public function initConfig()
     {
         $this->addLog('INIT CONFIG');
-        $hModConfig = xoops_gethandler('config');
-        $this->config = $hModConfig->getConfigsByCat(0, $this->getModule()->getVar('mid'));
+        /** @var XoopsConfigHandler $configHandler */
+        $configHandler = xoops_getHandler('config');
+        $this->config =& $configHandler->getConfigsByCat(0, $this->getModule()->getVar('mid'));
     }
     /*
 	*  @static function initHandler
@@ -157,7 +159,7 @@ class WgsitenoticeHelper
     public function initHandler($name)
     {
         $this->addLog('INIT ' . $name . ' HANDLER');
-        $this->handler[$name . '_handler'] = xoops_getModuleHandler($name, $this->dirname);
+        $this->handler[$name . 'Handler'] = xoops_getModuleHandler($name, $this->dirname);
     }
     /*
 	*  @static function addLog

@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 header.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-require_once dirname(dirname(dirname(__FILE__))) . '/mainfile.php';
+require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 $dirname = $GLOBALS['xoopsModule']->getVar('dirname');
 $pathname = XOOPS_ROOT_PATH. '/modules/'.$dirname;
 include_once $pathname . '/include/common.php';
@@ -30,6 +30,8 @@ $versionsHandler = $wgsitenotice->getHandler('versions');
 // contents
 $contentsHandler = $wgsitenotice->getHandler('contents');
 // checkonline
+
+/** $var WgsitenoticeCheckonline $checkonlineHandler */
 $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
 $myts = MyTextSanitizer::getInstance(); 

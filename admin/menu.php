@@ -19,10 +19,10 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
  * @version         $Id: 1.0 menu.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-$dirname = basename( dirname( dirname( __FILE__ ) ) ) ;
-$module_handler = xoops_gethandler('module');
+$dirname = basename( dirname(__DIR__) ) ;
+$moduleHandler = xoops_getHandler('module');
 $xoopsModule = XoopsModule::getByDirname($dirname);
-$moduleInfo = $module_handler->get($xoopsModule->getVar('mid'));
+$moduleInfo = $moduleHandler->get($xoopsModule->getVar('mid'));
 $sysPathIcon32 = $moduleInfo->getInfo('sysicons32');
 $i = 1;
 $adminmenu[$i]['title'] = _MI_WGSITENOTICE_ADMENU1;
