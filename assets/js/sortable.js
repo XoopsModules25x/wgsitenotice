@@ -16,4 +16,18 @@ $(document).ready( function(){
 			}
 		}
 	).disableSelection();
+    $('#contents-list').sortable({ 
+			opacity: 0.6, 
+			cursor: 'move',
+			connectWith: '#contents-list',
+			update: function(event, ui) {
+				var list = $(this).sortable( 'serialize');
+				$.post( 'contents.php?op=order', list );
+			},
+			receive: function(event, ui) {
+				var list = $(this).sortable( 'serialize');                    
+				$.post( 'contents.php?op=order', list );                      
+			}
+		}
+	).disableSelection();
 });

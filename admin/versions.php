@@ -22,12 +22,12 @@
 include_once 'header.php';
 
 // the value of arguments in URL$
-$op = XoopsRequest::getString('op', 'list');
+$op         = XoopsRequest::getString('op', 'list');
 $version_id = XoopsRequest::getInt('version_id');
-$start = XoopsRequest::getInt('start', 0);
+$start      = XoopsRequest::getInt('start', 0);
 
 $img_yes = "<img src='../".$modPathIcon16."/on.png' >";
-$img_no = "<img src='../".$modPathIcon16."/off.png' >";
+$img_no  = "<img src='../".$modPathIcon16."/off.png' >";
 // Switch options
 switch ($op) 
 {
@@ -47,9 +47,6 @@ switch ($op)
         $version_crit->setLimit($limit);
 		$versions_arr = $versionsHandler->getAll($version_crit);
 		unset($version_crit);
-		$GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-		$GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
 		// Table view
 		if ($versions_rows > 0) 
 		{						
@@ -83,7 +80,10 @@ switch ($op)
 			}
         } else {
 			$GLOBALS['xoopsTpl']->assign('error', _AM_WGSITENOTICE_THEREARENT_VERSIONS);
-		}	
+		}
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
+		$GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
     break;
 	case 'new':		
 		$template_main = 'wgsitenotice_admin_versions.tpl';
@@ -106,21 +106,19 @@ switch ($op)
         }
 		// Set Vars
 		// Set Var version_name
-		$versionsObj->setVar('version_name', $_POST['version_name']);
+		$versionsObj->setVar('version_name', XoopsRequest::getString('version_name', ''));
 		// Set Var version_lang
-		$versionsObj->setVar('version_lang', $_POST['version_lang']);
+		$versionsObj->setVar('version_lang', XoopsRequest::getString('version_lang', ''));
 		// Set Var version_descr
-		$versionsObj->setVar('version_descr', $_POST['version_descr']);
+		$versionsObj->setVar('version_descr', XoopsRequest::getString('version_descr', ''));
 		// Set Var version_author
-		$versionsObj->setVar('version_author', $_POST['version_author']);
+		$versionsObj->setVar('version_author', XoopsRequest::getString('version_author', ''));
         // Set Var version_weight
-		$versionsObj->setVar('version_weight', $_POST['version_weight']);
+		$versionsObj->setVar('version_weight', XoopsRequest::getInt('version_weight', 0));
 		// Set Var version_current
-		$version_current = ($_REQUEST['version_current'] == 1) ? '1' : '0';
-		$versionsObj->setVar('version_current', $version_current);
+		$versionsObj->setVar('version_current', XoopsRequest::getInt('version_current', 0));
         // Set Var version_online
-		$version_online = ($_REQUEST['version_online'] == 1) ? '1' : '0';
-		$versionsObj->setVar('version_online', $version_online);
+		$versionsObj->setVar('version_online', XoopsRequest::getInt('version_online', 0));
 		// Set Var version_date
 		$versionsObj->setVar('version_date', time());
 		// Insert Data
@@ -193,7 +191,7 @@ switch ($op)
 	break;
                     
     case 'order':
-        $vorder = $_POST['vorder'];
+        $vorder = XoopsRequest::getArray('vorder', array());
         for ($i = 0; $i < count($vorder); $i++){
             $versionsObj = $versionsHandler->get($vorder[$i]);
             $versionsObj->setVar('version_weight',$i+1);

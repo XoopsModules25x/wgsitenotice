@@ -3,6 +3,7 @@
 	<table class="outer contents width100">
 		<thead>
 			<tr class="head">
+                <th class="center">&nbsp;</th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_ID}></th>
 				<th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_VERSION_ID}></th>
 				<th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_HEADER}></th>
@@ -12,7 +13,8 @@
 		</thead>
 		<tbody id="contents-list">
 			<{foreach item=list from=$contents_list}>	
-				<tr class="<{cycle values='odd, even'}>" id="corder_<{$team.id}>" >
+				<tr class="<{cycle values='odd, even'}>" id="corder_<{$list.id}>" >
+                    <td class="center"><img src="<{$wgsitenotice_icons_url}>/16/up_down.png" alt="drag&drop" class="icon-sortable"/></td>
                     <td class="center"><{$list.id}></td>
 					<td class="center"><{$list.version_id}></td>
 					<td class="center"><{$list.header}></td>

@@ -100,13 +100,13 @@ switch ($op)
         }
 		// Set Vars
 		// Set Var cont_version_id
-		$contentsObj->setVar('cont_version_id', $_POST['cont_version_id']);
+		$contentsObj->setVar('cont_version_id', XoopsRequest::getInt('cont_version_id'));
 		// Set Var cont_header
-		$contentsObj->setVar('cont_header', $_POST['cont_header']);
+		$contentsObj->setVar('cont_header', XoopsRequest::getString('cont_header', ''));
 		// Set Var cont_text
-		$contentsObj->setVar('cont_text', $_POST['cont_text']);
+		$contentsObj->setVar('cont_text', XoopsRequest::getString('cont_text', ''));
 		// Set Var cont_weight
-		$contentsObj->setVar('cont_weight', $_POST['cont_weight']);
+		$contentsObj->setVar('cont_weight', XoopsRequest::getInt('cont_weight'));
 		// Set Var cont_date
 		$contentsObj->setVar('cont_date', time());
 		// Insert Data
@@ -146,7 +146,7 @@ switch ($op)
 	break;
         
     case 'order':
-        $corder = $_POST['corder'];
+        $corder = XoopsRequest::getArray('corder', array());
         for ($i = 0; $i < count($corder); $i++){
             $contentsObj = $contentsHandler->get($corder[$i]);
             $contentsObj->setVar('cont_weight',$i+1);
