@@ -64,7 +64,7 @@ $modversion = array(
     'module_website_url' => "xoops.wedega.com",
     'module_website_name' => "WEDEGA Webdesign Gabor (powered by XOOPS Project)",
     'release' => "2015/08/22",
-    'module_status' => "RC1",
+    'module_status' => "RC2",
     // Admin system menu
     'system_menu' => 1,
     // Admin things
