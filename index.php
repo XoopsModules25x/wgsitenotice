@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 index.php 1 Wed 2015/02/18 16:30:32Z Goffy / wedega.com / XOOPS Development Team $
  */
 include_once __DIR__ . '/header.php';
 $GLOBALS['xoopsOption']['template_main'] = 'user/' . $wgsitenotice->getConfig('wgsitenotice_template') . '/wgsitenotice_index_'

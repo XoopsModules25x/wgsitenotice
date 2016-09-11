@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 checkonline.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
@@ -59,7 +58,7 @@ switch ($op)
             echo $oc_server.'?version_id='.$version_id;
             echo $xml_arr->status_access;
 
-            if ($xml_arr->status_access === 'allowed') {
+            if ($xml_arr->status_access == 'allowed') {
                 //download is allowed by the owner of the named server and save in table mod_wgsitenotice_versions
                 foreach ($xml_arr->versions->version as $onlineversion) {
                     //first create version
@@ -110,14 +109,14 @@ switch ($op)
         // $xml_text = file_get_contents($oc_server);
         $xml_text = $checkonlineHandler->getData($oc_server);
         $xml_arr = $checkonlineHandler->readXML($xml_text);
+        // echo "xml_text:<br/>".$xml_text;
+        // echo "<br/><br/>var_dump xml_arr:<br/>".var_dump($xml_arr);
         
         if (!$xml_arr) {
-            // echo "xml_text:<br/>".$xml_text;
-            // echo "<br/><br/>pure xml_arr:<br/>".$xml_arr;
-            // echo "<br/><br/>var_dump xml_arr:<br/>".var_dump($xml_arr);die;
             $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_READ_XML));
         } else {
-            if ($xml_arr->status_access === 'allowed') {
+            // echo "<br/>status_access:".$xml_arr->status_access;
+            if ($xml_arr->status_access == 'allowed') {
                 if ($xml_arr->versions_rows > 0) {
                     //download is allowed by the owner of the named server
                     foreach ($xml_arr->versions->version as $onlineversion) {

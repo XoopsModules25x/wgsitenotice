@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 about.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 include __DIR__ . '/header.php';
 $template_main = 'wgsitenotice_admin_about.tpl'; 

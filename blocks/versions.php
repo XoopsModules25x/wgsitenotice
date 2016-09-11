@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<http://wedega.com>
- * @version         $Id: 1.0 versions.php 1 Sun 2015/03/08 17:12:07Z Goffy / wedega.com / XOOPS Development Team $
  */
 include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 // Function show block

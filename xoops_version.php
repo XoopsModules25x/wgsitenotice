@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 xoops_version.php 1 Fri 2015/02/20 12:43:30Z Goffy / wedega.com / XOOPS Development Team $
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 //
@@ -25,7 +24,7 @@ $dirname = basename(__DIR__) ;
 // ------------------- Informations ------------------- //
 $modversion = array(
     'name' => _MI_WGSITENOTICE_NAME,
-    'version' => 1.27,
+    'version' => '1.28',
     'description' => _MI_WGSITENOTICE_DESC,
     'author' => 'Goffy (xoops.wedega.com)',
     'author_mail' => 'webmaster@wedega.com',
@@ -63,7 +62,7 @@ $modversion = array(
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
     'release' => '2015/08/22',
-    'module_status' => 'RC2',
+    'module_status' => 'RC1',
     // Admin system menu
     'system_menu' => 1,
     // Admin things
@@ -108,16 +107,27 @@ $modversion['templates'][] = array('file' => 'user/xbootstrap/wgsitenotice_index
 // ------------------- Mysql ------------------- //
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 // Tables
-$modversion['tables'][1] = 'mod_wgsitenotice_versions';
-$modversion['tables'][2] = 'mod_wgsitenotice_contents';
+$modversion['tables'][1] = 'wgsitenotice_versions';
+$modversion['tables'][2] = 'wgsitenotice_contents';
+
+$b = 1;
 // Blocks
-$modversion['blocks'][1]['file']        = 'versions.php';
-$modversion['blocks'][1]['name']        = _MI_WGSITENOTICE_NAME;
-$modversion['blocks'][1]['description'] = _MI_WGSITENOTICE_B_ALL_VERSIONS;
-$modversion['blocks'][1]['show_func']   = 'b_wgsitenotice_versions_show';
-$modversion['blocks'][1]['edit_func']   = 'b_wgsitenotice_versions_edit';
-$modversion['blocks'][1]['options']     = '5|0';
-$modversion['blocks'][1]['template']    = "{$dirname}_block_versions.tpl";
+$modversion['blocks'][$b]['file']        = 'versions.php';
+$modversion['blocks'][$b]['name']        = _MI_WGSITENOTICE_NAME;
+$modversion['blocks'][$b]['description'] = _MI_WGSITENOTICE_B_ALL_VERSIONS;
+$modversion['blocks'][$b]['show_func']   = 'b_wgsitenotice_versions_show';
+$modversion['blocks'][$b]['edit_func']   = 'b_wgsitenotice_versions_edit';
+$modversion['blocks'][$b]['options']     = '5|0';
+$modversion['blocks'][$b]['template']    = "{$dirname}_block_versions.tpl";
+$b++;
+$modversion['blocks'][$b]['file']        = 'cookie-reg.php';
+$modversion['blocks'][$b]['name']        = _MI_WGSITENOTICE_COOKIE_REG;
+$modversion['blocks'][$b]['description'] = _MI_WGSITENOTICE_COOKIE_REG_DESC;
+$modversion['blocks'][$b]['show_func']   = 'b_wgsitenotice_cookie_reg_show';
+$modversion['blocks'][$b]['edit_func']   = 'b_wgsitenotice_cookie_reg_edit';
+$modversion['blocks'][$b]['options']     = 'cookiesregmarker-' . md5(mt_rand()) . '|no-data|no-cookiereg|top|0.9|#d6e0eb|#f2f6f9|#000000|30';
+$modversion['blocks'][$b]['template']    = "{$dirname}_block_cookie_reg.tpl";
+unset ($b);
 // ------------------- Config ------------------- //
 // Editor
 xoops_load('xoopseditorhandler');

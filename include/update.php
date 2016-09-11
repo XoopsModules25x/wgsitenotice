@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 update.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 /**
  * @param      $module
@@ -30,6 +29,9 @@ function xoops_module_update_wgsitenotice(&$module, $prev_version = null)
     $ret = null;
     if ($prev_version < 120) {
         $ret = update_wgsitenotice_v120($module);
+    }
+    if ($prev_version < 128) {
+        $ret = update_wgsitenotice_v128($module);
     }
     $errors = $module->getErrors();
     foreach ($errors as $error) {
@@ -54,3 +56,39 @@ function update_wgsitenotice_v120(&$module)
     }
     return true;
 }
+
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+function update_wgsitenotice_v128(&$module)
+{
+    // remove 'mod_' from tablename 'mod_wgsitenotice_...'
+    $errors = 0;
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) { 
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions')); 
+        $result = $GLOBALS['xoopsDB']->queryF($sql); 
+        if (!$result) { 
+            $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_versions to wgsitenotice_versions failed<br />SQL command: ' . $sql);
+            $errors++; 
+        } 
+    }
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) { 
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents')); 
+        $result = $GLOBALS['xoopsDB']->queryF($sql); 
+        if (!$result) { 
+            $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_contents to wgsitenotice_contents failed<br />SQL command: ' . $sql);
+            $errors++; 
+        } 
+    }
+
+    return ($errors == 0);
+}
+
+function tableExists($tablename) 
+{ 
+    global $xoopsDB; 
+    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'"); 
+    return($xoopsDB->getRowsNum($result) > 0); 
+} 

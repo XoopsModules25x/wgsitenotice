@@ -17,12 +17,10 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 modinfo.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 // ---------------- Admin Main ----------------
 define('_MI_WGSITENOTICE_NAME', 'Rechtliche Hinweise');
-define('_MI_WGSITENOTICE_DESC',
-       'Dieses Modul erstellt eine Seite mit rechtlichen Hinweisen (Impressum, Haftungsbestimmungen, Datenschutz,...)');
+define('_MI_WGSITENOTICE_DESC', 'Dieses Modul erstellt eine Seite mit rechtlichen Hinweisen (Impressum, Haftungsbestimmungen, Datenschutz,...)');
 // ---------------- Admin Menu ----------------
 define('_MI_WGSITENOTICE_ADMENU1', 'Übersicht');
 define('_MI_WGSITENOTICE_ADMENU2', 'Versionen');
@@ -48,6 +46,8 @@ define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
        'Definieren Sie bitte, ob andere Xoops-Entwickler die Versionen der rechtlichen Hinweise aus Ihrer Datenbank herunterladen dürfen');
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Alle zugelassenden Versionen anzeigen');
+define('_MI_WGSITENOTICE_COOKIE_REG', 'Hinweis Cookie-Richtlinie');
+define('_MI_WGSITENOTICE_COOKIE_REG_DESC', 'Einen Hinweis entsprechend der Cookie-Richtlinie (2009/136/EG) anzeigen');
 //update
 define('_MI_WGSITENOTICE_UPGRADEFAILED', 'Fehler beim Updaten des Moduls');
 // ---------------- End ----------------

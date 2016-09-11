@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 contents.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 /**
@@ -115,6 +114,6 @@ class WgsitenoticeContentsHandler extends XoopsPersistableObjectHandler
 	 */
 	public function __construct($db)
 	{
-		parent::__construct($db, 'mod_wgsitenotice_contents', 'wgsitenoticecontents', 'cont_id', 'cont_header');
+		parent::__construct($db, 'wgsitenotice_contents', 'wgsitenoticecontents', 'cont_id', 'cont_header');
 	}
 }

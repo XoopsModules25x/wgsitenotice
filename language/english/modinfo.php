@@ -17,7 +17,6 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
- * @version         $Id: 1.0 modinfo.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 // ---------------- Admin Main ----------------
 define('_MI_WGSITENOTICE_NAME', 'Site notice');
@@ -47,6 +46,8 @@ define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
        'Define, whether you want to allow other xoops developers to download the legal notes of your database');
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Show all enabled versions');
+define('_MI_WGSITENOTICE_COOKIE_REG', 'Notice cookie regulation');
+define('_MI_WGSITENOTICE_COOKIE_REG_DESC', 'Show a notice concerning the cookie regulations (2009/136/EG)');
 //update
 define('_MI_WGSITENOTICE_UPGRADEFAILED', 'Error while updating module');
 // ---------------- End ----------------

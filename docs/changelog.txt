@@ -1,4 +1,18 @@
 ==================================================================
+Change Log for wgSitenotice - 2015/09/11 Version 1.28
+==================================================================
+- added block for cookie policy (goffy)
+- fixed bug in checkonline.php (goffy)
+- fixed /**
+         * Constructor
+- removed all @version lines
+         
+==================================================================
+Change Log for wgSitenotice - 2015/08/30 Version 1.27
+==================================================================
+- added drag&drop sorting in admin area (goffy)
+
+==================================================================
 Change Log for wgSitenotice - 2015/08/04 17:32:00 Version 1.26
 ==================================================================
 - updated for xoops 2.5.8(goffy)
@@ -26,23 +40,14 @@ Change Log for wgSitenotice - 2015/08/04 17:32:00 Version 1.26
 
 TODO:
 1) needs to fix PhpDocs starts: there should be two ** to indicate PhpDocs, eg.
-
      /**
       * Constructor
-
 instead of:
-
 	/*
 	 * Constructor
-	 *
-	 * @param null
-	 */
 
 2) remove all @version lines (we don't use @version in GitHub)
-
 3) make functions from /include/functions.php as static class methods of WgsitenoticeUtilities in /class/utilities
-
-
 
 ==================================================================
 Change Log for wgSitenotice - 2015/07/22 16:30:00 Version 1.25

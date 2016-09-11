@@ -8,10 +8,10 @@
 # PHP Version: 5.5.9
 
 #
-# Structure table for `mod_wgsitenotice_versions` 7
+# Structure table for `wgsitenotice_versions` 7
 #
 		
-CREATE TABLE `mod_wgsitenotice_versions` (
+CREATE TABLE `wgsitenotice_versions` (
   `version_id` INT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
   `version_name` VARCHAR(100) NOT NULL DEFAULT '',
   `version_lang` VARCHAR(50) NULL DEFAULT '',
@@ -25,10 +25,10 @@ CREATE TABLE `mod_wgsitenotice_versions` (
 ) ENGINE=MyISAM;
 
 #
-# Structure table for `mod_wgsitenotice_contents` 6
+# Structure table for `wgsitenotice_contents` 6
 #
 		
-CREATE TABLE `mod_wgsitenotice_contents` (
+CREATE TABLE `wgsitenotice_contents` (
   `cont_id` INT(8)   AUTO_INCREMENT,
   `cont_version_id` INT(8) NOT NULL DEFAULT '0',
   `cont_header` VARCHAR(200) NULL DEFAULT '',
