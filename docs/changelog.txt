@@ -4,8 +4,8 @@ Change Log for wgSitenotice - 2015/09/11 Version 1.28
 - added block for cookie policy (goffy)
 - fixed bug in checkonline.php (goffy)
 - fixed /**
-         * Constructor
-- removed all @version lines
+         * Constructor (goffy)
+- removed all @version lines (goffy)
          
 ==================================================================
 Change Log for wgSitenotice - 2015/08/30 Version 1.27

@@ -62,7 +62,7 @@ $modversion = array(
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
     'release' => '2015/08/22',
-    'module_status' => 'RC1',
+    'module_status' => 'RC2',
     // Admin system menu
     'system_menu' => 1,
     // Admin things
@@ -125,7 +125,7 @@ $modversion['blocks'][$b]['name']        = _MI_WGSITENOTICE_COOKIE_REG;
 $modversion['blocks'][$b]['description'] = _MI_WGSITENOTICE_COOKIE_REG_DESC;
 $modversion['blocks'][$b]['show_func']   = 'b_wgsitenotice_cookie_reg_show';
 $modversion['blocks'][$b]['edit_func']   = 'b_wgsitenotice_cookie_reg_edit';
-$modversion['blocks'][$b]['options']     = 'cookiesregmarker-' . md5(mt_rand()) . '|no-data|no-cookiereg|top|0.9|#d6e0eb|#f2f6f9|#000000|30';
+$modversion['blocks'][$b]['options']     = 'cookiesregmarker_' . md5(mt_rand()) . '|no-data|no-cookiereg|smarty|0.9|#d6e0eb|#f2f6f9|#000000|30|top|cookiesregsmarty_' . md5(mt_rand());
 $modversion['blocks'][$b]['template']    = "{$dirname}_block_cookie_reg.tpl";
 unset ($b);
 // ------------------- Config ------------------- //

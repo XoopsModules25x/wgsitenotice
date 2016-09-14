@@ -26,28 +26,48 @@ function b_wgsitenotice_cookie_reg_show($options)
 	$myts = MyTextSanitizer::getInstance();
 	$block = array();
 
-    $block['unique_id'] = $options[0];
+    $unique_id = $options[0];
+    $block['unique_id'] = $unique_id;
     $dataprotect_id = $options[1];
     $cookie_reg_id = $options[2];
-    if ('top' == $options[3]) {
-        $block['position'] = 'top:0px;';
-    } else {
-        $block['position'] = 'bottom:0px;';
-    }
+    $display_type = $options[3];
     $block['opacity'] = $options[4];
     $block['bg_from'] = $options[5];
     $block['bg_to'] = $options[6];
     $block['color'] = $options[7];
     $block['height'] = $options[8];
+    $position = $options[9];
+    $type_tpl_id = $options[10];
     
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    array_shift($options);
+    
+    //get relevant data
 	$wgsitenotice = WgsitenoticeHelper::getInstance();
 	$versionsHandler = $wgsitenotice->getHandler('versions');
 	$criteria = new CriteriaCompo();
-	array_shift($options);
-    array_shift($options);
-    array_shift($options);
-    array_shift($options);
+
     $block['infotext'] = _MB_WGSITENOTICE_COOKIE_REG_INFO;
+    
+    if ($display_type == "smarty") {
+        if ('top' == $position) {
+            $block['position'] = 'top:0px;position:fixed;left:0px;';
+            $block['prependToBody'] = '1';
+        } else {
+            $block['position'] = 'bottom:0px;position:fixed;left:0px;';
+            $block['prependToBody'] = '1';
+        }
+    } else {
+        $block['position'] = '';
+    }
     
     if ( $dataprotect_id > 0 || $cookie_reg_id > 0 ) {
         $dataprotect_obj = $versionsHandler->get($dataprotect_id);
@@ -65,7 +85,16 @@ function b_wgsitenotice_cookie_reg_show($options)
             $block['seperator'] = "|";
         }
     }
-
+    $tplSource = XOOPS_ROOT_PATH.'/modules/wgsitenotice/templates/blocks/wgsitenotice_block_cookie_reg.tpl';
+    
+    if ($display_type == "smarty") {
+        //hide block and show in theme.html defined position
+        $blockTpl = new XoopsTpl();
+        $blockTpl->assign('block', $block);
+        
+        $GLOBALS['xoopsTpl']->assign( $type_tpl_id, $blockTpl->fetch($tplSource) );
+        $block = false;       
+    }
 	return $block;
 }
 
@@ -83,8 +112,12 @@ function b_wgsitenotice_cookie_reg_edit($options)
     $versionsAll = $versionsHandler->getAll($criteria);
     unset($criteria);
     
-    $unique_id = new XoopsFormText('', 'options[0]', 100, 255, $options[0]);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_NAME . ': ' . $unique_id->render() . '<br />';
+    $cookie = $options[0];
+    //remove existing cookie in order to see results
+    setcookie($cookie,"0");
+    
+    $unique_id = new XoopsFormText('', 'options[0]', 100, 255, $cookie);
+    $form = _MB_WGSITENOTICE_COOKIE_REG_NAME . ': ' . $unique_id->render() . '<br><br>';
     
     $data_sel = new XoopsFormSelect("", 'options[1]', $options[1]);
     $data_sel->addOption('no-data', _MB_WGSITENOTICE_COOKIE_REG_NONE);
@@ -92,7 +125,7 @@ function b_wgsitenotice_cookie_reg_edit($options)
         $version_id = $versionsAll[$i]->getVar('version_id');
         $data_sel->addOption($versionsAll[$i]->getVar('version_id'), $versionsAll[$i]->getVar('version_name'));
     }
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_DATA . ': ' . $data_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_DATA . ': ' . $data_sel->render() . '<br>';
     
     $cookie_reg_sel = new XoopsFormSelect("", 'options[2]', $options[2]);
     $cookie_reg_sel->addOption('no-cookiereg', _MB_WGSITENOTICE_COOKIE_REG_NONE);
@@ -100,12 +133,15 @@ function b_wgsitenotice_cookie_reg_edit($options)
         $version_id = $versionsAll[$i]->getVar('version_id');
         $cookie_reg_sel->addOption($versionsAll[$i]->getVar('version_id'), $versionsAll[$i]->getVar('version_name'));
     }
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_BASE . ': ' . $cookie_reg_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_BASE . ': ' . $cookie_reg_sel->render() . '<br>';
     
-    $position_sel = new XoopsFormSelect("", 'options[3]', $options[3]);
-    $position_sel->addOption('top', _MB_WGSITENOTICE_COOKIE_REG_POSITION_TOP);
-    $position_sel->addOption('bottom', _MB_WGSITENOTICE_COOKIE_REG_POSITION_BOTTOM);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_POSITION . ': ' . $position_sel->render() . '<br />';
+    $display_sel = new XoopsFormSelect("", 'options[3]', $options[3]);
+    $display_sel->addOption('block', _MB_WGSITENOTICE_COOKIE_REG_DISPLAY_BLOCK);
+    $display_sel->addOption('smarty', _MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY);
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_DISPLAY . ': ' . $display_sel->render() . '<br>';
+   
+    $form .= '<br>' . _MB_WGSITENOTICE_COOKIE_REG_OPT_STYLE . ':<br>';
+    $form .= str_repeat( '-' , strlen(_MB_WGSITENOTICE_COOKIE_REG_OPT_STYLE) + 5 ) . '<br>';
    
     $opacity_sel = new XoopsFormSelect("", 'options[4]', $options[4]);
     $opacity_sel->addOption('0.1', '0.1');
@@ -118,21 +154,34 @@ function b_wgsitenotice_cookie_reg_edit($options)
     $opacity_sel->addOption('0.8', '0.8');
     $opacity_sel->addOption('0.9', '0.9');
     $opacity_sel->addOption('1.0', '1.0');
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_OPACITY . ': ' . $opacity_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_OPACITY . ': ' . $opacity_sel->render() . '<br><br>';
     
     $bg_from_sel = new XoopsFormColorPicker("", 'options[5]', $options[5]);
     $bg_to_sel = new XoopsFormColorPicker("", 'options[6]', $options[6]);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_BACKGROUND . ': ' . $bg_from_sel->render() . ' ' . $bg_to_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_BACKGROUND . ': ' . $bg_from_sel->render() . ' ' . $bg_to_sel->render() . '<br>';
     
     $color_sel = new XoopsFormColorPicker("", 'options[7]', $options[7]);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_COLOR . ': ' . $color_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_COLOR . ': ' . $color_sel->render() . '<br><br>';
     
     $height_sel = new XoopsFormText('', 'options[8]', 20, 255, $options[8]);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_HEIGHT . ': ' . $height_sel->render() . '<br />';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_HEIGHT . ': ' . $height_sel->render() . '<br><br>';
+   
+    $form .= '<br>' . _MB_WGSITENOTICE_COOKIE_REG_OPT_SMARTY . ':<br>';
+    $form .= str_repeat( '-' , strlen(_MB_WGSITENOTICE_COOKIE_REG_OPT_SMARTY) + 5 ) . '<br>';
+    
+    $position_sel = new XoopsFormSelect("", 'options[9]', $options[9]);
+    $position_sel->addOption('top', _MB_WGSITENOTICE_COOKIE_REG_POSITION_TOP);
+    $position_sel->addOption('bottom', _MB_WGSITENOTICE_COOKIE_REG_POSITION_BOTTOM);
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_POSITION . ': ' . $position_sel->render() . '<br>';
+    
+    $smarty_id = new XoopsFormText('', 'options[10]', 60, 255, $options[10]);
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY_DESC . ':<br><{' . $smarty_id->render() . '}><br><br>';
 
     array_shift($options);
 	array_shift($options);
 	array_shift($options);
+    array_shift($options);
+    array_shift($options);
     array_shift($options);
     array_shift($options);
     array_shift($options);

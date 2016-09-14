@@ -47,7 +47,7 @@ define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Show all enabled versions');
 define('_MI_WGSITENOTICE_COOKIE_REG', 'Notice cookie regulation');
-define('_MI_WGSITENOTICE_COOKIE_REG_DESC', 'Show a notice concerning the cookie regulations (2009/136/EG)');
+define('_MI_WGSITENOTICE_COOKIE_REG_DESC', 'Show a notice concerning the cookie regulation (2009/136/EG)');
 //update
 define('_MI_WGSITENOTICE_UPGRADEFAILED', 'Error while updating module');
 // ---------------- End ----------------

@@ -16,8 +16,6 @@
     outline: 1px solid #7b92a9; 
     text-align:right; 
     border-top:1px solid #fff;
-    position:fixed; 
-    left:0px;
     z-index:10000; 
     width:100%; 
     font-size:12px;
@@ -66,17 +64,21 @@
                 <a href="<{xoAppUrl modules/wgsitenotice/index.php?version_id=}><{$block.cookie_reg_id}>"><{$block.cookie_reg_text}></a>
             <{/if}>
         )</span>
+        <{if $block.prependToBody}>
         <span id="cookies-reg-closer" onclick="document.cookie = '<{$block.unique_id}>=1;path=/';jQuery('#container-cookies-reg').slideUp()">&#10006;</span>
+        <{/if}>
     </div>
     
 </div>
 
-<script>
- if (document.cookie.indexOf('<{$block.unique_id}>=1') != -1) {
-	jQuery('#container-cookies-reg').hide();
- } else {
-	jQuery('#container-cookies-reg').prependTo('body');
-	jQuery('#cookies-reg-closer').show();
- }
+<script>  
+    if (document.cookie.indexOf('<{$block.unique_id}>=1') != -1) {
+        jQuery('#container-cookies-reg').hide();
+    } else {
+        <{if $block.prependToBody}>
+        jQuery('#container-cookies-reg').prependTo('body');
+        <{/if}>
+        jQuery('#cookies-reg-closer').show();
+    }
 </script>
 <{/if}>
