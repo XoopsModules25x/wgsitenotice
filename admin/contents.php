@@ -28,14 +28,14 @@ switch ($op)
 {
     case 'list': 
     default:  
-		$start = XoopsRequest::getInt('start', 0);
+        $start = XoopsRequest::getInt('start', 0);
 		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
 		$template_main = 'wgsitenotice_admin_contents.tpl';
 		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
 		$adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');		
 		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
 		$cont_crit = new CriteriaCompo();
-		$cont_crit->setSort('cont_id ASC, cont_version_id');
+		$cont_crit->setSort('cont_version_id ASC, cont_weight ASC, cont_id');
 		$cont_crit->setOrder('ASC');
         $contents_rows = $contentsHandler->getCount($cont_crit);
         $cont_crit->setStart($start);
@@ -140,8 +140,7 @@ switch ($op)
 				echo $contentsObj->getHtmlErrors();
 			}
 		} else {
-			xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' ('
-                                                                                                                                                    . $contentsObj->getVar('cont_weight') . ')'));
+			xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' (' . $contentsObj->getVar('cont_weight') . ')'));
 		}
 	break;
         
