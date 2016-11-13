@@ -106,7 +106,7 @@ class WgsitenoticeVersions extends XoopsObject
 		//$form->addElement( new XoopsFormTextDateSelect(_AM_WGSITENOTICE_VERSION_DATE, 'version_date', '', $this->getVar('version_date')), true );
 		// Send
 		$form->addElement(new XoopsFormHidden('op', 'save'));
-		$form->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+		$form->addElement(new XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
 		return $form;
 	}
 }

@@ -28,6 +28,7 @@ switch ($op)
 {
     case 'list': 
     default:  
+        $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-contents.js');
         $start = XoopsRequest::getInt('start', 0);
 		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
 		$template_main = 'wgsitenotice_admin_contents.tpl';
@@ -45,27 +46,41 @@ switch ($op)
 		$GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
 		$GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
+        $GLOBALS['xoopsTpl']->assign('contents_count', $contents_rows);
 		// Table view
 		if ($contents_rows > 0) 
 		{						
+            $version_id_prev = 0;
             foreach (array_keys($contents_arr) as $i)
 			{
                 // Get Var cont_id
                 $cont['id'] = $contents_arr[$i]->getVar('cont_id');
                 // Get Var cont_version_id
-                $versions_obj = $versionsHandler->get($contents_arr[$i]->getVar('cont_version_id'));
+                $cont['version_id'] = $contents_arr[$i]->getVar('cont_version_id');
+                $versions_obj = $versionsHandler->get($cont['version_id']);
                 if (is_object($versions_obj)) {
-                    $version_name = $versions_obj->getVar('version_name') . ' (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $contents_arr[$i]->getVar('cont_version_id') . ')';
+                    $version_name = $versions_obj->getVar('version_name') . ' (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $cont['version_id'] . ')';
                 } else {
-                    $version_name = '- (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $contents_arr[$i]->getVar('cont_version_id') . ') ';
+                    $version_name = '- (' . _AM_WGSITENOTICE_VERSION_ID . ' ' . $cont['version_id'] . ') ';
                 }
-                $cont['version_id'] = $version_name;
+                $cont['version_name'] = $version_name;
                 // Get Var cont_header
                 $cont['header'] = $contents_arr[$i]->getVar('cont_header');
                 // Get Var cont_weight
                 $cont['weight'] = $contents_arr[$i]->getVar('cont_weight');
                 // Get Var cont_date
                 $cont['date'] = formatTimestamp($contents_arr[$i]->getVar('cont_date'));
+                 if ($version_id_prev == $cont['version_id']) {
+                    $cont['new_version'] = 0;
+                    $cont['nb_conts_version'] = $nb_conts_version;
+                } else {
+                    $cont['new_version'] = 1;
+                    $nb_conts = new CriteriaCompo();
+                    $nb_conts->add(new Criteria('cont_version_id', $cont['version_id']));
+                    $nb_conts_version = $contentsHandler->getCount($nb_conts);
+                    $cont['nb_conts_version'] = $nb_conts_version;
+                    $version_id_prev = $cont['version_id'];
+                }
                 $GLOBALS['xoopsTpl']->append('contents_list', $cont);
                 unset($cont);
 			}

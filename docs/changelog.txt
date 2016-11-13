@@ -1,5 +1,12 @@
 ==================================================================
-Change Log for wgSitenotice - 2015/09/11 Version 1.28
+Change Log for wgSitenotice - 2016/11/13 Version 1.29
+==================================================================
+- restyled drag&drop (goffy)
+- changed js for drag&drop (goffy)
+- add button tray to forms (goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2016/09/11 Version 1.28
 ==================================================================
 - added block for cookie policy (goffy)
 - fixed bug in checkonline.php (goffy)

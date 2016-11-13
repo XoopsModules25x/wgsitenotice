@@ -32,6 +32,7 @@ switch ($op)
 {
     case 'list': 
     default:  
+        $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-versions.js');
         $GLOBALS['xoopsTpl']->assign('start', $start);
 		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
 		$template_main = 'wgsitenotice_admin_versions.tpl';

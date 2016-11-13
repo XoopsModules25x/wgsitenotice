@@ -97,7 +97,7 @@ class WgsitenoticeContents extends XoopsObject
 		//$form->addElement( new XoopsFormTextDateSelect(_AM_WGSITENOTICE_CONT_DATE, 'cont_date', '', $this->getVar('cont_date')), true );
 		// Send
 		$form->addElement(new XoopsFormHidden('op', 'save'));
-		$form->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+        $form->addElement(new XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
 		return $form;
 	}
 }
