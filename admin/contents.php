@@ -118,7 +118,7 @@ switch ($op)
 		// Set Var cont_header
 		$contentsObj->setVar('cont_header', XoopsRequest::getString('cont_header', ''));
 		// Set Var cont_text
-		$contentsObj->setVar('cont_text', XoopsRequest::getString('cont_text', ''));
+		$contentsObj->setVar('cont_text', XoopsRequest::getString('cont_text', '', 'default', 2));
 		// Set Var cont_weight
 		$contentsObj->setVar('cont_weight', XoopsRequest::getInt('cont_weight'));
 		// Set Var cont_date
