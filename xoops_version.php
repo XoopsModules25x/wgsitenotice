@@ -62,7 +62,7 @@ $modversion = array(
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
     'release' => '2015/08/22',
-    'module_status' => 'RC2',
+    'module_status' => 'RC3',
     // Admin system menu
     'system_menu' => 1,
     // Admin things
@@ -75,7 +75,7 @@ $modversion = array(
     'onInstall' => 'include/install.php',
     'onUpdate' => 'include/update.php'
 );
-// ------------------- Templates ------------------- // 
+// ------------------- Templates ------------------- //
 // Admin
 $modversion['templates'][] = array('file' => 'wgsitenotice_admin_about.tpl', 'description' => '', 'type' => 'admin');
 $modversion['templates'][] = array('file' => 'wgsitenotice_admin_header.tpl', 'description' => '', 'type' => 'admin');
@@ -99,10 +99,10 @@ $modversion['config'][] = array(
     'options' => array_flip($arr_templates),
     'default' => 'default'
 );
-$modversion['templates'][] = array('file' => 'user/default/wgsitenotice_index_default.tpl', 'description' => '');  
-$modversion['templates'][] = array('file' => 'user/table/wgsitenotice_index_table.tpl', 'description' => '');  
+$modversion['templates'][] = array('file' => 'user/default/wgsitenotice_index_default.tpl', 'description' => '');
+$modversion['templates'][] = array('file' => 'user/table/wgsitenotice_index_table.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'user/block/wgsitenotice_index_block.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'user/xbootstrap/wgsitenotice_index_xbootstrap.tpl', 'description' => ''); 
+$modversion['templates'][] = array('file' => 'user/xbootstrap/wgsitenotice_index_xbootstrap.tpl', 'description' => '');
 
 // ------------------- Mysql ------------------- //
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
@@ -141,7 +141,7 @@ $modversion['config'][] = array(
     'options' => array_flip($editorHandler->getList()),
     'default' => 'dhtmltextarea'
 );
-     
+
 $modversion['config'][] = array(
     'name' => 'wgsitenotice_oc_server',
     'title' => '_MI_WGSITENOTICE_OC_SERVER',
@@ -158,7 +158,7 @@ $modversion['config'][] = array(
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 0);
-    
+
 $modversion['config'][] = array(
     'name' => 'keywords',
     'title' => '_MI_WGSITENOTICE_KEYWORDS',
@@ -175,7 +175,7 @@ $modversion['config'][] = array(
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 10);
-    
+
 $currdirname = isset($GLOBALS['xoopsModule'])&& is_object($GLOBALS['xoopsModule']) ? $GLOBALS['xoopsModule']->getVar('dirname') : 'system';
 if ($dirname == $currdirname) {
     $subcount = 1 ;
@@ -191,8 +191,8 @@ if ($dirname == $currdirname) {
     $version_crit->add(new Criteria('version_current', '1'));
     $versions_rows = $versionsHandler->getCount($version_crit);
     $versions_arr = $versionsHandler->getAll($version_crit);
-        
-    if ($versions_rows > 0) {						
+
+    if ($versions_rows > 0) {
         foreach (array_keys($versions_arr) as $i)
         {
             $modversion['sub'][$subcount]['name'] = $versions_arr[$i]->getVar('version_name');

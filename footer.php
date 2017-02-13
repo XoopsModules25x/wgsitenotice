@@ -23,9 +23,9 @@ $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
 $GLOBALS['xoopsTpl']->assign('adv', xoops_getModuleOption('advertise', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('bookmarks', xoops_getModuleOption('bookmarks', $dirname));
-$GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname)); 
+$GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('admin', WGSITENOTICE_ADMIN);
 $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 // User footer
-include_once XOOPS_ROOT_PATH.'/footer.php';	
+include_once XOOPS_ROOT_PATH.'/footer.php';

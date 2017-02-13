@@ -21,22 +21,22 @@
 
 /***************Blocks**************/
 
-/** 
+/**
 * @param $cats
  * @return string
  */
 function wgsitenotice_block_addCatSelect($cats) {
-	if(is_array($cats)) 
-	{
-		$cat_sql = '('.current($cats);
-		array_shift($cats);
-		foreach($cats as $cat) 
-		{
-			$cat_sql .= ','.$cat;
-		}
-		$cat_sql .= ')';
-	}
-	return $cat_sql;
+    if(is_array($cats))
+    {
+        $cat_sql = '('.current($cats);
+        array_shift($cats);
+        foreach($cats as $cat)
+        {
+            $cat_sql .= ','.$cat;
+        }
+        $cat_sql .= ')';
+    }
+    return $cat_sql;
 }
 
 function wgsitenotice_CleanVars( &$global, $key, $default = '', $type = 'int' ) {
@@ -56,24 +56,24 @@ function wgsitenotice_CleanVars( &$global, $key, $default = '', $type = 'int' ) 
 
 function wgsitenotice_meta_keywords($content)
 {
-	global $xoopsTpl, $xoTheme;
-	$myts = MyTextSanitizer::getInstance();
-	$content= $myts->undoHtmlSpecialChars($myts->displayTarea($content));
-	if(isset($xoTheme) && is_object($xoTheme)) {
-		$xoTheme->addMeta( 'meta', 'keywords', strip_tags($content));
-	} else {	// Compatibility for old Xoops versions
-		$xoopsTpl->assign('xoops_meta_keywords', strip_tags($content));
-	}
+    global $xoopsTpl, $xoTheme;
+    $myts = MyTextSanitizer::getInstance();
+    $content= $myts->undoHtmlSpecialChars($myts->displayTarea($content));
+    if(isset($xoTheme) && is_object($xoTheme)) {
+        $xoTheme->addMeta( 'meta', 'keywords', strip_tags($content));
+    } else {    // Compatibility for old Xoops versions
+        $xoopsTpl->assign('xoops_meta_keywords', strip_tags($content));
+    }
 }
 
 function wgsitenotice_meta_description($content)
 {
-	global $xoopsTpl, $xoTheme;
-	$myts = MyTextSanitizer::getInstance();
-	$content = $myts->undoHtmlSpecialChars($myts->displayTarea($content));
-	if(isset($xoTheme) && is_object($xoTheme)) {
-		$xoTheme->addMeta( 'meta', 'description', strip_tags($content));
-	} else {	// Compatibility for old Xoops versions
-		$xoopsTpl->assign('xoops_meta_description', strip_tags($content));
-	}
+    global $xoopsTpl, $xoTheme;
+    $myts = MyTextSanitizer::getInstance();
+    $content = $myts->undoHtmlSpecialChars($myts->displayTarea($content));
+    if(isset($xoTheme) && is_object($xoTheme)) {
+        $xoTheme->addMeta( 'meta', 'description', strip_tags($content));
+    } else {    // Compatibility for old Xoops versions
+        $xoopsTpl->assign('xoops_meta_description', strip_tags($content));
+    }
 }

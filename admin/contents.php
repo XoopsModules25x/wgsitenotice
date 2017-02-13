@@ -24,35 +24,35 @@ $op = XoopsRequest::getString('op', 'list');
 // Request cont_id
 $cont_id = XoopsRequest::getInt('cont_id');
 // Switch options
-switch ($op) 
+switch ($op)
 {
-    case 'list': 
-    default:  
+    case 'list':
+    default:
         $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-contents.js');
         $start = XoopsRequest::getInt('start', 0);
-		$limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));		
-		$template_main = 'wgsitenotice_admin_contents.tpl';
-		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
-		$adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');		
-		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
-		$cont_crit = new CriteriaCompo();
-		$cont_crit->setSort('cont_version_id ASC, cont_weight ASC, cont_id');
-		$cont_crit->setOrder('ASC');
+        $limit = XoopsRequest::getInt('limit', $wgsitenotice->getConfig('adminpager'));
+        $template_main = 'wgsitenotice_admin_contents.tpl';
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
+        $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
+        $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
+        $cont_crit = new CriteriaCompo();
+        $cont_crit->setSort('cont_version_id ASC, cont_weight ASC, cont_id');
+        $cont_crit->setOrder('ASC');
         $contents_rows = $contentsHandler->getCount($cont_crit);
         $cont_crit->setStart($start);
         $cont_crit->setLimit($limit);
-		$contents_arr = $contentsHandler->getAll($cont_crit);
-		unset($cont_crit);
-		$GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-		$GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
+        $contents_arr = $contentsHandler->getAll($cont_crit);
+        unset($cont_crit);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
         $GLOBALS['xoopsTpl']->assign('contents_count', $contents_rows);
-		// Table view
-		if ($contents_rows > 0) 
-		{						
+        // Table view
+        if ($contents_rows > 0)
+        {
             $version_id_prev = 0;
             foreach (array_keys($contents_arr) as $i)
-			{
+            {
                 // Get Var cont_id
                 $cont['id'] = $contents_arr[$i]->getVar('cont_id');
                 // Get Var cont_version_id
@@ -83,28 +83,28 @@ switch ($op)
                 }
                 $GLOBALS['xoopsTpl']->append('contents_list', $cont);
                 unset($cont);
-			}
-			if ( $contents_rows > $limit ) {
-				include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-				$pagenav = new XoopsPageNav($contents_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
-				$GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
-			}
+            }
+            if ( $contents_rows > $limit ) {
+                include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+                $pagenav = new XoopsPageNav($contents_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+            }
         } else {
-			$GLOBALS['xoopsTpl']->assign('error', _AM_WGSITENOTICE_THEREARENT_CONTENTS);
-		}	
+            $GLOBALS['xoopsTpl']->assign('error', _AM_WGSITENOTICE_THEREARENT_CONTENTS);
+        }
     break;
-	case 'new':		
-		$template_main = 'wgsitenotice_admin_contents.tpl';
+    case 'new':
+        $template_main = 'wgsitenotice_admin_contents.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
-		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
-		// Get Form		
+        $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
+        // Get Form
         $contentsObj = $contentsHandler->create();
         $form = $contentsObj->getForm();
-		$GLOBALS['xoopsTpl']->assign('form', $form->render());
+        $GLOBALS['xoopsTpl']->assign('form', $form->render());
     break;
-	case 'save':
-		if ( !$GLOBALS['xoopsSecurity']->check() ) {
+    case 'save':
+        if ( !$GLOBALS['xoopsSecurity']->check() ) {
            redirect_header('contents.php', 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
         }
         if (isset($cont_id)) {
@@ -112,53 +112,55 @@ switch ($op)
         } else {
            $contentsObj = $contentsHandler->create();
         }
-		// Set Vars
-		// Set Var cont_version_id
-		$contentsObj->setVar('cont_version_id', XoopsRequest::getInt('cont_version_id'));
-		// Set Var cont_header
-		$contentsObj->setVar('cont_header', XoopsRequest::getString('cont_header', ''));
-		// Set Var cont_text
-		$contentsObj->setVar('cont_text', XoopsRequest::getString('cont_text', '', 'default', 2));
-		// Set Var cont_weight
-		$contentsObj->setVar('cont_weight', XoopsRequest::getInt('cont_weight'));
-		// Set Var cont_date
-		$contentsObj->setVar('cont_date', time());
-		// Insert Data
-		if ($contentsHandler->insert($contentsObj)) {
+        // Set Vars
+        // Set Var cont_version_id
+        $contentsObj->setVar('cont_version_id', XoopsRequest::getInt('cont_version_id'));
+        // Set Var cont_header
+        $contentsObj->setVar('cont_header', XoopsRequest::getString('cont_header', ''));
+        // Set Var cont_text
+        //fix for avoid hiding empty paragraphs in some browsers (instead of: $contentsObj->setVar('cont_weight', $_POST['cont_weight']);
+        $cont_text =  XoopsRequest::getString('cont_text', '', 'default', 2);
+        $contentsObj->setVar('cont_text', preg_replace('/<p><\/p>/', '<p>&nbsp;</p>', $cont_text));
+        // Set Var cont_weight
+        $contentsObj->setVar('cont_weight', XoopsRequest::getInt('cont_weight'));
+        // Set Var cont_date
+        $contentsObj->setVar('cont_date', time());
+        // Insert Data
+        if ($contentsHandler->insert($contentsObj)) {
            redirect_header('contents.php?op=list', 2, _AM_WGSITENOTICE_FORMOK);
         }
-		// Get Form
+        // Get Form
         $GLOBALS['xoopsTpl']->assign('error', $contentsObj->getHtmlErrors());
         $form = $contentsObj->getForm();
-		$GLOBALS['xoopsTpl']->assign('form', $form->render());
-	break;
-	case 'edit':	    
-		$template_main = 'wgsitenotice_admin_contents.tpl';
+        $GLOBALS['xoopsTpl']->assign('form', $form->render());
+    break;
+    case 'edit':
+        $template_main = 'wgsitenotice_admin_contents.tpl';
         $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
-		$adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
+        $adminMenu->addItemButton(_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
-		$GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());	
-		// Get Form
-		$contentsObj = $contentsHandler->get($cont_id);
-		$form = $contentsObj->getForm();
-		$GLOBALS['xoopsTpl']->assign('form', $form->render());
-	break;
-	case 'delete':
-		$contentsObj = $contentsHandler->get($cont_id);
-		if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
-			if ( !$GLOBALS['xoopsSecurity']->check() ) {
-				redirect_header('contents.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
-			}
-			if ($contentsHandler->delete($contentsObj)) {
-				redirect_header('contents.php', 3, _AM_WGSITENOTICE_FORMDELOK);
-			} else {
-				echo $contentsObj->getHtmlErrors();
-			}
-		} else {
-			xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' (' . $contentsObj->getVar('cont_weight') . ')'));
-		}
-	break;
-        
+        $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
+        // Get Form
+        $contentsObj = $contentsHandler->get($cont_id);
+        $form = $contentsObj->getForm();
+        $GLOBALS['xoopsTpl']->assign('form', $form->render());
+    break;
+    case 'delete':
+        $contentsObj = $contentsHandler->get($cont_id);
+        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+            if ( !$GLOBALS['xoopsSecurity']->check() ) {
+                redirect_header('contents.php', 3, implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
+            }
+            if ($contentsHandler->delete($contentsObj)) {
+                redirect_header('contents.php', 3, _AM_WGSITENOTICE_FORMDELOK);
+            } else {
+                echo $contentsObj->getHtmlErrors();
+            }
+        } else {
+            xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], sprintf(_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' (' . $contentsObj->getVar('cont_weight') . ')'));
+        }
+    break;
+
     case 'order':
         $corder = XoopsRequest::getArray('corder', array());
         for ($i = 0, $iMax = count($corder); $i < $iMax; $i++){

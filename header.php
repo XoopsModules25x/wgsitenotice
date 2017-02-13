@@ -33,7 +33,7 @@ $contentsHandler = $wgsitenotice->getHandler('contents');
 /** $var WgsitenoticeCheckonline $checkonlineHandler */
 $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
-$myts = MyTextSanitizer::getInstance(); 
+$myts = MyTextSanitizer::getInstance();
 $style = WGSITENOTICE_URL . '/assets/css/style.css';
 if(file_exists($style)) { return true; }
 //

@@ -66,29 +66,29 @@ function update_wgsitenotice_v128(&$module)
 {
     // remove 'mod_' from tablename 'mod_wgsitenotice_...'
     $errors = 0;
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) { 
-        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions')); 
-        $result = $GLOBALS['xoopsDB']->queryF($sql); 
-        if (!$result) { 
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) {
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions'));
+        $result = $GLOBALS['xoopsDB']->queryF($sql);
+        if (!$result) {
             $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_versions to wgsitenotice_versions failed<br />SQL command: ' . $sql);
-            $errors++; 
-        } 
+            $errors++;
+        }
     }
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) { 
-        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents')); 
-        $result = $GLOBALS['xoopsDB']->queryF($sql); 
-        if (!$result) { 
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) {
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents'));
+        $result = $GLOBALS['xoopsDB']->queryF($sql);
+        if (!$result) {
             $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_contents to wgsitenotice_contents failed<br />SQL command: ' . $sql);
-            $errors++; 
-        } 
+            $errors++;
+        }
     }
 
     return ($errors == 0);
 }
 
-function tableExists($tablename) 
-{ 
-    global $xoopsDB; 
-    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'"); 
-    return($xoopsDB->getRowsNum($result) > 0); 
-} 
+function tableExists($tablename)
+{
+    global $xoopsDB;
+    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'");
+    return($xoopsDB->getRowsNum($result) > 0);
+}

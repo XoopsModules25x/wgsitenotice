@@ -26,7 +26,7 @@ $blankFile = XOOPS_UPLOAD_PATH.'/blank.gif';
 // Making of "uploads/wgsitenotice" folder
 $wgsitenotice = XOOPS_UPLOAD_PATH.'/wgsitenotice';
 if(!is_dir($wgsitenotice))
-	mkdir($wgsitenotice, 0777);
-	chmod($wgsitenotice, 0777);
+    mkdir($wgsitenotice, 0777);
+    chmod($wgsitenotice, 0777);
 copy($indexFile, $wgsitenotice.'/index.html');
 // ---------- Install Footer ---------- //

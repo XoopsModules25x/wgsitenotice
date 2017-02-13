@@ -39,8 +39,8 @@ $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-	include_once XOOPS_ROOT_PATH . '/class/template.php';
-	$xoopsTpl = new XoopsTpl();
+    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    $xoopsTpl = new XoopsTpl();
 }
 // System icons path
 $xoopsTpl->assign('sysPathIcon16', $sysPathIcon16);
@@ -56,7 +56,7 @@ xoops_loadLanguage('modinfo');
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 
 xoops_cp_header();
-$adminMenu = new ModuleAdmin();	
+$adminMenu = new ModuleAdmin();
 
 //load stylesheets and jquery for sortable
 $GLOBALS['xoTheme']->addStylesheet(WGSITENOTICE_URL . '/assets/css/admin/style.css');

@@ -23,26 +23,26 @@ defined('XOOPS_ROOT_PATH') || exit('Restricted access');
  * Class Object WgsitenoticeCheckonline
  */
 class WgsitenoticeCheckonline extends XoopsObject
-{ 
-	/**
-	* @var mixed
-	*/
-	private $wgsitenotice = null;
-	/**
-	 * Constructor
-	 *
-	 * @param null
-	 */
-	public function __construct()
-	{
-		$this->wgsitenotice = WgsitenoticeHelper::getInstance();
-		$this->initVar('oc_server', XOBJ_DTYPE_TXTBOX);
-	}
-	/**
-	*  @static function &getInstance
-	*  @param null
-	*/
-	public static function getInstance()
+{
+    /**
+    * @var mixed
+    */
+    private $wgsitenotice = null;
+    /**
+     * Constructor
+     *
+     * @param null
+     */
+    public function __construct()
+    {
+        $this->wgsitenotice = WgsitenoticeHelper::getInstance();
+        $this->initVar('oc_server', XOBJ_DTYPE_TXTBOX);
+    }
+    /**
+    *  @static function &getInstance
+    *  @param null
+    */
+    public static function getInstance()
     {
         static $instance;
         if (null === $instance) {
@@ -50,32 +50,32 @@ class WgsitenoticeCheckonline extends XoopsObject
         }
         return $instance;
     }
-	/**
-	 * Get form
-	 *
-	 * @param mixed $action
-	 */
-	public function getForm($action = false)
-	{	
-		if ($action === false) {
-			$action = $_SERVER['REQUEST_URI'];
-		}
-		// Title
-		$title = sprintf(_AM_WGSITENOTICE_OC_FORM);
-		// Get Theme Form
-		xoops_load('XoopsFormLoader');
-		$form = new XoopsThemeForm($title, 'form', $action, 'post', true);
-		$form->setExtra('enctype="multipart/form-data"');
-		// Checkonline handler
-		$checkonlineHandler = $this->wgsitenotice->getHandler('checkonline');
+    /**
+     * Get form
+     *
+     * @param mixed $action
+     */
+    public function getForm($action = false)
+    {
+        if ($action === false) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        // Title
+        $title = sprintf(_AM_WGSITENOTICE_OC_FORM);
+        // Get Theme Form
+        xoops_load('XoopsFormLoader');
+        $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
+        $form->setExtra('enctype="multipart/form-data"');
+        // Checkonline handler
+        $checkonlineHandler = $this->wgsitenotice->getHandler('checkonline');
         $oc_server = $this->wgsitenotice->getConfig('wgsitenotice_oc_server').'checkonline.php';
-		// Form Text oc_server
-		$form->addElement( new XoopsFormText(_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
-		// Send
-		$form->addElement(new XoopsFormHidden('op', 'checkonline'));
-		$form->addElement(new XoopsFormButton('', 'submit', _AM_WGSITENOTICE_OC_START, 'submit'));
-		return $form;
-	}
+        // Form Text oc_server
+        $form->addElement( new XoopsFormText(_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
+        // Send
+        $form->addElement(new XoopsFormHidden('op', 'checkonline'));
+        $form->addElement(new XoopsFormButton('', 'submit', _AM_WGSITENOTICE_OC_START, 'submit'));
+        return $form;
+    }
 }
 
 /**
@@ -83,31 +83,31 @@ class WgsitenoticeCheckonline extends XoopsObject
  */
 class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
 {
-	/**
-	 * Constructor
-	 *
-	 * @param string $db
-	 */
-	public function __construct($db)
-	{
-		parent::__construct($db, 'mod_wgsitenotice_checkonline', 'wgsitenoticecheckonline', 'onl_id', 'onl_text1');
-	}
-    
     /**
-	 * request data from given website
-	 *
-	 * @param $oc_server
-	 * @return result of http post
-	 */
+     * Constructor
+     *
+     * @param string $db
+     */
+    public function __construct($db)
+    {
+        parent::__construct($db, 'mod_wgsitenotice_checkonline', 'wgsitenoticecheckonline', 'onl_id', 'onl_text1');
+    }
+
+    /**
+     * request data from given website
+     *
+     * @param $oc_server
+     * @return result of http post
+     */
     public function getData($oc_server) {
-        
+
         $postdata = http_build_query(
             array(
                 'ptype' => 'get-data'
             )
         );
 
-        if (function_exists('curl_init')) {   
+        if (function_exists('curl_init')) {
             //open connection
             $ch = curl_init();
 
@@ -127,8 +127,8 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
             // print_r(curl_getinfo($ch));
             if ($result == FALSE)  {
                 echo '<br>unexpected curl_error:' . curl_error($ch) . '<br>';
-            } 
-            
+            }
+
             curl_close($ch);
         } else {
             $opts = array('http' =>
@@ -138,19 +138,19 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
                             'content' => $postdata
                         )
                     );
-        
+
             $context  = stream_context_create($opts);
             $result = file_get_contents($oc_server, false, $context);
-        }       
+        }
         return $result;
     }
-    
+
     /**
-	 * read the given xml string (by getData) and create and array
-	 *
-	 * @param string $xml_string
-	 * @return $xml_arr
-	 */
+     * read the given xml string (by getData) and create and array
+     *
+     * @param string $xml_string
+     * @return $xml_arr
+     */
     public function readXML($xml_string){
         // creating temporary string for avoiding entitiy errors
         $xml_string = str_replace('&', '[[avoid_entity_error]]', $xml_string);
@@ -160,7 +160,7 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
         $xml_arr = simplexml_load_string($xml_string);
         if (!$xml_arr) {
             //error when loading xml
-            $xml = explode("\n", $xml_text);  
+            $xml = explode("\n", $xml_text);
             $errors = libxml_get_errors();
             foreach ($errors as $error) {
                 echo $this->display_xml_error($error, $xml);
@@ -169,13 +169,13 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
         }
         return $xml_arr;
     }
-    
+
     /**
-	 * convert xml content to html text
-	 *
-	 * @param string $xml
-	 * @return xml as array
-	 */
+     * convert xml content to html text
+     *
+     * @param string $xml
+     * @return xml as array
+     */
     public function xml2str($xml){
         // replace temporary string for avoiding entitiy errors
         $str = str_replace('[[avoid_entity_error]]', '&', (string)$xml);
