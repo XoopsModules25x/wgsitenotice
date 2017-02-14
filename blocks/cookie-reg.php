@@ -175,7 +175,7 @@ function b_wgsitenotice_cookie_reg_edit($options)
     $form .= _MB_WGSITENOTICE_COOKIE_REG_POSITION . ': ' . $position_sel->render() . '<br>';
 
     $smarty_id = new XoopsFormText('', 'options[10]', 60, 255, $options[10]);
-    $form .= _MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY_DESC . ':<br><{' . $smarty_id->render() . '}><br><br>';
+    $form .= _MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY_DESC . ':<br><{$' . $smarty_id->render() . '}><br><br>';
 
     array_shift($options);
     array_shift($options);
