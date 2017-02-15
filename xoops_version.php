@@ -37,7 +37,7 @@ $modversion = array(
     //
     'release_info' => 'release_info',
     'release_file' => XOOPS_URL."/modules/{$dirname}/docs/release_info file",
-    'release_date' => '2015/08/22',
+    'release_date' => '2017/02/13',
     //
     'manual' => 'link to manual file',
     'manual_file' => XOOPS_URL."/modules/{$dirname}/docs/install.txt",
@@ -61,7 +61,7 @@ $modversion = array(
     'support_name' => 'Support Forum',
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
-    'release' => '2015/08/22',
+    'release' => '2017/02/13',
     'module_status' => 'RC3',
     // Admin system menu
     'system_menu' => 1,

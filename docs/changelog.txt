@@ -1,5 +1,5 @@
 ==================================================================
-Change Log for wgSitenotice - 2016/11/13 Version 1.29 RC3
+Change Log for wgSitenotice - 2017/02/14 Version 1.29 RC3
 ==================================================================
 - fixed problem with html output (goffy)
 - added $ in display edit block cookie-reg (frank/goffy)
