@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 //
@@ -28,7 +28,7 @@ $modversion = array(
     'description' => _MI_WGSITENOTICE_DESC,
     'author' => 'Goffy (xoops.wedega.com)',
     'author_mail' => 'webmaster@wedega.com',
-    'author_website_url' => 'http://xoops.wedega.com',
+    'author_website_url' => 'https://xoops.wedega.com',
     'author_website_name' => 'WEDEGA Webdesign Gabor',
     'credits' => 'Goffy / xoops.wedega.com / XOOPS Development Team',
     'license' => 'GPL 2.0 or later',
@@ -55,14 +55,14 @@ $modversion = array(
     'modicons16' => 'assets/images/icons/16',
     'modicons32' => 'assets/images/icons/32',
     //About
-    'demo_site_url' => 'http://xoops.wedega.com',
+    'demo_site_url' => 'https://xoops.wedega.com',
     'demo_site_name' => 'Wedega Demo Site',
     'support_url' => 'http://',
     'support_name' => 'Support Forum',
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
     'release' => '2017/02/13',
-    'module_status' => 'RC3',
+    'module_status' => 'RC4',
     // Admin system menu
     'system_menu' => 1,
     // Admin things
@@ -148,7 +148,7 @@ $modversion['config'][] = array(
     'description' => '_MI_WGSITENOTICE_OC_SERVER_DESC',
     'formtype' => 'textbox',
     'valuetype' => 'text',
-    'default' => 'http://xoops.wedega.com/modules/wgsitenotice/'
+    'default' => 'https://xoops.wedega.com/modules/wgsitenotice/'
 );
 
 $modversion['config'][] = array(

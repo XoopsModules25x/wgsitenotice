@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<http://wedega.com>
+ * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 // Function show block

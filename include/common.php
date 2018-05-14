@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 if (!defined('WGSITENOTICE_MODULE_PATH')) {
@@ -38,7 +38,7 @@ if (!defined('WGSITENOTICE_MODULE_PATH')) {
     }*/
 }
 // module information
-$copyright = "<a href='http://xoops.wedega.com' title='WEDEGA Webdesign Gabor' target='_blank'>
+$copyright = "<a href='https://xoops.wedega.com' title='WEDEGA Webdesign Gabor' target='_blank'>
                      <img src='".$local_logo."' alt='WEDEGA Webdesign Gabor' /></a>";
 
 include_once XOOPS_ROOT_PATH.'/class/xoopsrequest.php';

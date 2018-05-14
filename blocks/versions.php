@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<http://wedega.com>
+ * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 // Function show block
@@ -24,6 +24,9 @@ function b_wgsitenotice_versions_show($options)
 {
     include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/class/versions.php';
     $myts = MyTextSanitizer::getInstance();
+	    
+    $version_id = XoopsRequest::getInt('version_id', 0);
+	
     $version = array();
     $nb_versions = $options[0];
     $lenght_title = $options[1];
@@ -48,6 +51,7 @@ function b_wgsitenotice_versions_show($options)
             $version_name = substr($version_name, 0, $lenght_title) . '...';
         }
         $version[$i]['version_name'] = $version_name;
+		$version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $version_id);
         $j++;
         if ($j < $version_count) {
             $version[$i]['show_more'] = $version_count;
