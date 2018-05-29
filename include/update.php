@@ -33,6 +33,9 @@ function xoops_module_update_wgsitenotice(&$module, $prev_version = null)
     if ($prev_version < 128) {
         $ret = update_wgsitenotice_v128($module);
     }
+	if ($prev_version < 130) {
+        $ret = update_wgsitenotice_v130($module);
+    }
     $errors = $module->getErrors();
     foreach ($errors as $error) {
         xoops_error($error);
@@ -82,6 +85,25 @@ function update_wgsitenotice_v128(&$module)
             $errors++;
         }
     }
+
+    return ($errors == 0);
+}
+
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+function update_wgsitenotice_v130(&$module)
+{
+    // increase text size for GDPR
+    $errors = 0;
+	$sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents').'  CHANGE `cont_text` `cont_text` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;');
+	$result = $GLOBALS['xoopsDB']->queryF($sql);
+	if (!$result) {
+		$module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />CHANGE size for cont_text failed<br />SQL command: ' . $sql);
+		$errors++;
+	}
 
     return ($errors == 0);
 }
