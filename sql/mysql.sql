@@ -32,7 +32,7 @@ CREATE TABLE `wgsitenotice_contents` (
   `cont_id` INT(8)   AUTO_INCREMENT,
   `cont_version_id` INT(8) NOT NULL DEFAULT '0',
   `cont_header` VARCHAR(200) NULL DEFAULT '',
-  `cont_text` TEXT NOT NULL ,
+  `cont_text` LONGTEXT NOT NULL ,
   `cont_weight` INT(8) NOT NULL DEFAULT '0',
   `cont_date` INT(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`cont_id`)

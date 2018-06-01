@@ -35,9 +35,9 @@ $modversion = array(
     'help' => 'page=help',
     'license_url' => 'www.gnu.org/licenses/gpl-2.0.html/',
     //
-    'release_info' => 'release_info',
+    'release_info' => '',
     'release_file' => XOOPS_URL."/modules/{$dirname}/docs/release_info file",
-    'release_date' => '2017/02/13',
+    'release_date' => '2018/05/31',
     //
     'manual' => 'link to manual file',
     'manual_file' => XOOPS_URL."/modules/{$dirname}/docs/install.txt",
