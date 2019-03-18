@@ -24,7 +24,7 @@ $dirname = basename(__DIR__) ;
 // ------------------- Informations ------------------- //
 $modversion = array(
     'name' => _MI_WGSITENOTICE_NAME,
-    'version' => '1.30',
+    'version' => '1.31',
     'description' => _MI_WGSITENOTICE_DESC,
     'author' => 'Goffy (xoops.wedega.com)',
     'author_mail' => 'webmaster@wedega.com',
@@ -62,7 +62,7 @@ $modversion = array(
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
     'release' => '2018/05/29',
-    'module_status' => 'Final',
+    'module_status' => 'RC1',
     // Admin system menu
     'system_menu' => 1,
     // Admin things

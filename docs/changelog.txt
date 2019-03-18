@@ -1,4 +1,10 @@
 ==================================================================
+Change Log for wgSitenotice - 2019/03/18 Version 1.31 RC1
+==================================================================
+- changed wgsitenotice_block_versions.tpl (goffy)
+- changed wgsitenotice_block_cookie_reg.tpl (goffy)
+
+==================================================================
 Change Log for wgSitenotice - 2018/05/29 Version 1.30 Final
 ==================================================================
 - changed field size for cont_text (goffy)
