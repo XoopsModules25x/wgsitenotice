@@ -176,6 +176,16 @@ $modversion['config'][] = array(
     'valuetype' => 'int',
     'default' => 10);
 
+// Show copyright
+$modversion['config'][] = [
+    'name'        => 'show_copyright',
+    'title'       => '_MI_WGSITENOTICE_SHOWCOPYRIGHT',
+    'description' => '_MI_WGSITENOTICE_SHOWCOPYRIGHT_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
+
 $currdirname = isset($GLOBALS['xoopsModule'])&& is_object($GLOBALS['xoopsModule']) ? $GLOBALS['xoopsModule']->getVar('dirname') : 'system';
 if ($dirname == $currdirname) {
     $subcount = 1 ;

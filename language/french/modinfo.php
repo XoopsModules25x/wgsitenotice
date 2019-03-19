@@ -44,11 +44,12 @@ define('_MI_WGSITENOTICE_BOOKMARKS', "Réseaux sociaux");
 define('_MI_WGSITENOTICE_BOOKMARKS_DESC', "Afficher les Réseaux sociaux dans le formulaire");
 define('_MI_WGSITENOTICE_FBCOMMENTS', "Commentaires Facebook");
 define('_MI_WGSITENOTICE_FBCOMMENTS_DESC', "Autoriser les commentaires Facebook dans le formulaire");
-
 define('_MI_WGSITENOTICE_OC_SERVER', "Serveur standard pour la vérification en ligne");
 define('_MI_WGSITENOTICE_OC_SERVER_DESC', "Définissez le serveur standard, celui où vous voudrez rechercher les nouvelles versions de mentions légales et les télécharger");
 define('_MI_WGSITENOTICE_OC_ALLOWED', "Autoriser le téléchargement de vos notes légales");
 define('_MI_WGSITENOTICE_OC_ALLOWED_DESC', "Définissez, si vous voulez permettre à d'autres développeurs xoops de télécharger les notes légales de votre base de données");
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT', 'Présenter copyright');
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT_DESC', 'Vous pouvez retirer copyright de page index sitenotice, mais un lien retour à www.wedega.com attendent, ailleurs votre page internet');
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', "Afficher toutes les versions disponibles");
 //update

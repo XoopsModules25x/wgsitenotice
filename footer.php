@@ -26,6 +26,8 @@ $GLOBALS['xoopsTpl']->assign('bookmarks', xoops_getModuleOption('bookmarks', $di
 $GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('admin', WGSITENOTICE_ADMIN);
-$GLOBALS['xoopsTpl']->assign('copyright', $copyright);
+if ( $wgsitenotice->getConfig('show_copyright') ) {
+    $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
+}
 // User footer
 include_once XOOPS_ROOT_PATH.'/footer.php';
