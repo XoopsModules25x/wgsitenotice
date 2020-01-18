@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Admin Main ----------------
 define('_MI_WGSITENOTICE_NAME', 'Rechtliche Hinweise');
@@ -37,13 +37,12 @@ define('_MI_WGSITENOTICE_TEMPLATE', 'Vorlage');
 define('_MI_WGSITENOTICE_TEMPLATE_DESC', 'Wähle die zu verwendende Vorlage');
 define('_MI_WGSITENOTICE_KEYWORDS', 'Keywords');
 define('_MI_WGSITENOTICE_KEYWORDS_DESC', 'Bitte hier die Schlüsselwörter eingeben (getrennt durch ein Komma)');
-
 define('_MI_WGSITENOTICE_OC_SERVER', 'Standard-Server für Überprüfung auf Online-Versionen');
-define('_MI_WGSITENOTICE_OC_SERVER_DESC',
-       'Definieren Sie bitte den Standard-Server, den Sie für die Überprüfung/den Download von Online-Versionen verwenden möchten');
+define('_MI_WGSITENOTICE_OC_SERVER_DESC', 'Definieren Sie bitte den Standard-Server, den Sie für die Überprüfung/den Download von Online-Versionen verwenden möchten');
 define('_MI_WGSITENOTICE_OC_ALLOWED', 'Download Ihrer rechtlichen Hinweise zulassen');
-define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
-       'Definieren Sie bitte, ob andere Xoops-Entwickler die Versionen der rechtlichen Hinweise aus Ihrer Datenbank herunterladen dürfen');
+define('_MI_WGSITENOTICE_OC_ALLOWED_DESC', 'Definieren Sie bitte, ob andere Xoops-Entwickler die Versionen der rechtlichen Hinweise aus Ihrer Datenbank herunterladen dürfen');
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT', 'Copyright anzeigen');
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT_DESC', 'Sie können das Copyright bei der Index-Seite des Modules entfernen, jedoch wird ersucht, an einer beliebigen Stelle einen Backlink auf www.wedega.com anzubringen');
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Alle zugelassenden Versionen anzeigen');
 define('_MI_WGSITENOTICE_COOKIE_REG', 'Hinweis Cookie-Richtlinie');

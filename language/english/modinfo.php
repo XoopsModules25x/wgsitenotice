@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Admin Main ----------------
 define('_MI_WGSITENOTICE_NAME', 'Site notice');
@@ -37,13 +37,12 @@ define('_MI_WGSITENOTICE_TEMPLATE', 'Template');
 define('_MI_WGSITENOTICE_TEMPLATE_DESC', 'Select the template you want use');
 define('_MI_WGSITENOTICE_KEYWORDS', 'Keywords');
 define('_MI_WGSITENOTICE_KEYWORDS_DESC', 'Insert here the keywords (separate by comma)');
-
 define('_MI_WGSITENOTICE_OC_SERVER', 'Standard server for online check');
-define('_MI_WGSITENOTICE_OC_SERVER_DESC',
-       'Define the standard server, which you want check for new versions of legal notes and download them');
+define('_MI_WGSITENOTICE_OC_SERVER_DESC', 'Define the standard server, which you want check for new versions of legal notes and download them');
 define('_MI_WGSITENOTICE_OC_ALLOWED', 'Allow download of your legal notes');
-define('_MI_WGSITENOTICE_OC_ALLOWED_DESC',
-       'Define, whether you want to allow other xoops developers to download the legal notes of your database');
+define('_MI_WGSITENOTICE_OC_ALLOWED_DESC', 'Define, whether you want to allow other xoops developers to download the legal notes of your database');
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT', 'Show copyright');
+define('_MI_WGSITENOTICE_SHOWCOPYRIGHT_DESC', 'You can remove the copyright from the sitenotice index page, but a backlinks to www.wedega.com is expected, anywhere on your site');
 // blocks
 define('_MI_WGSITENOTICE_B_ALL_VERSIONS', 'Show all enabled versions');
 define('_MI_WGSITENOTICE_COOKIE_REG', 'Notice cookie regulation');

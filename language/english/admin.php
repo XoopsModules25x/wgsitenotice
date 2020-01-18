@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Admin Index ----------------
 define('_AM_WGSITENOTICE_STATISTICS', 'Statistics');
@@ -40,7 +40,7 @@ define('_AM_WGSITENOTICE_CONTENTS_LIST', 'List of Contents');
 define('_AM_WGSITENOTICE_VERSION_ADD', 'Add versions');
 define('_AM_WGSITENOTICE_VERSION_EDIT', 'Edit versions');
 // Elements of Versions
-define('_AM_WGSITENOTICE_VERSION_ID', 'Id');
+define('_AM_WGSITENOTICE_VERSION_ID', 'Version-Id');
 define('_AM_WGSITENOTICE_VERSION_NAME', 'Name');
 define('_AM_WGSITENOTICE_VERSION_LANG', 'Language / Country');
 define('_AM_WGSITENOTICE_VERSION_DESCR', 'Description');

@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 /**
  * @param      $module
@@ -32,6 +32,9 @@ function xoops_module_update_wgsitenotice(&$module, $prev_version = null)
     }
     if ($prev_version < 128) {
         $ret = update_wgsitenotice_v128($module);
+    }
+	if ($prev_version < 130) {
+        $ret = update_wgsitenotice_v130($module);
     }
     $errors = $module->getErrors();
     foreach ($errors as $error) {
@@ -66,29 +69,48 @@ function update_wgsitenotice_v128(&$module)
 {
     // remove 'mod_' from tablename 'mod_wgsitenotice_...'
     $errors = 0;
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) { 
-        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions')); 
-        $result = $GLOBALS['xoopsDB']->queryF($sql); 
-        if (!$result) { 
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) {
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions'));
+        $result = $GLOBALS['xoopsDB']->queryF($sql);
+        if (!$result) {
             $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_versions to wgsitenotice_versions failed<br />SQL command: ' . $sql);
-            $errors++; 
-        } 
+            $errors++;
+        }
     }
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) { 
-        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents')); 
-        $result = $GLOBALS['xoopsDB']->queryF($sql); 
-        if (!$result) { 
+    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) {
+        $sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents'));
+        $result = $GLOBALS['xoopsDB']->queryF($sql);
+        if (!$result) {
             $module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_contents to wgsitenotice_contents failed<br />SQL command: ' . $sql);
-            $errors++; 
-        } 
+            $errors++;
+        }
     }
 
     return ($errors == 0);
 }
 
-function tableExists($tablename) 
-{ 
-    global $xoopsDB; 
-    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'"); 
-    return($xoopsDB->getRowsNum($result) > 0); 
-} 
+/**
+ * @param $module
+ *
+ * @return bool
+ */
+function update_wgsitenotice_v130(&$module)
+{
+    // increase text size for GDPR
+    $errors = 0;
+	$sql    = sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents').'  CHANGE `cont_text` `cont_text` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;');
+	$result = $GLOBALS['xoopsDB']->queryF($sql);
+	if (!$result) {
+		$module->setErrors(_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />CHANGE size for cont_text failed<br />SQL command: ' . $sql);
+		$errors++;
+	}
+
+    return ($errors == 0);
+}
+
+function tableExists($tablename)
+{
+    global $xoopsDB;
+    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'");
+    return($xoopsDB->getRowsNum($result) > 0);
+}

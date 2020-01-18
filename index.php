@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 include_once __DIR__ . '/header.php';
 $GLOBALS['xoopsOption']['template_main'] = 'user/' . $wgsitenotice->getConfig('wgsitenotice_template') . '/wgsitenotice_index_'
@@ -57,7 +57,7 @@ if ($versions_count > 0) {
                 // Get Var cont_header
                 $cont['header'] = $contents_arr[$i]->getVar('cont_header');
                 // Get Var cont_text
-                $cont['text'] = $contents_arr[$i]->getVar('cont_text', 'n');
+                $cont['text'] = $contents_arr[$i]->getVar('cont_text', 'show');
                 // Get Var cont_weight
                 $cont['weight'] = $contents_arr[$i]->getVar('cont_weight');
                 $GLOBALS['xoopsTpl']->append('contents', $cont);
@@ -68,7 +68,7 @@ if ($versions_count > 0) {
     }
 } else {
     echo _MA_WGSITENOTICE_THEREARENT_VERSIONS;
-}    
+}
 
 /* create breadcrumb */
 $breadcrumb ='<a href="' . XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
@@ -88,4 +88,4 @@ wgsitenotice_meta_description(_MA_WGSITENOTICE_DESC);
 //
 $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGSITENOTICE_URL.'/contents.php');
 //
-include_once __DIR__ . '/footer.php';	
+include_once __DIR__ . '/footer.php';

@@ -12,13 +12,19 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='<{$block.bg_from}>', endColorstr='<{$block.bg_to}>',GradientType=0 ); 
     opacity: <{$block.opacity}>;
     color:<{$block.color}>;
-    line-height:<{$block.height}>px;
+    min-height:<{$block.height}>px;
+	line-height:20px;
     outline: 1px solid #7b92a9; 
     text-align:right; 
     border-top:1px solid #fff;
     z-index:10000; 
     width:100%; 
-    font-size:12px;
+    font-size:14px;
+}
+@media (min-width: 768px) {
+	#container-cookies-reg {
+		line-height:<{$block.height}>px;
+	}
 }
 #container-cookies-reg a {
     color:<{$block.color}>;

@@ -17,16 +17,15 @@
  * @since           1.0
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
+ * @version         $Id: 1.0 main.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
-//
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
-// Copy base file
-$indexFile = XOOPS_UPLOAD_PATH.'/index.html';
-$blankFile = XOOPS_UPLOAD_PATH.'/blank.gif';
-// Making of "uploads/wgsitenotice" folder
-$wgsitenotice = XOOPS_UPLOAD_PATH.'/wgsitenotice';
-if(!is_dir($wgsitenotice))
-    mkdir($wgsitenotice, 0777);
-    chmod($wgsitenotice, 0777);
-copy($indexFile, $wgsitenotice.'/index.html');
-// ---------- Install Footer ---------- //
+// ---------------- Main ----------------
+define('_MA_WGSITENOTICE_INDEX', "Accueil");
+define('_MA_WGSITENOTICE_TITLE', "Notification du site");
+define('_MA_WGSITENOTICE_DESC', "Ce module créé un site avec mentions légales (marque, vie privée, protection de données, ...)");
+define('_MA_WGSITENOTICE_INDEX_DESC', "");
+//index.php
+define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', "Il n'y a actuellement pas de version disponible !");
+// Admin link
+define('_MA_WGSITENOTICE_ADMIN', "Administrateur");
+// ---------------- End ----------------

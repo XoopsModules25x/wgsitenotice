@@ -1,5 +1,35 @@
 ==================================================================
-Change Log for wgSitenotice - 2015/09/11 Version 1.28
+Change Log for wgSitenotice - 2019/03/18 Version 1.31 RC1
+==================================================================
+- changed wgsitenotice_block_versions.tpl (goffy)
+- changed wgsitenotice_block_cookie_reg.tpl (goffy)
+- new module preference show_copyright (goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2018/05/29 Version 1.30 Final
+==================================================================
+- changed field size for cont_text (goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2018/05/14 Version 1.29 RC4
+==================================================================
+- changed block template to bootstrap (goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2017/02/14 Version 1.29 RC3
+==================================================================
+- fixed problem with html output (goffy)
+- added $ in display edit block cookie-reg (frank/goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2016/11/13 Version 1.29
+==================================================================
+- restyled drag&drop (goffy)
+- changed js for drag&drop (goffy)
+- add button tray to forms (goffy)
+
+==================================================================
+Change Log for wgSitenotice - 2016/09/11 Version 1.28
 ==================================================================
 - added block for cookie policy (goffy)
 - fixed bug in checkonline.php (goffy)

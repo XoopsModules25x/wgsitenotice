@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
 require_once dirname(dirname(dirname(__DIR__))). '/include/cp_header.php';
@@ -39,8 +39,8 @@ $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
 if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-	include_once XOOPS_ROOT_PATH . '/class/template.php';
-	$xoopsTpl = new XoopsTpl();
+    include_once XOOPS_ROOT_PATH . '/class/template.php';
+    $xoopsTpl = new XoopsTpl();
 }
 // System icons path
 $xoopsTpl->assign('sysPathIcon16', $sysPathIcon16);
@@ -56,7 +56,7 @@ xoops_loadLanguage('modinfo');
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 
 xoops_cp_header();
-$adminMenu = new ModuleAdmin();	
+$adminMenu = new ModuleAdmin();
 
 //load stylesheets and jquery for sortable
 $GLOBALS['xoTheme']->addStylesheet(WGSITENOTICE_URL . '/assets/css/admin/style.css');

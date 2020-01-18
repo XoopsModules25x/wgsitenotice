@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 $dirname = $GLOBALS['xoopsModule']->getVar('dirname');
@@ -33,7 +33,7 @@ $contentsHandler = $wgsitenotice->getHandler('contents');
 /** $var WgsitenoticeCheckonline $checkonlineHandler */
 $checkonlineHandler = $wgsitenotice->getHandler('checkonline');
 //
-$myts = MyTextSanitizer::getInstance(); 
+$myts = MyTextSanitizer::getInstance();
 $style = WGSITENOTICE_URL . '/assets/css/style.css';
 if(file_exists($style)) { return true; }
 //

@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 //
@@ -24,20 +24,20 @@ $dirname = basename(__DIR__) ;
 // ------------------- Informations ------------------- //
 $modversion = array(
     'name' => _MI_WGSITENOTICE_NAME,
-    'version' => '1.28',
+    'version' => '1.31',
     'description' => _MI_WGSITENOTICE_DESC,
     'author' => 'Goffy (xoops.wedega.com)',
     'author_mail' => 'webmaster@wedega.com',
-    'author_website_url' => 'http://xoops.wedega.com',
+    'author_website_url' => 'https://xoops.wedega.com',
     'author_website_name' => 'WEDEGA Webdesign Gabor',
     'credits' => 'Goffy / xoops.wedega.com / XOOPS Development Team',
     'license' => 'GPL 2.0 or later',
     'help' => 'page=help',
     'license_url' => 'www.gnu.org/licenses/gpl-2.0.html/',
     //
-    'release_info' => 'release_info',
+    'release_info' => '',
     'release_file' => XOOPS_URL."/modules/{$dirname}/docs/release_info file",
-    'release_date' => '2015/08/22',
+    'release_date' => '2018/05/31',
     //
     'manual' => 'link to manual file',
     'manual_file' => XOOPS_URL."/modules/{$dirname}/docs/install.txt",
@@ -55,14 +55,14 @@ $modversion = array(
     'modicons16' => 'assets/images/icons/16',
     'modicons32' => 'assets/images/icons/32',
     //About
-    'demo_site_url' => 'http://xoops.wedega.com',
+    'demo_site_url' => 'https://xoops.wedega.com',
     'demo_site_name' => 'Wedega Demo Site',
     'support_url' => 'http://',
     'support_name' => 'Support Forum',
     'module_website_url' => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
-    'release' => '2015/08/22',
-    'module_status' => 'RC3',
+    'release' => '2018/05/29',
+    'module_status' => 'RC1',
     // Admin system menu
     'system_menu' => 1,
     // Admin things
@@ -75,7 +75,7 @@ $modversion = array(
     'onInstall' => 'include/install.php',
     'onUpdate' => 'include/update.php'
 );
-// ------------------- Templates ------------------- // 
+// ------------------- Templates ------------------- //
 // Admin
 $modversion['templates'][] = array('file' => 'wgsitenotice_admin_about.tpl', 'description' => '', 'type' => 'admin');
 $modversion['templates'][] = array('file' => 'wgsitenotice_admin_header.tpl', 'description' => '', 'type' => 'admin');
@@ -99,10 +99,10 @@ $modversion['config'][] = array(
     'options' => array_flip($arr_templates),
     'default' => 'default'
 );
-$modversion['templates'][] = array('file' => 'user/default/wgsitenotice_index_default.tpl', 'description' => '');  
-$modversion['templates'][] = array('file' => 'user/table/wgsitenotice_index_table.tpl', 'description' => '');  
+$modversion['templates'][] = array('file' => 'user/default/wgsitenotice_index_default.tpl', 'description' => '');
+$modversion['templates'][] = array('file' => 'user/table/wgsitenotice_index_table.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'user/block/wgsitenotice_index_block.tpl', 'description' => '');
-$modversion['templates'][] = array('file' => 'user/xbootstrap/wgsitenotice_index_xbootstrap.tpl', 'description' => ''); 
+$modversion['templates'][] = array('file' => 'user/xbootstrap/wgsitenotice_index_xbootstrap.tpl', 'description' => '');
 
 // ------------------- Mysql ------------------- //
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
@@ -141,14 +141,14 @@ $modversion['config'][] = array(
     'options' => array_flip($editorHandler->getList()),
     'default' => 'dhtmltextarea'
 );
-     
+
 $modversion['config'][] = array(
     'name' => 'wgsitenotice_oc_server',
     'title' => '_MI_WGSITENOTICE_OC_SERVER',
     'description' => '_MI_WGSITENOTICE_OC_SERVER_DESC',
     'formtype' => 'textbox',
     'valuetype' => 'text',
-    'default' => 'http://xoops.wedega.com/modules/wgsitenotice/'
+    'default' => 'https://xoops.wedega.com/modules/wgsitenotice/'
 );
 
 $modversion['config'][] = array(
@@ -158,7 +158,7 @@ $modversion['config'][] = array(
     'formtype' => 'yesno',
     'valuetype' => 'int',
     'default' => 0);
-    
+
 $modversion['config'][] = array(
     'name' => 'keywords',
     'title' => '_MI_WGSITENOTICE_KEYWORDS',
@@ -175,7 +175,17 @@ $modversion['config'][] = array(
     'formtype' => 'textbox',
     'valuetype' => 'int',
     'default' => 10);
-    
+
+// Show copyright
+$modversion['config'][] = [
+    'name'        => 'show_copyright',
+    'title'       => '_MI_WGSITENOTICE_SHOWCOPYRIGHT',
+    'description' => '_MI_WGSITENOTICE_SHOWCOPYRIGHT_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+];
+
 $currdirname = isset($GLOBALS['xoopsModule'])&& is_object($GLOBALS['xoopsModule']) ? $GLOBALS['xoopsModule']->getVar('dirname') : 'system';
 if ($dirname == $currdirname) {
     $subcount = 1 ;
@@ -191,8 +201,8 @@ if ($dirname == $currdirname) {
     $version_crit->add(new Criteria('version_current', '1'));
     $versions_rows = $versionsHandler->getCount($version_crit);
     $versions_arr = $versionsHandler->getAll($version_crit);
-        
-    if ($versions_rows > 0) {						
+
+    if ($versions_rows > 0) {
         foreach (array_keys($versions_arr) as $i)
         {
             $modversion['sub'][$subcount]['name'] = $versions_arr[$i]->getVar('version_name');

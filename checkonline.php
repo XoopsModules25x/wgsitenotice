@@ -16,16 +16,16 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
- 
-echo "<?xml version='1.0' encoding='utf-8'?>\n"; 
+
+echo "<?xml version='1.0' encoding='utf-8'?>\n";
 
 /* <?xml version="1.0" encoding="utf-8"?> */
 echo "<document>\n";
 echo "<status_connect>successful</status_connect>\n";
 include dirname(dirname(__DIR__)) . '/mainfile.php';
-$dirname = basename(__DIR__); 
+$dirname = basename(__DIR__);
 
 defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
@@ -48,8 +48,8 @@ if ($oc_allowed == 1) {
     echo '<versions_rows>' . $versions_rows . "</versions_rows>\n";
     $versions_arr = $versionsHandler->getAll($version_crit);
     unset($version_crit);
-    if ($versions_rows > 0) 
-    {						
+    if ($versions_rows > 0)
+    {
         echo "<versions>\n";
         foreach (array_keys($versions_arr) as $i) {
             echo "\t<version>\n";
@@ -59,7 +59,7 @@ if ($oc_allowed == 1) {
             echo "\t<version_descr>".$versions_arr[$i]->getVar('version_descr')."</version_descr>\n";
             echo "\t<version_author>".$versions_arr[$i]->getVar('version_author')."</version_author>\n";
             echo "\t<version_date>".$versions_arr[$i]->getVar('version_date')."</version_date>\n";
-            
+
             if ($version_id > 0) {
                 echo "\t\t<contents>\n";
                 $cont_crit = new CriteriaCompo();
@@ -69,7 +69,7 @@ if ($oc_allowed == 1) {
                 $contents_rows = $contentsHandler->getCount($cont_crit);
                 $contents_arr = $contentsHandler->getAll($cont_crit);
                 unset($cont_crit);
-                if ($contents_rows > 0) {						
+                if ($contents_rows > 0) {
                     foreach (array_keys($contents_arr) as $j) {
                         echo "\t\t\t<content>\n";
                         echo "\t\t\t\t<cont_id>".$contents_arr[$j]->getVar('cont_id')."</cont_id>\n";
@@ -99,5 +99,5 @@ function text2xml ($xml) {
     $search = array('<', '>', '"');
     $replace  = array('&lt;', '&gt;', '&quot;');
     $str = str_replace($search, $replace, (string)$xml);
-    return $str; 
+    return $str;
 }

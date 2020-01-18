@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
@@ -25,40 +25,40 @@ class WgsitenoticeHelper
     /**
      * @var string
      */
-	private $dirname = null;
-	/**
+    private $dirname = null;
+    /**
      * @var string
      */
     private $module = null;
-	/**
+    /**
      * @var string
      */
     private $handler = null;
-	/**
+    /**
      * @var string
      */
     private $config = null;
-	/**
+    /**
      * @var string
      */
     private $debug = null;
-	/**
+    /**
      * @var array
      */
     private $debugArray = array();
     /*
-	*  @protected function constructor class
-	*  @param mixed $debug
-	*/
+    *  @protected function constructor class
+    *  @param mixed $debug
+    */
     protected function __construct($debug)
     {
         $this->debug = $debug;
         $this->dirname =  basename(dirname(__DIR__));
     }
     /*
-	*  @static function &getInstance
-	*  @param mixed $debug
-	*/
+    *  @static function &getInstance
+    *  @param mixed $debug
+    */
     public static function getInstance($debug = false)
     {
         static $instance;
@@ -68,9 +68,9 @@ class WgsitenoticeHelper
         return $instance;
     }
     /*
-	*  @static function getModule
-	*  @param null
-	*/
+    *  @static function getModule
+    *  @param null
+    */
     public function getModule()
     {
         if ($this->module == null) {
@@ -79,9 +79,9 @@ class WgsitenoticeHelper
         return $this->module;
     }
     /*
-	*  @static function getConfig
-	*  @param string $name
-	*/
+    *  @static function getConfig
+    *  @param string $name
+    */
     public function getConfig($name = null)
     {
         if ($this->config == null) {
@@ -99,10 +99,10 @@ class WgsitenoticeHelper
         return $this->config[$name];
     }
     /*
-	*  @static function setConfig
-	*  @param string $name
-	*  @param mixed $value
-	*/
+    *  @static function setConfig
+    *  @param string $name
+    *  @param mixed $value
+    */
     public function setConfig($name = null, $value = null)
     {
         if ($this->config == null) {
@@ -113,9 +113,9 @@ class WgsitenoticeHelper
         return $this->config[$name];
     }
     /*
-	*  @static function getHandler
-	*  @param string $name
-	*/
+    *  @static function getHandler
+    *  @param string $name
+    */
     public function getHandler($name)
     {
         if (!isset($this->handler[$name . 'Handler'])) {
@@ -125,9 +125,9 @@ class WgsitenoticeHelper
         return $this->handler[$name . 'Handler'];
     }
     /*
-	*  @static function initModule
-	*  @param null
-	*/
+    *  @static function initModule
+    *  @param null
+    */
     public function initModule()
     {
         global $xoopsModule;
@@ -141,9 +141,9 @@ class WgsitenoticeHelper
         $this->addLog('INIT MODULE');
     }
     /*
-	*  @static function initConfig
-	*  @param null
-	*/
+    *  @static function initConfig
+    *  @param null
+    */
     public function initConfig()
     {
         $this->addLog('INIT CONFIG');
@@ -152,18 +152,18 @@ class WgsitenoticeHelper
         $this->config =& $configHandler->getConfigsByCat(0, $this->getModule()->getVar('mid'));
     }
     /*
-	*  @static function initHandler
-	*  @param string $name
-	*/
+    *  @static function initHandler
+    *  @param string $name
+    */
     public function initHandler($name)
     {
         $this->addLog('INIT ' . $name . ' HANDLER');
         $this->handler[$name . 'Handler'] = xoops_getModuleHandler($name, $this->dirname);
     }
     /*
-	*  @static function addLog
-	*  @param string $log
-	*/
+    *  @static function addLog
+    *  @param string $log
+    */
     public function addLog($log)
     {
         if ($this->debug) {

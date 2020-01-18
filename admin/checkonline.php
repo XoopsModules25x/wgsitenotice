@@ -16,7 +16,7 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
@@ -37,9 +37,9 @@ $GLOBALS['xoopsTpl']->assign('modPathIcon32', $modPathIcon32);
 $GLOBALS['xoopsTpl']->assign('modPathIcon16', $modPathIcon16);
 
 // Switch options
-switch ($op) 
+switch ($op)
 {
-    case 'download': 
+    case 'download':
         // Request version_id
         $version_id = XoopsRequest::getInt('version_id', 0);
         if ($version_id == 0) {
@@ -93,7 +93,7 @@ switch ($op)
                             redirect_header('versions.php?op=list', 2, _AM_WGSITENOTICE_FORMOK);
                         }
                     }
-                } 
+                }
             } else if ($xml_arr->status_access === 'forbidden') {
                 $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
             } else {
@@ -101,17 +101,17 @@ switch ($op)
             }
         }
         break;
-        
+
     case 'checkonline':
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
-        
+
         // $xml_text = file_get_contents($oc_server);
         $xml_text = $checkonlineHandler->getData($oc_server);
         $xml_arr = $checkonlineHandler->readXML($xml_text);
         // echo "xml_text:<br/>".$xml_text;
         // echo "<br/><br/>var_dump xml_arr:<br/>".var_dump($xml_arr);
-        
+
         if (!$xml_arr) {
             $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_READ_XML));
         } else {
@@ -127,7 +127,7 @@ switch ($op)
                         $version['author'] = $checkonlineHandler->xml2str($onlineversion->version_author);
                         $version['date'] = formatTimestamp($onlineversion->version_date);
                         $GLOBALS['xoopsTpl']->append('versions_list', $version);
-                    } 
+                    }
                 } else {
                     $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_NO_VERSIONS);
                 }
@@ -140,15 +140,15 @@ switch ($op)
         unset($version);
         break;
     case 'default':
-    default:  	
-		$template_main = 'wgsitenotice_admin_checkonline.tpl';
-		$GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
+    default:
+        $template_main = 'wgsitenotice_admin_checkonline.tpl';
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-		$GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
         // Get Form
         $checkonlineObj = $checkonlineHandler->create();
         $form = $checkonlineObj->getForm();
-		$GLOBALS['xoopsTpl']->assign('form', $form->render());
+        $GLOBALS['xoopsTpl']->assign('form', $form->render());
         break;
 }
 include_once __DIR__ . '/footer.php';

@@ -16,16 +16,18 @@
  * @package         wgsitenotice
  * @since           1.0
  * @min_xoops       2.5.7
- * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<http://xoops.wedega.com>
+ * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 $GLOBALS['xoopsTpl']->assign('sysPathIcon32', $sysPathIcon32);
 $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
 $GLOBALS['xoopsTpl']->assign('adv', xoops_getModuleOption('advertise', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('bookmarks', xoops_getModuleOption('bookmarks', $dirname));
-$GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname)); 
+$GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('admin', WGSITENOTICE_ADMIN);
-$GLOBALS['xoopsTpl']->assign('copyright', $copyright);
+if ( $wgsitenotice->getConfig('show_copyright') ) {
+    $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
+}
 // User footer
-include_once XOOPS_ROOT_PATH.'/footer.php';	
+include_once XOOPS_ROOT_PATH.'/footer.php';
