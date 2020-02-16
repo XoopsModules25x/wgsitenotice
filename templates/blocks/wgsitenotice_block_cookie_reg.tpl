@@ -32,13 +32,13 @@
     padding:3px;
 }
 #container-cookies-reg a:hover {text-decoration:underline;}
-#container-cookies-reg div {padding:10px; padding-right:40px;}
+#container-cookies-reg div {padding:10px; padding-right:80px;}
 #container-cookies-reg-text {padding-right:10px;}
 #cookies-reg-closer {
    color: #777;
    font: 14px/100% arial, sans-serif;
    position: absolute;
-   right: 20px;
+   right: 60px;
    text-decoration: none;
    text-shadow: 0 1px 0 #fff;
    top: 30%;

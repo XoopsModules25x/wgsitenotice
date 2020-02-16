@@ -38,10 +38,12 @@ class WgsitenoticeCheckonline extends XoopsObject
         $this->wgsitenotice = WgsitenoticeHelper::getInstance();
         $this->initVar('oc_server', XOBJ_DTYPE_TXTBOX);
     }
+
     /**
-    *  @static function &getInstance
-    *  @param null
-    */
+     * @static function &getInstance
+     * @param null
+     * @return WgsitenoticeCheckonline
+     */
     public static function getInstance()
     {
         static $instance;
@@ -50,10 +52,12 @@ class WgsitenoticeCheckonline extends XoopsObject
         }
         return $instance;
     }
+
     /**
      * Get form
      *
      * @param mixed $action
+     * @return XoopsThemeForm
      */
     public function getForm($action = false)
     {
@@ -66,8 +70,6 @@ class WgsitenoticeCheckonline extends XoopsObject
         xoops_load('XoopsFormLoader');
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
-        // Checkonline handler
-        $checkonlineHandler = $this->wgsitenotice->getHandler('checkonline');
         $oc_server = $this->wgsitenotice->getConfig('wgsitenotice_oc_server').'checkonline.php';
         // Form Text oc_server
         $form->addElement( new XoopsFormText(_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
@@ -97,7 +99,7 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
      * request data from given website
      *
      * @param $oc_server
-     * @return result of http post
+     * @return string result of http post
      */
     public function getData($oc_server) {
 
@@ -149,18 +151,18 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
      * read the given xml string (by getData) and create and array
      *
      * @param string $xml_string
-     * @return $xml_arr
+     * @return SimpleXMLElement $xml_arr
      */
     public function readXML($xml_string){
         // creating temporary string for avoiding entitiy errors
         $xml_string = str_replace('&', '[[avoid_entity_error]]', $xml_string);
-        $search = array('<', '>', '"', '&');
-        $replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
+        //$search = array('<', '>', '"', '&');
+        //$replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
         //$xml_string = str_replace($search, $replace, (string)$xml_string);
         $xml_arr = simplexml_load_string($xml_string);
         if (!$xml_arr) {
             //error when loading xml
-            $xml = explode("\n", $xml_text);
+            $xml = explode("\n", $xml_string);
             $errors = libxml_get_errors();
             foreach ($errors as $error) {
                 echo $this->display_xml_error($error, $xml);
@@ -174,7 +176,7 @@ class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
      * convert xml content to html text
      *
      * @param string $xml
-     * @return xml as array
+     * @return Array from xml
      */
     public function xml2str($xml){
         // replace temporary string for avoiding entitiy errors

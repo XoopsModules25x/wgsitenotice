@@ -23,8 +23,7 @@ include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 function b_wgsitenotice_versions_show($options)
 {
     include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/class/versions.php';
-    $myts = MyTextSanitizer::getInstance();
-	    
+
     $version_id = XoopsRequest::getInt('version_id', 0);
 	
     $version = array();
@@ -64,8 +63,8 @@ function b_wgsitenotice_versions_show($options)
 function b_wgsitenotice_versions_edit($options)
 {
     include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/class/versions.php';
-    $wgsitenotice = WgsitenoticeHelper::getInstance();
-    $versionsHandler = $wgsitenotice->getHandler('versions');
+    //$wgsitenotice = WgsitenoticeHelper::getInstance();
+    //$versionsHandler = $wgsitenotice->getHandler('versions');
     $form = _MB_WGSITENOTICE_DISPLAY;
     $form .= "<input name='options[0]' size='5' maxlength='255' value='".$options[0]."' type='text' />&nbsp;<br />";
     $form .= _MB_WGSITENOTICE_TITLELENGTH." : <input name='options[1]' size='5' maxlength='255' value='".$options[1]."' type='text' /><br /><br />";

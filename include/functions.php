@@ -26,6 +26,7 @@
  * @return string
  */
 function wgsitenotice_block_addCatSelect($cats) {
+    $cat_sql = '';
     if(is_array($cats))
     {
         $cat_sql = '('.current($cats);

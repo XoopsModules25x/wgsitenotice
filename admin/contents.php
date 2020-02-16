@@ -51,6 +51,7 @@ switch ($op)
         if ($contents_rows > 0)
         {
             $version_id_prev = 0;
+            $nb_conts_version = 0;
             foreach (array_keys($contents_arr) as $i)
             {
                 // Get Var cont_id
