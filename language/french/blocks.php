@@ -27,4 +27,3 @@ define('_MB_WGSITENOTICE_ALL_VERSIONS', "Toutes les versions");
 define('_MB_WGSITENOTICE_DISPLAY', "Nombre d'articles");
 define('_MB_WGSITENOTICE_TITLELENGTH', "Longueur du texte des versions (0 signifie pas de limite)");
 define('_MB_WGSITENOTICE_SHOW_MORE', "Afficher plus...");
-?>

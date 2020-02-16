@@ -44,10 +44,12 @@ class WgsitenoticeContents extends XoopsObject
         $this->initVar('cont_date', XOBJ_DTYPE_INT);
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
     }
+
     /**
-    *  @static function &getInstance
-    *  @param null
-    */
+     * @static function &getInstance
+     * @param null
+     * @return WgsitenoticeContents
+     */
     public static function getInstance()
     {
         static $instance;
@@ -56,10 +58,12 @@ class WgsitenoticeContents extends XoopsObject
         }
         return $instance;
     }
+
     /**
      * Get form
      *
      * @param mixed $action
+     * @return XoopsThemeForm
      */
     public function getForm($action = false)
     {

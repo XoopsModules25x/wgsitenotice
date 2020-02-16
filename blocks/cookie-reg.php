@@ -23,7 +23,7 @@ include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 function b_wgsitenotice_cookie_reg_show($options)
 {
     include_once XOOPS_ROOT_PATH.'/modules/wgsitenotice/class/versions.php';
-    $myts = MyTextSanitizer::getInstance();
+    //$myts = MyTextSanitizer::getInstance();
     $block = array();
 
     $unique_id = $options[0];
@@ -53,7 +53,6 @@ function b_wgsitenotice_cookie_reg_show($options)
     //get relevant data
     $wgsitenotice = WgsitenoticeHelper::getInstance();
     $versionsHandler = $wgsitenotice->getHandler('versions');
-    $criteria = new CriteriaCompo();
 
     $block['infotext'] = _MB_WGSITENOTICE_COOKIE_REG_INFO;
 
@@ -122,7 +121,6 @@ function b_wgsitenotice_cookie_reg_edit($options)
     $data_sel = new XoopsFormSelect("", 'options[1]', $options[1]);
     $data_sel->addOption('no-data', _MB_WGSITENOTICE_COOKIE_REG_NONE);
     foreach (array_keys($versionsAll) as $i) {
-        $version_id = $versionsAll[$i]->getVar('version_id');
         $data_sel->addOption($versionsAll[$i]->getVar('version_id'), $versionsAll[$i]->getVar('version_name'));
     }
     $form .= _MB_WGSITENOTICE_COOKIE_REG_DATA . ': ' . $data_sel->render() . '<br>';
@@ -130,7 +128,6 @@ function b_wgsitenotice_cookie_reg_edit($options)
     $cookie_reg_sel = new XoopsFormSelect("", 'options[2]', $options[2]);
     $cookie_reg_sel->addOption('no-cookiereg', _MB_WGSITENOTICE_COOKIE_REG_NONE);
     foreach (array_keys($versionsAll) as $i) {
-        $version_id = $versionsAll[$i]->getVar('version_id');
         $cookie_reg_sel->addOption($versionsAll[$i]->getVar('version_id'), $versionsAll[$i]->getVar('version_name'));
     }
     $form .= _MB_WGSITENOTICE_COOKIE_REG_BASE . ': ' . $cookie_reg_sel->render() . '<br>';
