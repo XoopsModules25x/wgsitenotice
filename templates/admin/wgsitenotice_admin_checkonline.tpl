@@ -1,12 +1,12 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
-<h1><{$disclaimer}></h1>
-<p style="font-size:120%;"><{$disclaimer_desc}></p>
+<h1><{$disclaimer|default:''}></h1>
+<p style="font-size:120%;"><{$disclaimer_desc|default:''}></p>
 <br/><br/>
-<{if $form}>
+<{if $form|default:''}>
 	<!-- Display form (add,edit) -->
 	<div class="spacer"><{$form}></div>
 <{/if}>
-<{if $versions_list}>
+<{if $versions_list|default:''}>
     <h2><{$smarty.const._AM_WGSITENOTICE_OC_RESULT}></h2>
 	<table class="outer versions width100">
 		<thead>
@@ -39,12 +39,12 @@
 		</tbody>
 	</table>
 	<div class="clear">&nbsp;</div>
-	<{if $pagenav}><br />
+	<{if $pagenav|default:''}><br />
 		<!-- Display navigation -->
 	    <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
 	<{/if}>
 <{/if}>
-<{if $error}>	
+<{if $error|default:''}>	
 	<div class="errorMsg">
 		<strong><{$error}></strong>
 	</div>

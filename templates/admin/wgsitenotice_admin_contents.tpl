@@ -1,5 +1,5 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
-<{if $contents_list}>
+<{if $contents_list|default:''}>
 	<table class="table table-bordered  table-striped" id="sortable">
 		<thead>
 			<tr class="head">
@@ -10,9 +10,9 @@
 				<th class="center"><{$smarty.const._AM_WGSITENOTICE_FORMACTION}></th>
 			</tr>
 		</thead>
-        <{if $contents_count}>
+        <{if $contents_count|default:''}>
             <{foreach item=list from=$contents_list}>	
-                <{if $list.new_version > 0}> 
+                <{if $list.new_version|default:'' > 0}> 
                 <tbody>
                     <tr class="odd">
                         <td class="left" colspan="5"><{$list.version_name}></td>
@@ -20,7 +20,7 @@
                 <{/if}>
                     <tr class="even" id="corder_<{$list.id}>">
                         <td class="center">
-                        <{if $list.nb_conts_version > 1}>
+                        <{if $list.nb_conts_version|default:'' > 1}>
                             <img src="<{$wgsitenotice_icons_url}>/16/up_down.png" alt="drag&drop" class="icon-sortable"/>
                         <{else}>
                             &nbsp;
@@ -43,17 +43,17 @@
         <{/if}>
 	</table>
 	<div class="clear">&nbsp;</div>
-	<{if $pagenav}><br />
+	<{if $pagenav|default:''}><br />
 		<!-- Display navigation -->
 	    <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
 	<{/if}>
 <{/if}>	
-<{if $error}>	
+<{if $error|default:''}>	
 	<div class="errorMsg">
 		<strong><{$error}></strong>
 	</div>
 <{/if}>
-<{if $form}>
+<{if $form|default:''}>
 	<!-- Display form (add,edit) -->
 	<div class="spacer"><{$form}></div>
 <{/if}>

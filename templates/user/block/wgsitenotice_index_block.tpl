@@ -1,9 +1,9 @@
 <{include file="db:wgsitenotice_header.tpl"}>
 <div class="col-sm-12 col-md-12 xoops-side-blocks">
-    <{foreach item=list from=$contents}>
+    <{foreach item=list from=$contents|default:''}>
         <aside>
-            <h4 class="block-title"><{$list.header}></h4>
-            <{$list.text}>
+            <h4 class="block-title"><{$list.header|default:''}></h4>
+            <{$list.text|default:''}>
         </aside>
     <{/foreach}>
 </div>
