@@ -1,0 +1,67 @@
+<div id="help-template" class="outer">
+    <h1 class="head">Hilfe:
+        <a class="ui-corner-all tooltip" href="<{$xoops_url}>/modules/wgsitenotice/admin/index.php" title="Zurück zur Administration von wgSitenotice"> wgSitenotice 
+            <img src="<{xoAdminIcons home.png}>" alt="Zurück zur Administration von wgSitenotice"/>
+        </a></h1>
+    <!-- -----Help Content ---------- -->
+    <h4 class="odd">Beschreibung</h4>
+    <p class="even">
+        wgSiteNotice-Modul ist ein Modul für Xoops<br /><br />
+        Funktionen in Kürze:<br />
+        <ul class="even">
+            <li>Das Modul erstellt Seiten mit den wichtigsten rechtlichen Bestimmungen, wie z.B. Impressum, Haftungsausschluss, Datenschutzerklärung</li>
+            <li>Download von Mustern/Vorlagen von xoops.wedega.com möglich</li>
+            <li>Download der wgSiteNotice-Seiten von anderen Xoops-Webseiten, sofern wgSiteNotice installiert ist und die dafür vorgesehenen Rechte entsprechend gesetzt wurden</li>
+            <li>Ausgabe der Seiten templatebasiert</li>
+        </ul>
+    </p>
+    <h4 class="odd">Installation/Deinstallation</h4>
+    <p class="even">
+    Es sind keine speziellen Maßnahmen erforderlich, führen Sie den Standardinstallationsprozess aus:<br/> 
+    - Extrahieren Sie den Ordner wgSiteNotice in das Module-Verzeichnis<br/>
+    - Installieren Sie das Modul über Administration -> Module<br/>
+    Wenn Sie zustätzliche Informationen benötigen, lesen Sie die Installationshinweise unter <a href="http://goo.gl/adT2i">XOOPS Operations Manual</a>.
+    <br /><br /></p>
+    <h4 class="odd">Funktionen</h4>
+    <h5 class="odd">Zugrundeliegende Version</h5>
+    <p class="even">
+    Der Hilfe/Beschreibung basiert auf der Version 1.23 beta 1<br />
+    <br /><br /></p>
+    <h5 class="odd">Wichtige Moduleinstellungen</h5>
+    <p class="even">
+    Option "Download Ihrer rechtlichen Hinweise zulassen": Sie können festlegen, ob Sie Ihre Inhalte für andere Xoops-Webseitenersteller freigeben wollen. Achtung: Bei "Ja" werden alle dafür vorgesehenen Versionen und die dazugehörigen Inhalte zum Download freigegeben (siehe auch Option "Download erlauben".<br /><br />
+    Option "Standard-Server für Überprüfung auf Online-Versionen": Hier können Sie den Standardserver/die Standardwebseite festlegen, die Sie auf aktuelle Versionen überprüfen und von dem/der Sie die Versionen und Inhalte runterladen möchten.<br />
+    <br /><br /></p>
+    <h5 class="odd">Versionen</h5>
+    <p class="even">
+    Hier können Sie verschiedene Versionen/Seiten anlegen.<br />
+    Die Reihenfolge im Menü/in der Anzeige erfolgt anhand der Werte unter "Reihung".<br/>
+    Jede Version, deren Option "Version anzeigen" auf "JA" gesetzt ist, wird im Hauptmenü als eigene Seite angeboten.<br/>
+    Jede Version, deren Option "Download erlauben" auf "JA" gesetzt ist, wird für den Download freigegeben (siehe auch Moduleinstellung "Download Ihrer rechtlichen Hinweise zulassen").<br/>
+    <br /><br /></p>
+    <h5 class="odd">Inhalte</h5>
+    <p class="even">
+    Hier können Sie die Inhalte zu den verschiedene Versionen/Seiten erstellen.<br />
+    Es können pro Version beliebig viele einzelne Inhalte erstellt werden. Die Reihenfolge der Anzeige der einzelnen Inhalte innerhalb einer Version/Seite wird durch die Werte unter Reihung bestimmt.<br/>
+    <br /><br /></p>
+    <h5 class="odd">Online-Versionen</h5>
+    <p class="even">
+    Hier können Sie die Inhalte der Versionen/Seiten von der in den Moduleinstellungen festgelegten Webseite runterladen.<br />
+    Durch einen Klick auf "Starte Überprüfung auf verfügbare Online-Versionen" werden die auf der entsprechende Webseite verfügbaren Versionen/Seiten aufgelistet.<br/>
+    Durch einen Klick auf <img src="../wgsitenotice/assets/images/icons/16/download.png" alt="Suche"/> können die Versionen und Inhalte runtergeladen werden.<br/>
+    <br /><br /></p>
+    <h5 class="odd">Möglichkeiten zum Anzeigen Ihrer Versionen</h5>
+    <p class="even">
+    Sie können Ihre rechlichen Hinweise auf der Webseite auf folgende Arten anzeigen lassen:<br/>
+    <ul class="even">
+        <li>Hauptmenü</li>
+        <li>Block</li>
+        <li>http://{mydomain.com}modules/wgsitenotice/index.php?version_id=1 liefert die Seite mit der entsprechende Versions-ID (in diesem Fall von Version ID 1)</li>
+        <li>http://{mydomain.com}modules/wgsitenotice/index.php liefert alle Seiten (Option "Version anzeigen" ist "JA") als eine Seite</li>
+    </ul>   
+    <br /><br /></p>
+    <h5 class="odd">Online-Tutorial</h5>
+    <p class="even">
+    Für weitere Informationen besuchen Sie bitte auch unser <a href="https://www.gitbook.com/book/ggoffy/wgsitenotice-tutorial/details" target="_blank">Online-Tutorial auf Gitbook</a>.
+    <br /><br /></p>
+</div>
