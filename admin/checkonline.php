@@ -18,21 +18,24 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
+use Xmf\Request;
+
 include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
-$op = XoopsRequest::getString('op', 'default');
+$op = Request::getString('op', 'default');
 
-$oc_server = XoopsRequest::getString('oc_server', 'default');
+$oc_server = Request::getString('oc_server', 'default');
 if ($oc_server === 'default') {
-  $oc_server = $wgsitenotice->getConfig('wgsitenotice_oc_server').'checkonline.php';
+  $oc_server = $helper->getConfig('wgsitenotice_oc_server').'checkonline.php';
 }
 
 $template_main = 'wgsitenotice_admin_checkonline.tpl';
-$GLOBALS['xoopsTpl']->assign('disclaimer', _AM_WGSITENOTICE_OC_DISCLAIMER);
-$GLOBALS['xoopsTpl']->assign('disclaimer_desc', _AM_WGSITENOTICE_OC_DISCLAIMER_DESCR);
-$GLOBALS['xoopsTpl']->assign('onlinecheck_server', _MI_WGSITENOTICE_OC_SERVER);
+$GLOBALS['xoopsTpl']->assign('disclaimer', \_AM_WGSITENOTICE_OC_DISCLAIMER);
+$GLOBALS['xoopsTpl']->assign('disclaimer_desc', \_AM_WGSITENOTICE_OC_DISCLAIMER_DESCR);
+$GLOBALS['xoopsTpl']->assign('onlinecheck_server', \_MI_WGSITENOTICE_OC_SERVER);
 $GLOBALS['xoopsTpl']->assign('oc_server', $oc_server);
-$GLOBALS['xoopsTpl']->assign('start_search', _AM_WGSITENOTICE_OC_START);
+$GLOBALS['xoopsTpl']->assign('start_search', \_AM_WGSITENOTICE_OC_START);
 $GLOBALS['xoopsTpl']->assign('modPathIcon32', $modPathIcon32);
 $GLOBALS['xoopsTpl']->assign('modPathIcon16', $modPathIcon16);
 
@@ -41,19 +44,19 @@ switch ($op)
 {
     case 'download':
         // Request version_id
-        $version_id = XoopsRequest::getInt('version_id', 0);
+        $version_id = Request::getInt('version_id');
         if ($version_id == 0) {
-            $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_INVALID_PARAM);
+            $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_INVALID_PARAM);
             break;
         }
-        //$xml_text = file_get_contents($oc_server.'?version_id='.$version_id);
+        //$xml_text = \file_get_contents($oc_server.'?version_id='.$version_id);
         $xml_text = $checkonlineHandler->getData($oc_server . '?version_id='.$version_id);
         // echo $xml_text;
         $xml_arr = $checkonlineHandler->readXML($xml_text);
         // var_dump($xml_arr);
         if (!$xml_arr) {
             //error when loading xml
-            $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_READ_XML));
+            $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_READ_XML));
         } else {
             echo $oc_server.'?version_id='.$version_id;
             echo $xml_arr->status_access;
@@ -88,16 +91,16 @@ switch ($op)
                             }
                         }
                         if ($cont_errors > 0) {
-                            redirect_header('versions.php?op=list', 4, str_replace('%e', $cont_errors, _AM_WGSITENOTICE_OC_ERR_ADDCONT));
+                            \redirect_header('versions.php?op=list', 4, \str_replace('%e', $cont_errors, \_AM_WGSITENOTICE_OC_ERR_ADDCONT));
                         } else {
-                            redirect_header('versions.php?op=list', 2, _AM_WGSITENOTICE_FORMOK);
+                            \redirect_header('versions.php?op=list', 2, \_AM_WGSITENOTICE_FORMOK);
                         }
                     }
                 }
             } else if ($xml_arr->status_access === 'forbidden') {
-                $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
+                $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
             } else {
-                $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_CONNECT));
+                $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_CONNECT));
             }
         }
         break;
@@ -106,14 +109,14 @@ switch ($op)
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
 
-        // $xml_text = file_get_contents($oc_server);
+        // $xml_text = \file_get_contents($oc_server);
         $xml_text = $checkonlineHandler->getData($oc_server);
         $xml_arr = $checkonlineHandler->readXML($xml_text);
         // echo "xml_text:<br/>".$xml_text;
         // echo "<br/><br/>var_dump xml_arr:<br/>".var_dump($xml_arr);
 
         if (!$xml_arr) {
-            $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_READ_XML));
+            $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_READ_XML));
         } else {
             // echo "<br/>status_access:".$xml_arr->status_access;
             if ($xml_arr->status_access == 'allowed') {
@@ -125,16 +128,16 @@ switch ($op)
                         $version['lang'] = $checkonlineHandler->xml2str($onlineversion->version_lang);
                         $version['descr'] = $checkonlineHandler->xml2str($onlineversion->version_descr);
                         $version['author'] = $checkonlineHandler->xml2str($onlineversion->version_author);
-                        $version['date'] = formatTimestamp($onlineversion->version_date);
+                        $version['date'] = \formatTimestamp($onlineversion->version_date);
                         $GLOBALS['xoopsTpl']->append('versions_list', $version);
                     }
                 } else {
-                    $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_NO_VERSIONS);
+                    $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_NO_VERSIONS);
                 }
             } else if ($xml_arr->status_access === 'forbidden') {
-                $GLOBALS['xoopsTpl']->assign('error',_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
+                $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
             } else {
-                $GLOBALS['xoopsTpl']->assign('error',str_replace('%s', $oc_server, _AM_WGSITENOTICE_OC_ERR_CONNECT));
+                $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_CONNECT));
             }
         }
         unset($version);
@@ -142,7 +145,7 @@ switch ($op)
     case 'default':
     default:
         $template_main = 'wgsitenotice_admin_checkonline.tpl';
-        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(basename(__FILE__)));
+        $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
         $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
         // Get Form

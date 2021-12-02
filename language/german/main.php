@@ -19,13 +19,13 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Main ----------------
-define('_MA_WGSITENOTICE_INDEX', 'Home');
-define('_MA_WGSITENOTICE_TITLE', 'Rechtliche Hinweise');
-define('_MA_WGSITENOTICE_DESC',
+\define('_MA_WGSITENOTICE_INDEX', 'Home');
+\define('_MA_WGSITENOTICE_TITLE', 'Rechtliche Hinweise');
+\define('_MA_WGSITENOTICE_DESC',
        'Dieses Modul erstellt eine Seite mit rechtlichen Hinweisen (Impressum, Haftungsbestimmungen, Datenschutz,...)');
-define('_MA_WGSITENOTICE_INDEX_DESC', '');
+\define('_MA_WGSITENOTICE_INDEX_DESC', '');
 //index.php
-define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', 'Derzeit sind keine Versionen verfügbar!');
+\define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', 'Derzeit sind keine Versionen verfügbar!');
 // Admin link
-define('_MA_WGSITENOTICE_ADMIN', 'Administration');
+\define('_MA_WGSITENOTICE_ADMIN', 'Administration');
 // ---------------- End ----------------

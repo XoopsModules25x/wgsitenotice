@@ -25,10 +25,10 @@ $count_contents = $contentsHandler->getCount();
 // Template Index
 $template_main = 'wgsitenotice_admin_index.tpl';
 // InfoBox Statistics
-$adminMenu->addInfoBox(_AM_WGSITENOTICE_STATISTICS);
+$adminMenu->addInfoBox(\_AM_WGSITENOTICE_STATISTICS);
 // Info elements
-$adminMenu->addInfoBoxLine(_AM_WGSITENOTICE_STATISTICS, '<label>'._AM_WGSITENOTICE_THEREARE_VERSIONS.'</label>', $count_versions);
-$adminMenu->addInfoBoxLine(_AM_WGSITENOTICE_STATISTICS, '<label>'._AM_WGSITENOTICE_THEREARE_CONTENTS.'</label>', $count_contents);
+$adminMenu->addInfoBoxLine(\_AM_WGSITENOTICE_STATISTICS, '<label>'.\_AM_WGSITENOTICE_THEREARE_VERSIONS.'</label>', $count_versions);
+$adminMenu->addInfoBoxLine(\_AM_WGSITENOTICE_STATISTICS, '<label>'.\_AM_WGSITENOTICE_THEREARE_CONTENTS.'</label>', $count_contents);
 // Render Index
 echo $adminMenu->addNavigation('index.php');
 echo $adminMenu->renderIndex();

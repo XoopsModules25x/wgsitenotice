@@ -19,8 +19,10 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
-require_once dirname(dirname(dirname(__DIR__))). '/include/cp_header.php';
-$thisPath = dirname(__DIR__);
+use XoopsModules\Wgsitenotice\Helper;
+
+require_once \dirname(\dirname(\dirname(__DIR__))). '/include/cp_header.php';
+$thisPath = \dirname(__DIR__);
 include_once $thisPath.'/include/common.php';
 $sysPathIcon16 = '../' . $xoopsModule->getInfo('sysicons16');
 $sysPathIcon32 = '../' . $xoopsModule->getInfo('sysicons32');
@@ -29,18 +31,18 @@ $pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
 $modPathIcon16 = $xoopsModule->getInfo('modicons16');
 $modPathIcon32 = $xoopsModule->getInfo('modicons32');
 // Get instance of module
-$wgsitenotice = WgsitenoticeHelper::getInstance();
+$helper = Helper::getInstance();
 // versions
-$versionsHandler = $wgsitenotice->getHandler('versions');
+$versionsHandler = $helper->getHandler('versions');
 // contents
-$contentsHandler = $wgsitenotice->getHandler('contents');
+$contentsHandler = $helper->getHandler('contents');
 // checkonline
-$checkonlineHandler = $wgsitenotice->getHandler('checkonline');
+$checkonlineHandler = $helper->getHandler('checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
-if (!isset($xoopsTpl) || !is_object($xoopsTpl)) {
-    include_once XOOPS_ROOT_PATH . '/class/template.php';
-    $xoopsTpl = new XoopsTpl();
+if (!isset($xoopsTpl) || !\is_object($xoopsTpl)) {
+    include_once \XOOPS_ROOT_PATH . '/class/template.php';
+    $xoopsTpl = new \XoopsTpl();
 }
 // System icons path
 $xoopsTpl->assign('sysPathIcon16', $sysPathIcon16);
@@ -50,8 +52,8 @@ $xoopsTpl->assign('modPathIcon16', $modPathIcon16);
 $xoopsTpl->assign('modPathIcon32', $modPathIcon32);
 
 //Load languages
-xoops_loadLanguage('admin');
-xoops_loadLanguage('modinfo');
+\xoops_loadLanguage('admin');
+\xoops_loadLanguage('modinfo');
 // Local admin menu class
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 

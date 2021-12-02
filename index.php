@@ -18,38 +18,49 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
+use Xmf\Request;
+use XoopsModules\Wgsitenotice\Helper;
+
 include_once __DIR__ . '/header.php';
-$GLOBALS['xoopsOption']['template_main'] = 'user/' . $wgsitenotice->getConfig('wgsitenotice_template') . '/wgsitenotice_index_'
-                                           . $wgsitenotice->getConfig('wgsitenotice_template') . '.tpl';
-include_once XOOPS_ROOT_PATH.'/header.php';
+
+$helper = Helper::getInstance();
+
+$GLOBALS['xoopsOption']['template_main'] = 'user/' . $helper->getConfig('wgsitenotice_template') . '/wgsitenotice_index_'
+                                           . $helper->getConfig('wgsitenotice_template') . '.tpl';
+include_once \XOOPS_ROOT_PATH.'/header.php';
 
 // Define Stylesheet
 $xoTheme->addStylesheet( $style );
 
-$breadcrumb ='<a href="' . XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
+$breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
 
-$version_id = XoopsRequest::getInt('version_id', 0);
+$version_id = Request::getInt('version_id');
 
-$criteriaVersions = new CriteriaCompo();
+$criteriaVersions = new \CriteriaCompo();
 $criteriaVersions->setSort('version_weight');
 $criteriaVersions->setOrder('ASC');
-if ($version_id > 0) $criteriaVersions->add(new Criteria('version_id', $version_id));
-$criteriaVersions->add(new Criteria('version_current', '1'));
+if ($version_id > 0) $criteriaVersions->add(new \Criteria('version_id', $version_id));
+$criteriaVersions->add(new \Criteria('version_current', '1'));
 $versions_count = $versionsHandler->getCount($criteriaVersions);
 $versions_arr = $versionsHandler->getAll($criteriaVersions);
 unset($criteriaVersions);
+
+$keywords = [];
+$breadcrumb_subdir = '';
+
 if ($versions_count > 0) {
-    foreach (array_keys($versions_arr) as $v) {
-        $breadcrumb_subdir = '';
+    foreach (\array_keys($versions_arr) as $v) {
+
         if ($version_id > 0) $breadcrumb_subdir = $versions_arr[$v]->getVar('version_name');
-        $criteriaContents = new CriteriaCompo();
-        $criteriaContents->add(new Criteria('cont_version_id', $versions_arr[$v]->getVar('version_id')));
+        $criteriaContents = new \CriteriaCompo();
+        $criteriaContents->add(new \Criteria('cont_version_id', $versions_arr[$v]->getVar('version_id')));
         $contents_count = $contentsHandler->getCount($criteriaContents);
         $contents_arr = $contentsHandler->getAll($criteriaContents);
         unset($criteriaContents);
-        $keywords = array();
+
         if ($contents_count > 0) {
-            foreach (array_keys($contents_arr) as $i) {
+            foreach (\array_keys($contents_arr) as $i) {
                 // Get Var cont_id
                 $cont['id'] = $contents_arr[$i]->getVar('cont_id');
                 // Get Var cont_version_id
@@ -67,11 +78,12 @@ if ($versions_count > 0) {
         }
     }
 } else {
-    echo _MA_WGSITENOTICE_THEREARENT_VERSIONS;
+    echo \_MA_WGSITENOTICE_THEREARENT_VERSIONS;
+    $GLOBALS['xoopsTpl']->append('contents', []);
 }
 
 /* create breadcrumb */
-$breadcrumb ='<a href="' . XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
+$breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
 if ($breadcrumb_subdir == '') {
     $breadcrumb .= $xoopsModule->name();
 } else {
@@ -81,10 +93,10 @@ $GLOBALS['xoopsTpl']->assign('breadcrumb', $breadcrumb);
 
 
 // keywords
-wgsitenotice_meta_keywords($wgsitenotice->getConfig('keywords').', '. implode(', ', $keywords));
+wgsitenotice_meta_keywords($helper->getConfig('keywords').', '. \implode(', ', $keywords));
 unset($keywords);
 // description
-wgsitenotice_meta_description(_MA_WGSITENOTICE_DESC);
+wgsitenotice_meta_description(\_MA_WGSITENOTICE_DESC);
 //
 $GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGSITENOTICE_URL.'/contents.php');
 //

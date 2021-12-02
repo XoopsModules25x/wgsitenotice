@@ -20,12 +20,12 @@
  * @version         $Id: 1.0 main.php 1 Fri 2015/02/20 12:43:29Z Goffy / wedega.com / XOOPS Development Team $
  */
 // ---------------- Main ----------------
-define('_MA_WGSITENOTICE_INDEX', "Accueil");
-define('_MA_WGSITENOTICE_TITLE', "Notification du site");
-define('_MA_WGSITENOTICE_DESC', "Ce module créé un site avec mentions légales (marque, vie privée, protection de données, ...)");
-define('_MA_WGSITENOTICE_INDEX_DESC', "");
+\define('_MA_WGSITENOTICE_INDEX', "Accueil");
+\define('_MA_WGSITENOTICE_TITLE', "Notification du site");
+\define('_MA_WGSITENOTICE_DESC', "Ce module créé un site avec mentions légales (marque, vie privée, protection de données, ...)");
+\define('_MA_WGSITENOTICE_INDEX_DESC', "");
 //index.php
-define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', "Il n'y a actuellement pas de version disponible !");
+\define('_MA_WGSITENOTICE_THEREARENT_VERSIONS', "Il n'y a actuellement pas de version disponible !");
 // Admin link
-define('_MA_WGSITENOTICE_ADMIN', "Administrateur");
+\define('_MA_WGSITENOTICE_ADMIN', "Administrateur");
 // ---------------- End ----------------
