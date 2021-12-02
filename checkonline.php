@@ -19,31 +19,34 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
+use XoopsModules\Wgsitenotice\Helper;
+
+$helper = Helper::getInstance();
 echo "<?xml version='1.0' encoding='utf-8'?>\n";
 
 /* <?xml version="1.0" encoding="utf-8"?> */
 echo "<document>\n";
 echo "<status_connect>successful</status_connect>\n";
-include dirname(dirname(__DIR__)) . '/mainfile.php';
-$dirname = basename(__DIR__);
+include \dirname(\dirname(__DIR__)) . '/mainfile.php';
+$dirname = \basename(__DIR__);
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+\defined('\XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-require_once XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
+require_once \XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
 
 $version_id = XoopsRequest::getString('version_id', 0);
 echo '<version_id>' . $version_id . "</version_id>\n";
 
-$oc_allowed = $wgsitenotice->getConfig('wgsitenotice_oc_allowed');
+$oc_allowed = $helper->getConfig('wgsitenotice_oc_allowed');
 
 if ($oc_allowed == 1) {
     //download of my version is allowed
     echo "<status_access>allowed</status_access>\n";
-    $version_crit = new CriteriaCompo();
+    $version_crit = new \CriteriaCompo();
     $version_crit->setSort('version_id ASC, version_name');
     $version_crit->setOrder('ASC');
-    if ($version_id > 0) $version_crit->add(new Criteria('version_id', $version_id));
-    $version_crit->add(new Criteria('version_online', '1'));
+    if ($version_id > 0) $version_crit->add(new \Criteria('version_id', $version_id));
+    $version_crit->add(new \Criteria('version_online', '1'));
     $versions_rows = $versionsHandler->getCount($version_crit);
     echo '<versions_rows>' . $versions_rows . "</versions_rows>\n";
     $versions_arr = $versionsHandler->getAll($version_crit);
@@ -51,7 +54,7 @@ if ($oc_allowed == 1) {
     if ($versions_rows > 0)
     {
         echo "<versions>\n";
-        foreach (array_keys($versions_arr) as $i) {
+        foreach (\array_keys($versions_arr) as $i) {
             echo "\t<version>\n";
             echo "\t<version_id>".$versions_arr[$i]->getVar('version_id')."</version_id>\n";
             echo "\t<version_name>".$versions_arr[$i]->getVar('version_name')."</version_name>\n";
@@ -62,15 +65,15 @@ if ($oc_allowed == 1) {
 
             if ($version_id > 0) {
                 echo "\t\t<contents>\n";
-                $cont_crit = new CriteriaCompo();
+                $cont_crit = new \CriteriaCompo();
                 $cont_crit->setSort('cont_weight');
                 $cont_crit->setOrder('ASC');
-                $cont_crit->add(new Criteria('cont_version_id', $version_id));
+                $cont_crit->add(new \Criteria('cont_version_id', $version_id));
                 $contents_rows = $contentsHandler->getCount($cont_crit);
                 $contents_arr = $contentsHandler->getAll($cont_crit);
                 unset($cont_crit);
                 if ($contents_rows > 0) {
-                    foreach (array_keys($contents_arr) as $j) {
+                    foreach (\array_keys($contents_arr) as $j) {
                         echo "\t\t\t<content>\n";
                         echo "\t\t\t\t<cont_id>".$contents_arr[$j]->getVar('cont_id')."</cont_id>\n";
                         echo "\t\t\t\t<cont_version_id>".$contents_arr[$j]->getVar('cont_version_id')."</cont_version_id>\n";
@@ -98,6 +101,6 @@ function text2xml ($xml) {
     // replace html tags e.g. in case of links in the text
     $search = array('<', '>', '"');
     $replace  = array('&lt;', '&gt;', '&quot;');
-    $str = str_replace($search, $replace, (string)$xml);
+    $str = \str_replace($search, $replace, (string)$xml);
     return $str;
 }

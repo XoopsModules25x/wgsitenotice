@@ -19,14 +19,14 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 //
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
 // Copy base file
 $indexFile = XOOPS_UPLOAD_PATH.'/index.html';
 $blankFile = XOOPS_UPLOAD_PATH.'/blank.gif';
 // Making of "uploads/wgsitenotice" folder
-$wgsitenotice = XOOPS_UPLOAD_PATH.'/wgsitenotice';
-if(!is_dir($wgsitenotice))
-    mkdir($wgsitenotice, 0777);
+$helper = XOOPS_UPLOAD_PATH.'/wgsitenotice';
+if(!\is_dir($wgsitenotice))
+    \mkdir($wgsitenotice, 0777);
     chmod($wgsitenotice, 0777);
-copy($indexFile, $wgsitenotice.'/index.html');
+\copy($indexFile, $helper.'/index.html');
 // ---------- Install Footer ---------- //

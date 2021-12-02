@@ -18,24 +18,27 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
-require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+
+use XoopsModules\Wgsitenotice\Helper;
+
+include __DIR__ . '/preloads/autoloader.php';
+
+require_once \dirname(\dirname(__DIR__)) . '/mainfile.php';
 $dirname = $GLOBALS['xoopsModule']->getVar('dirname');
-$pathname = XOOPS_ROOT_PATH. '/modules/'.$dirname;
+$pathname = \XOOPS_ROOT_PATH. '/modules/'.$dirname;
 include_once $pathname . '/include/common.php';
 // Get instance of module
-$wgsitenotice = WgsitenoticeHelper::getInstance();
+$helper = Helper::getInstance();
 // versions
-$versionsHandler = $wgsitenotice->getHandler('versions');
+$versionsHandler = $helper->getHandler('Versions');
 // contents
-$contentsHandler = $wgsitenotice->getHandler('contents');
+$contentsHandler = $helper->getHandler('Contents');
 // checkonline
-
-/** $var WgsitenoticeCheckonline $checkonlineHandler */
-$checkonlineHandler = $wgsitenotice->getHandler('checkonline');
+$checkonlineHandler = $helper->getHandler('Checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
 $style = WGSITENOTICE_URL . '/assets/css/style.css';
-if(file_exists($style)) { return true; }
+if(\file_exists($style)) { return true; }
 //
 $sysPathIcon16 = $GLOBALS['xoopsModule']->getInfo('sysicons16');
 $sysPathIcon32 = $GLOBALS['xoopsModule']->getInfo('sysicons32');
@@ -44,5 +47,5 @@ $pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
 $modPathIcon16 = $xoopsModule->getInfo('modicons16');
 $modPathIcon32 = $xoopsModule->getInfo('modicons32');
 //
-xoops_loadLanguage('modinfo', $dirname);
-xoops_loadLanguage('main', $dirname);
+\xoops_loadLanguage('modinfo', $dirname);
+\xoops_loadLanguage('main', $dirname);

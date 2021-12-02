@@ -18,6 +18,11 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
+use XoopsModules\Wgsitenotice\Helper;
+
+$helper = Helper::getInstance();
+
 $GLOBALS['xoopsTpl']->assign('sysPathIcon32', $sysPathIcon32);
 $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
 $GLOBALS['xoopsTpl']->assign('adv', xoops_getModuleOption('advertise', $dirname));
@@ -26,8 +31,8 @@ $GLOBALS['xoopsTpl']->assign('bookmarks', xoops_getModuleOption('bookmarks', $di
 $GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname));
 //
 $GLOBALS['xoopsTpl']->assign('admin', WGSITENOTICE_ADMIN);
-if ( $wgsitenotice->getConfig('show_copyright') ) {
+if ( $helper->getConfig('show_copyright') ) {
     $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 }
 // User footer
-include_once XOOPS_ROOT_PATH.'/footer.php';
+include_once \XOOPS_ROOT_PATH.'/footer.php';

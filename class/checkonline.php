@@ -1,4 +1,7 @@
 <?php
+
+namespace XoopsModules\Wgsitenotice;
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -18,16 +21,17 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
-defined('XOOPS_ROOT_PATH') || exit('Restricted access');
+
+use XoopsModules\Wgsitenotice\Helper;
+
+\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+
 /**
- * Class Object WgsitenoticeCheckonline
+ * Class Object Checkonline
  */
-class WgsitenoticeCheckonline extends XoopsObject
+class Checkonline extends \XoopsObject
 {
-    /**
-    * @var mixed
-    */
-    private $wgsitenotice = null;
+
     /**
      * Constructor
      *
@@ -35,14 +39,13 @@ class WgsitenoticeCheckonline extends XoopsObject
      */
     public function __construct()
     {
-        $this->wgsitenotice = WgsitenoticeHelper::getInstance();
-        $this->initVar('oc_server', XOBJ_DTYPE_TXTBOX);
+        $this->initVar('oc_server', \XOBJ_DTYPE_TXTBOX);
     }
 
     /**
      * @static function &getInstance
      * @param null
-     * @return WgsitenoticeCheckonline
+     * @return Checkonline
      */
     public static function getInstance()
     {
@@ -57,167 +60,26 @@ class WgsitenoticeCheckonline extends XoopsObject
      * Get form
      *
      * @param mixed $action
-     * @return XoopsThemeForm
+     * @return \XoopsThemeForm
      */
     public function getForm($action = false)
     {
+        $helper = Helper::getInstance();
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = sprintf(_AM_WGSITENOTICE_OC_FORM);
+        $title = \sprintf(\_AM_WGSITENOTICE_OC_FORM);
         // Get Theme Form
-        xoops_load('XoopsFormLoader');
-        $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
+        \xoops_load('XoopsFormLoader');
+        $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
-        $oc_server = $this->wgsitenotice->getConfig('wgsitenotice_oc_server').'checkonline.php';
+        $oc_server = $helper->getConfig('wgsitenotice_oc_server').'checkonline.php';
         // Form Text oc_server
-        $form->addElement( new XoopsFormText(_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
+        $form->addElement( new \XoopsFormText(\_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
         // Send
-        $form->addElement(new XoopsFormHidden('op', 'checkonline'));
-        $form->addElement(new XoopsFormButton('', 'submit', _AM_WGSITENOTICE_OC_START, 'submit'));
+        $form->addElement(new \XoopsFormHidden('op', 'checkonline'));
+        $form->addElement(new \XoopsFormButton('', 'submit', \_AM_WGSITENOTICE_OC_START, 'submit'));
         return $form;
-    }
-}
-
-/**
- * Class Object Handler WgsitenoticeCheckonline
- */
-class WgsitenoticeCheckonlineHandler extends XoopsPersistableObjectHandler
-{
-    /**
-     * Constructor
-     *
-     * @param string $db
-     */
-    public function __construct($db)
-    {
-        parent::__construct($db, 'mod_wgsitenotice_checkonline', 'wgsitenoticecheckonline', 'onl_id', 'onl_text1');
-    }
-
-    /**
-     * request data from given website
-     *
-     * @param $oc_server
-     * @return string result of http post
-     */
-    public function getData($oc_server) {
-
-        $postdata = http_build_query(
-            array(
-                'ptype' => 'get-data'
-            )
-        );
-
-        if (function_exists('curl_init')) {
-            //open connection
-            $ch = curl_init();
-
-            //set the url, number of POST vars, POST data
-            curl_setopt($ch, CURLOPT_URL, $oc_server);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 25);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 25);
-            curl_setopt($ch, CURLOPT_VERBOSE, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
-
-            //execute post
-            $result = curl_exec($ch);
-            // print_r(curl_getinfo($ch));
-            if ($result == FALSE)  {
-                echo '<br>unexpected curl_error:' . curl_error($ch) . '<br>';
-            }
-
-            curl_close($ch);
-        } else {
-            $opts = array('http' =>
-                        array(
-                            'method'  => 'POST',
-                            'header'  => 'Content-type: application/x-www-form-urlencoded',
-                            'content' => $postdata
-                        )
-                    );
-
-            $context  = stream_context_create($opts);
-            $result = file_get_contents($oc_server, false, $context);
-        }
-        return $result;
-    }
-
-    /**
-     * read the given xml string (by getData) and create and array
-     *
-     * @param string $xml_string
-     * @return SimpleXMLElement $xml_arr
-     */
-    public function readXML($xml_string){
-        // creating temporary string for avoiding entitiy errors
-        $xml_string = str_replace('&', '[[avoid_entity_error]]', $xml_string);
-        //$search = array('<', '>', '"', '&');
-        //$replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
-        //$xml_string = str_replace($search, $replace, (string)$xml_string);
-        $xml_arr = simplexml_load_string($xml_string);
-        if (!$xml_arr) {
-            //error when loading xml
-            $xml = explode("\n", $xml_string);
-            $errors = libxml_get_errors();
-            foreach ($errors as $error) {
-                echo $this->display_xml_error($error, $xml);
-            }
-            libxml_clear_errors();
-        }
-        return $xml_arr;
-    }
-
-    /**
-     * convert xml content to html text
-     *
-     * @param string $xml
-     * @return Array from xml
-     */
-    public function xml2str($xml){
-        // replace temporary string for avoiding entitiy errors
-        $str = str_replace('[[avoid_entity_error]]', '&', (string)$xml);
-        // rebuild html tags
-        $search  = array('&lt;', '&gt;', '&quot;', '&amp;');
-        $replace = array('<', '>', '"', '&');
-        $str = str_replace($search, $replace, (string)$str);
-        return $str;
-    }
-
-    /**
-     * @param $error
-     * @param $xml
-     * @return string
-     */
-    public function display_xml_error($error, $xml)
-    {
-        $return  = $xml[$error->line - 1] . "\n";
-        $return .= str_repeat('-', $error->column) . "^\n";
-
-        switch ($error->level) {
-            case LIBXML_ERR_WARNING:
-                $return .= "Warning $error->code: ";
-                break;
-            case LIBXML_ERR_ERROR:
-                $return .= "Error $error->code: ";
-                break;
-            case LIBXML_ERR_FATAL:
-                $return .= "Fatal Error $error->code: ";
-                break;
-        }
-
-        $return .= trim($error->message) .
-                   "\n  Line: $error->line" .
-                   "\n  Column: $error->column";
-
-        if ($error->file) {
-            $return .= "\n  File: $error->file";
-        }
-
-        return "$return\n\n--------------------------------------------\n\n";
     }
 }
