@@ -31,10 +31,7 @@ use XoopsModules\Wgsitenotice\Helper;
  */
 class Versions extends \XoopsObject
 {
-    /*
-    * @var mixed
-    */
-    private $helper = null;
+
     /**
      * Constructor
      *
@@ -82,8 +79,6 @@ class Versions extends \XoopsObject
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
-        // Versions handler
-        //$versionsHandler = $helper->getHandler('versions');
         // Form Text version_name
         $form->addElement( new \XoopsFormText(\_AM_WGSITENOTICE_VERSION_NAME, 'version_name', 50, 255, $this->getVar('version_name')), true );
         // Form Text version_lang
@@ -114,7 +109,7 @@ class Versions extends \XoopsObject
         //$form->addElement( new \XoopsFormTextDateSelect(\_AM_WGSITENOTICE_VERSION_DATE, 'version_date', '', $this->getVar('version_date')), true );
         // Send
         $form->addElement(new \XoopsFormHidden('op', 'save'));
-        $form->addElement(new \XoopsFormButtonTray('', _SUBMIT, 'submit', '', false));
+        $form->addElement(new \XoopsFormButtonTray('', \_SUBMIT, 'submit', '', false));
         return $form;
     }
 }

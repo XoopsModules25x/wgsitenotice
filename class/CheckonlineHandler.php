@@ -47,7 +47,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      */
     public function getData($oc_server) {
 
-        $postdata = http_build_query(
+        $postdata = \http_build_query(
             array(
                 'ptype' => 'get-data'
             )
@@ -85,17 +85,17 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
                 )
             );
 
-            $context  = stream_context_create($opts);
+            $context  = \stream_context_create($opts);
             $result = \file_get_contents($oc_server, false, $context);
         }
         return $result;
     }
 
     /**
-     * read the given xml string (by getData) and create and array
+     * read the given xml string (by getData) and create an array
      *
      * @param string $xml_string
-     * @return SimpleXMLElement $xml_arr
+     * @return array
      */
     public function readXML($xml_string){
         // creating temporary string for avoiding entitiy errors
@@ -103,16 +103,17 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
         //$search = array('<', '>', '"', '&');
         //$replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
         //$xml_string = \str_replace($search, $replace, (string)$xml_string);
-        $xml_arr = simplexml_load_string($xml_string);
+        $xml_arr = \simplexml_load_string($xml_string);
         if (!$xml_arr) {
             //error when loading xml
             $xml = \explode("\n", $xml_string);
-            $errors = libxml_get_errors();
+            $errors = \libxml_get_errors();
             foreach ($errors as $error) {
                 echo $this->display_xml_error($error, $xml);
             }
-            libxml_clear_errors();
+            \libxml_clear_errors();
         }
+
         return $xml_arr;
     }
 
@@ -120,14 +121,14 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      * convert xml content to html text
      *
      * @param string $xml
-     * @return Array from xml
+     * @return string
      */
     public function xml2str($xml){
         // replace temporary string for avoiding entitiy errors
         $str = \str_replace('[[avoid_entity_error]]', '&', (string)$xml);
         // rebuild html tags
-        $search  = array('&lt;', '&gt;', '&quot;', '&amp;');
-        $replace = array('<', '>', '"', '&');
+        $search  = ['&lt;', '&gt;', '&quot;', '&amp;'];
+        $replace = ['<', '>', '"', '&'];
         $str = \str_replace($search, $replace, (string)$str);
         return $str;
     }
