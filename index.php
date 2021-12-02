@@ -18,9 +18,11 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
-include_once __DIR__ . '/header.php';
 
+use Xmf\Request;
 use XoopsModules\Wgsitenotice\Helper;
+
+include_once __DIR__ . '/header.php';
 
 $helper = Helper::getInstance();
 
@@ -33,7 +35,7 @@ $xoTheme->addStylesheet( $style );
 
 $breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
 
-$version_id = XoopsRequest::getInt('version_id', 0);
+$version_id = Request::getInt('version_id');
 
 $criteriaVersions = new \CriteriaCompo();
 $criteriaVersions->setSort('version_weight');

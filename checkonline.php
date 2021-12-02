@@ -19,6 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
+use Xmf\Request;
 use XoopsModules\Wgsitenotice\Helper;
 
 $helper = Helper::getInstance();
@@ -34,7 +35,7 @@ $dirname = \basename(__DIR__);
 
 require_once \XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
 
-$version_id = XoopsRequest::getString('version_id', 0);
+$version_id = Request::getInt('version_id');
 echo '<version_id>' . $version_id . "</version_id>\n";
 
 $oc_allowed = $helper->getConfig('wgsitenotice_oc_allowed');

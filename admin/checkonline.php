@@ -19,11 +19,13 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
+use Xmf\Request;
+
 include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
-$op = XoopsRequest::getString('op', 'default');
+$op = Request::getString('op', 'default');
 
-$oc_server = XoopsRequest::getString('oc_server', 'default');
+$oc_server = Request::getString('oc_server', 'default');
 if ($oc_server === 'default') {
   $oc_server = $helper->getConfig('wgsitenotice_oc_server').'checkonline.php';
 }
@@ -42,7 +44,7 @@ switch ($op)
 {
     case 'download':
         // Request version_id
-        $version_id = XoopsRequest::getInt('version_id', 0);
+        $version_id = Request::getInt('version_id');
         if ($version_id == 0) {
             $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_INVALID_PARAM);
             break;

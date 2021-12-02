@@ -18,12 +18,15 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
+use Xmf\Request;
+
 include_once __DIR__ . '/header.php';
 
 // the value of arguments in URL$
-$op         = XoopsRequest::getString('op', 'list');
-$version_id = XoopsRequest::getInt('version_id');
-$start      = XoopsRequest::getInt('start', 0);
+$op         = Request::getString('op', 'list');
+$version_id = Request::getInt('version_id');
+$start      = Request::getInt('start');
 
 $img_yes = "<img src='../".$modPathIcon16."/on.png' >";
 $img_no  = "<img src='../".$modPathIcon16."/off.png' >";
@@ -75,7 +78,7 @@ switch ($op)
             }
             if ( $versions_rows > $limit ) {
                 include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
-                $pagenav = new XoopsPageNav($versions_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $pagenav = new \XoopsPageNav($versions_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
@@ -106,19 +109,19 @@ switch ($op)
         }
         // Set Vars
         // Set Var version_name
-        $versionsObj->setVar('version_name', XoopsRequest::getString('version_name', ''));
+        $versionsObj->setVar('version_name', Request::getString('version_name'));
         // Set Var version_lang
-        $versionsObj->setVar('version_lang', XoopsRequest::getString('version_lang', ''));
+        $versionsObj->setVar('version_lang', Request::getString('version_lang'));
         // Set Var version_descr
-        $versionsObj->setVar('version_descr', XoopsRequest::getString('version_descr', ''));
+        $versionsObj->setVar('version_descr', Request::getString('version_descr'));
         // Set Var version_author
-        $versionsObj->setVar('version_author', XoopsRequest::getString('version_author', ''));
+        $versionsObj->setVar('version_author', Request::getString('version_author'));
         // Set Var version_weight
-        $versionsObj->setVar('version_weight', XoopsRequest::getInt('version_weight', 0));
+        $versionsObj->setVar('version_weight', Request::getInt('version_weight'));
         // Set Var version_current
-        $versionsObj->setVar('version_current', XoopsRequest::getInt('version_current', 0));
+        $versionsObj->setVar('version_current', Request::getInt('version_current'));
         // Set Var version_online
-        $versionsObj->setVar('version_online', XoopsRequest::getInt('version_online', 0));
+        $versionsObj->setVar('version_online', Request::getInt('version_online'));
         // Set Var version_date
         $versionsObj->setVar('version_date', \time());
         // Insert Data
@@ -191,7 +194,7 @@ switch ($op)
     break;
 
     case 'order':
-        $vorder = XoopsRequest::getArray('vorder', array());
+        $vorder = Request::getArray('vorder');
         for ($i = 0, $iMax = \count($vorder); $i < $iMax; $i++){
             $versionsObj = $versionsHandler->get($vorder[$i]);
             $versionsObj->setVar('version_weight',$i+1);

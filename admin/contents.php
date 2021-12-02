@@ -18,19 +18,22 @@
  * @min_xoops       2.5.7
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
+use Xmf\Request;
+
 include_once __DIR__ . '/header.php';
 //It recovered the value of argument op in URL$
-$op = XoopsRequest::getString('op', 'list');
+$op = Request::getString('op', 'list');
 // Request cont_id
-$cont_id = XoopsRequest::getInt('cont_id');
+$cont_id = Request::getInt('cont_id');
 // Switch options
 switch ($op)
 {
     case 'list':
     default:
         $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-contents.js');
-        $start = XoopsRequest::getInt('start', 0);
-        $limit = XoopsRequest::getInt('limit', $helper->getConfig('adminpager'));
+        $start = Request::getInt('start');
+        $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $template_main = 'wgsitenotice_admin_contents.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
         $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
@@ -87,7 +90,7 @@ switch ($op)
             }
             if ( $contents_rows > $limit ) {
                 include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
-                $pagenav = new XoopsPageNav($contents_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
+                $pagenav = new \XoopsPageNav($contents_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
                 $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
             }
         } else {
@@ -115,15 +118,15 @@ switch ($op)
         }
         // Set Vars
         // Set Var cont_version_id
-        $contentsObj->setVar('cont_version_id', XoopsRequest::getInt('cont_version_id'));
+        $contentsObj->setVar('cont_version_id', Request::getInt('cont_version_id'));
         // Set Var cont_header
-        $contentsObj->setVar('cont_header', XoopsRequest::getString('cont_header', ''));
+        $contentsObj->setVar('cont_header', Request::getString('cont_header'));
         // Set Var cont_text
         //fix for avoid hiding empty paragraphs in some browsers (instead of: $contentsObj->setVar('cont_weight', $_POST['cont_weight']);
-        $cont_text =  XoopsRequest::getString('cont_text', '', 'default', 2);
+        $cont_text =  Request::getString('cont_text', '', 'default', 2);
         $contentsObj->setVar('cont_text', \preg_replace('/<p><\/p>/', '<p>&nbsp;</p>', $cont_text));
         // Set Var cont_weight
-        $contentsObj->setVar('cont_weight', XoopsRequest::getInt('cont_weight'));
+        $contentsObj->setVar('cont_weight', Request::getInt('cont_weight'));
         // Set Var cont_date
         $contentsObj->setVar('cont_date', \time());
         // Insert Data
@@ -163,7 +166,7 @@ switch ($op)
     break;
 
     case 'order':
-        $corder = XoopsRequest::getArray('corder', array());
+        $corder = Request::getArray('corder');
         for ($i = 0, $iMax = \count($corder); $i < $iMax; $i++){
             $contentsObj = $contentsHandler->get($corder[$i]);
             $contentsObj->setVar('cont_weight',$i+1);
