@@ -28,7 +28,7 @@ echo "<?xml version='1.0' encoding='utf-8'?>\n";
 /* <?xml version="1.0" encoding="utf-8"?> */
 echo "<document>\n";
 echo "<status_connect>successful</status_connect>\n";
-include \dirname(\dirname(__DIR__)) . '/mainfile.php';
+include \dirname(__DIR__, 2) . '/mainfile.php';
 $dirname = \basename(__DIR__);
 
 \defined('\XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');

@@ -23,7 +23,7 @@ use XoopsModules\Wgsitenotice\Helper;
 
 include __DIR__ . '/preloads/autoloader.php';
 
-require_once \dirname(\dirname(__DIR__)) . '/mainfile.php';
+require_once \dirname(__DIR__, 2) . '/mainfile.php';
 $dirname = $GLOBALS['xoopsModule']->getVar('dirname');
 $pathname = \XOOPS_ROOT_PATH. '/modules/'.$dirname;
 include_once $pathname . '/include/common.php';
