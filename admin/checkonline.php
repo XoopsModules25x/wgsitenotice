@@ -26,7 +26,7 @@ include_once __DIR__ . '/header.php';
 $op = Request::getString('op', 'default');
 
 $oc_server = Request::getString('oc_server', 'default');
-if ($oc_server === 'default') {
+if ('default' === $oc_server) {
   $oc_server = $helper->getConfig('wgsitenotice_oc_server').'checkonline.php';
 }
 
@@ -45,7 +45,7 @@ switch ($op)
     case 'download':
         // Request version_id
         $version_id = Request::getInt('version_id');
-        if ($version_id == 0) {
+        if (0 == $version_id) {
             $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_INVALID_PARAM);
             break;
         }
@@ -61,7 +61,7 @@ switch ($op)
             echo $oc_server.'?version_id='.$version_id;
             echo $xml_arr->status_access;
 
-            if ($xml_arr->status_access == 'allowed') {
+            if ('allowed' == $xml_arr->status_access) {
                 //download is allowed by the owner of the named server and save in table mod_wgsitenotice_versions
                 foreach ($xml_arr->versions->version as $onlineversion) {
                     //first create version
@@ -97,7 +97,7 @@ switch ($op)
                         }
                     }
                 }
-            } else if ($xml_arr->status_access === 'forbidden') {
+            } else if ('forbidden' == $xml_arr->status_access) {
                 $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_CONNECT));
@@ -119,7 +119,7 @@ switch ($op)
             $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_READ_XML));
         } else {
             // echo "<br/>status_access:".$xml_arr->status_access;
-            if ($xml_arr->status_access == 'allowed') {
+            if ('allowed' == $xml_arr->status_access) {
                 if ($xml_arr->versions_rows > 0) {
                     //download is allowed by the owner of the named server
                     foreach ($xml_arr->versions->version as $onlineversion) {
@@ -134,7 +134,7 @@ switch ($op)
                 } else {
                     $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_NO_VERSIONS);
                 }
-            } else if ($xml_arr->status_access === 'forbidden') {
+            } else if ('forbidden' == $xml_arr->status_access) {
                 $GLOBALS['xoopsTpl']->assign('error',\_AM_WGSITENOTICE_OC_ERR_FORBIDDEN);
             } else {
                 $GLOBALS['xoopsTpl']->assign('error',\str_replace('%s', $oc_server, \_AM_WGSITENOTICE_OC_ERR_CONNECT));

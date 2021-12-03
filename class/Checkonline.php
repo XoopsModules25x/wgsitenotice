@@ -65,7 +65,7 @@ class Checkonline extends \XoopsObject
     public function getForm($action = false)
     {
         $helper = Helper::getInstance();
-        if ($action === false) {
+        if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
