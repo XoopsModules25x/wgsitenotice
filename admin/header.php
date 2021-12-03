@@ -21,7 +21,7 @@
 
 use XoopsModules\Wgsitenotice\Helper;
 
-require_once \dirname(\dirname(\dirname(__DIR__))). '/include/cp_header.php';
+require_once \dirname(__DIR__, 3). '/include/cp_header.php';
 $thisPath = \dirname(__DIR__);
 include_once $thisPath.'/include/common.php';
 $sysPathIcon16 = '../' . $xoopsModule->getInfo('sysicons16');
