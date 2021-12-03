@@ -40,7 +40,7 @@ echo '<version_id>' . $version_id . "</version_id>\n";
 
 $oc_allowed = $helper->getConfig('wgsitenotice_oc_allowed');
 
-if ($oc_allowed == 1) {
+if (1 == $oc_allowed) {
     //download of my version is allowed
     echo "<status_access>allowed</status_access>\n";
     $version_crit = new \CriteriaCompo();

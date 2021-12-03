@@ -68,9 +68,9 @@ switch ($op)
                 // Get Var version_weight
                 $version['weight'] = $versions_arr[$i]->getVar('version_weight');
                 // Get Var version_current
-                $version['current'] = $versions_arr[$i]->getVar('version_current')==1 ? $img_yes : $img_no;
+                $version['current'] = (1 == $versions_arr[$i]->getVar('version_current')) ? $img_yes : $img_no;
                 // Get Var version_online
-                $version['online'] = $versions_arr[$i]->getVar('version_online')==1 ? $img_yes : $img_no;
+                $version['online'] = (1 == $versions_arr[$i]->getVar('version_online')) ? $img_yes : $img_no;
                 // Get Var version_date
                 $version['date'] = \formatTimestamp($versions_arr[$i]->getVar('version_date'));
                 $GLOBALS['xoopsTpl']->append('versions_list', $version);
@@ -137,7 +137,7 @@ switch ($op)
         if (isset($version_id)) {
             $versionsObj = $versionsHandler->get($version_id);
             // get Vars
-            $version_current = ($versionsObj->getVar('version_current') == 1) ? '0' : '1';
+            $version_current = (1 == $versionsObj->getVar('version_current')) ? '0' : '1';
             // Set Var version_current
             $versionsObj->setVar('version_current', $version_current);
             // Insert Data
@@ -150,7 +150,7 @@ switch ($op)
         if (isset($version_id)) {
             $versionsObj = $versionsHandler->get($version_id);
             // get Vars
-            $version_online = ($versionsObj->getVar('version_online') == 1) ? '0' : '1';
+            $version_online = (1 == $versionsObj->getVar('version_online')) ? '0' : '1';
             // Set Var version_online
             $versionsObj->setVar('version_online', $version_online);
             // Insert Data
@@ -172,7 +172,7 @@ switch ($op)
     break;
     case 'delete':
         $versionsObj = $versionsHandler->get($version_id);
-        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+        if (isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if ( !$GLOBALS['xoopsSecurity']->check() ) {
                 \redirect_header('versions.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
@@ -189,7 +189,7 @@ switch ($op)
                 echo $versionsObj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'version_id' => $version_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], \sprintf(\_AM_WGSITENOTICE_FORMSUREDEL, $versionsObj->getVar('version_name')));
+            xoops_confirm(['ok' => 1, 'version_id' => $version_id, 'op' => 'delete'], $_SERVER['REQUEST_URI'], \sprintf(\_AM_WGSITENOTICE_FORMSUREDEL, $versionsObj->getVar('version_name')));
         }
     break;
 

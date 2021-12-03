@@ -70,7 +70,7 @@ class Versions extends \XoopsObject
     {
         $helper = Helper::getInstance();
 
-        if ($action === false) {
+        if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title

@@ -151,7 +151,7 @@ switch ($op)
     break;
     case 'delete':
         $contentsObj = $contentsHandler->get($cont_id);
-        if (isset($_REQUEST['ok']) && $_REQUEST['ok'] == 1) {
+        if (\isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
             if ( !$GLOBALS['xoopsSecurity']->check() ) {
                 \redirect_header('contents.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
@@ -161,7 +161,7 @@ switch ($op)
                 echo $contentsObj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'), $_SERVER['REQUEST_URI'], \sprintf(\_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' (' . $contentsObj->getVar('cont_weight') . ')'));
+            xoops_confirm(['ok' => 1, 'cont_id' => $cont_id, 'op' => 'delete'], $_SERVER['REQUEST_URI'], \sprintf(\_AM_WGSITENOTICE_FORMSUREDEL, $contentsObj->getVar('cont_header', 'n') . ' (' . $contentsObj->getVar('cont_weight') . ')'));
         }
     break;
 

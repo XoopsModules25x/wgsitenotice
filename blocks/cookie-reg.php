@@ -59,7 +59,7 @@ function b_wgsitenotice_cookie_reg_show($options)
 
     $block['infotext'] = \_MB_WGSITENOTICE_COOKIE_REG_INFO;
 
-    if ($display_type == "smarty") {
+    if ("smarty" == $display_type) {
         if ('top' == $position) {
             $block['position'] = 'top:0px;position:fixed;left:0px;';
             $block['prependToBody'] = '1';
@@ -89,7 +89,7 @@ function b_wgsitenotice_cookie_reg_show($options)
     }
     $tplSource = \XOOPS_ROOT_PATH.'/modules/wgsitenotice/templates/blocks/wgsitenotice_block_cookie_reg.tpl';
 
-    if ($display_type == "smarty") {
+    if ("smarty" == $display_type) {
         //hide block and show in theme.html defined position
         $blockTpl = new \XoopsTpl();
         $blockTpl->assign('block', $block);

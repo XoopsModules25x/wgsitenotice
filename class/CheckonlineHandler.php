@@ -71,7 +71,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             //execute post
             $result = \curl_exec($ch);
             // print_r(\curl_getinfo($ch));
-            if ($result == FALSE)  {
+            if (false == $result)  {
                 echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
             }
 

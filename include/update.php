@@ -86,7 +86,7 @@ function update_wgsitenotice_v128(&$module)
         }
     }
 
-    return ($errors == 0);
+    return (0 == $errors);
 }
 
 /**
@@ -105,7 +105,7 @@ function update_wgsitenotice_v130(&$module)
 		$errors++;
 	}
 
-    return ($errors == 0);
+    return (0 == $errors);
 }
 
 function tableExists($tablename)

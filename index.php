@@ -84,7 +84,7 @@ if ($versions_count > 0) {
 
 /* create breadcrumb */
 $breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
-if ($breadcrumb_subdir == '') {
+if ('' == $breadcrumb_subdir) {
     $breadcrumb .= $xoopsModule->name();
 } else {
     $breadcrumb .='<a href="' . WGSITENOTICE_URL . '">' . $xoopsModule->name() . '</a>  &raquo; ' . $breadcrumb_subdir;
