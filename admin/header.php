@@ -52,8 +52,9 @@ $xoopsTpl->assign('modPathIcon16', $modPathIcon16);
 $xoopsTpl->assign('modPathIcon32', $modPathIcon32);
 
 //Load languages
-\xoops_loadLanguage('admin');
-\xoops_loadLanguage('modinfo');
+$helper->loadLanguage('admin');
+$helper->loadLanguage('modinfo');
+$helper->loadLanguage('common');
 // Local admin menu class
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 

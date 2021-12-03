@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder;
+namespace XoopsModules\Wgsitenotice;
 
 /*
  Utility Class Definition
@@ -26,7 +26,7 @@ namespace XoopsModules\Modulebuilder;
  * @since
  */
 
-use XoopsModules\Modulebuilder;
+use XoopsModules\Wgsitenotice;
 
 /**
  * Class Utility

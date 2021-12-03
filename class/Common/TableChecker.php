@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -12,7 +12,7 @@ namespace XoopsModules\Modulebuilder\Common;
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-use XoopsModules\Modulebuilder\Common;
+use XoopsModules\Wgsitenotice\Common;
 
 /**
  * Class to compare current DB table structure with sql/mysql.sql
@@ -52,7 +52,7 @@ class TableChecker extends \XoopsObject
 
 
     /**
-     * @param \XoopsModules\Modulebuilder\Common\TableChecker|null
+     * @param \XoopsModules\Wgsitenotice\Common\TableChecker|null
      * @param int $checktype
      */
     public function __construct($mydirname, $checktype = 0)

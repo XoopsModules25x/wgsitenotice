@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits

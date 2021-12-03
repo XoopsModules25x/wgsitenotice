@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -23,7 +23,7 @@ namespace XoopsModules\Modulebuilder\Common;
  * @author         Goffy - Email:<goffy@myxoops.org> - Website:<https://xoops.org>
  */
 
-use XoopsModules\Modulebuilder;
+use XoopsModules\Wgsitenotice;
 
 \defined('XOOPS_ROOT_PATH') || die('Restricted access');
 

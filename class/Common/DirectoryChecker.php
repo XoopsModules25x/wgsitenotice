@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -21,7 +21,7 @@ namespace XoopsModules\Modulebuilder\Common;
  */
 
 use Xmf\Request;
-use XoopsModules\Modulebuilder;
+use XoopsModules\Wgsitenotice;
 
 
 require_once \dirname(__DIR__, 4) . '/mainfile.php';

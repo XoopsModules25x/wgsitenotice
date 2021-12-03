@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -12,7 +12,7 @@ namespace XoopsModules\Modulebuilder\Common;
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-use XoopsModules\Modulebuilder\Common;
+use XoopsModules\Wgsitenotice\Common;
 
 /**
  * Class Migrate synchronize existing tables with target schema
@@ -29,7 +29,7 @@ class Migrate extends \Xmf\Database\Migrate
     private $renameTables;
 
     /**
-     * @param \XoopsModules\Modulebuilder\Common\Configurator|null $configurator
+     * @param \XoopsModules\Wgsitenotice\Common\Configurator|null $configurator
      */
     public function __construct(Common\Configurator $configurator = null)
     {

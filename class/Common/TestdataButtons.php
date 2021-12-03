@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -24,7 +24,7 @@ namespace XoopsModules\Modulebuilder\Common;
 
 use Xmf\Request;
 use Xmf\Yaml;
-use XoopsModules\Modulebuilder\Helper;
+use XoopsModules\Wgsitenotice\Helper;
 /** @var Helper $helper */
 
 /**

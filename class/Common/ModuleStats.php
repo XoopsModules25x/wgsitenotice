@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -22,7 +22,7 @@ namespace XoopsModules\Modulebuilder\Common;
 trait ModuleStats
 {
     /**
-     * @param \XoopsModules\Modulebuilder\Common\Configurator $configurator
+     * @param \XoopsModules\Wgsitenotice\Common\Configurator $configurator
      * @param array                                           $moduleStats
      * @return array
      */

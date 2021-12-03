@@ -72,7 +72,8 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             $result = \curl_exec($ch);
             // print_r(\curl_getinfo($ch));
             if (false == $result)  {
-                echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
+                //echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
+                $GLOBALS['xoopsTpl']->assign('error',\curl_error($ch));
             }
 
             \curl_close($ch);
@@ -109,7 +110,8 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             $xml = \explode("\n", $xml_string);
             $errors = \libxml_get_errors();
             foreach ($errors as $error) {
-                echo $this->display_xml_error($error, $xml);
+                //echo $this->display_xml_error($error, $xml);
+                $GLOBALS['xoopsTpl']->assign('error',$this->display_xml_error($error, $xml));
             }
             \libxml_clear_errors();
         }

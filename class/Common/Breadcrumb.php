@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  You may not change or alter any portion of this comment or credits
@@ -28,8 +28,8 @@ namespace XoopsModules\Modulebuilder\Common;
  * echo $breadcrumb->render();
  */
 
-use XoopsModules\Modulebuilder;
-use XoopsModules\Modulebuilder\Common;
+use XoopsModules\Wgsitenotice;
+use XoopsModules\Wgsitenotice\Common;
 
 \defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
@@ -38,8 +38,8 @@ use XoopsModules\Modulebuilder\Common;
  */
 class Breadcrumb
 {
-    public string $dirname;
-    private array $bread = [];
+    public $dirname;
+    private $bread = [];
 
     public function __construct()
     {

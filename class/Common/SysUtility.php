@@ -1,6 +1,6 @@
 <?php
 
-namespace XoopsModules\Modulebuilder\Common;
+namespace XoopsModules\Wgsitenotice\Common;
 
 /*
  Utility Class Definition
@@ -26,8 +26,8 @@ namespace XoopsModules\Modulebuilder\Common;
 use MyTextSanitizer;
 use XoopsFormDhtmlTextArea;
 use XoopsFormTextArea;
-use XoopsModules\Modulebuilder;
-use XoopsModules\Modulebuilder\Helper;
+use XoopsModules\Wgsitenotice;
+use XoopsModules\Wgsitenotice\Helper;
 
 /**
  * Class Utility
