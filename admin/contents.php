@@ -151,7 +151,7 @@ switch ($op)
     break;
     case 'delete':
         $contentsObj = $contentsHandler->get($cont_id);
-        if (\isset($_REQUEST['ok']) && 1 == $_REQUEST['ok']) {
+        if (\isset($_REQUEST['ok']) && 1 == (int)$_REQUEST['ok']) {
             if ( !$GLOBALS['xoopsSecurity']->check() ) {
                 \redirect_header('contents.php', 3, \implode(', ', $GLOBALS['xoopsSecurity']->getErrors()));
             }
