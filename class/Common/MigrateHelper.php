@@ -164,7 +164,7 @@ class MigrateHelper
     {
 
         $arrLine = \explode( '`', $line);
-        if (\is_array($arrLine)) {
+        if (\count($arrLine) > 0) {
             return $arrLine[1];
         }
 
@@ -182,11 +182,10 @@ class MigrateHelper
     {
 
         $columns = [];
-        $name = '';
 
-        $array = \explode( ' ', trim($line));
-        if (\is_array($array)) {
-            $name = \str_replace(['`'], '', $array[0]);
+        $arrCol = \explode( ' ', trim($line));
+        if (\count($arrCol) > 0) {
+            $name = \str_replace(['`'], '', $arrCol[0]);
         } else {
             return false;
         }
@@ -245,7 +244,7 @@ class MigrateHelper
             }
             $line = \trim(\str_replace(['UNIQUE KEY', 'KEY'], '', $line));
             $arrName = \explode('(', $line);
-            if (\is_array($arrName)) {
+            if (\count($arrName) > 0) {
                 $name = \str_replace(['`', ' '], '', $arrName[0]);
                 if (\strpos($name,' ') > 0) {
                     $name = "'" . $name . "'";

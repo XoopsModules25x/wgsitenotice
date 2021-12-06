@@ -33,7 +33,6 @@ use XoopsModules\Wgsitenotice\Common\ {
 
 function xoops_module_update_wgsitenotice($module, $prev_version = null)
 {
-    $ret = null;
 
     $moduleDirName = $module->dirname();
 
@@ -41,10 +40,10 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
     $migrate = new Migrate($configurator);
 
     $fileSql = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/mysql.sql';
-    // Todo: once we are using schema definition this part has to be adapted
+    // ToDo: add function setDefinitionFile to .\class\libraries\vendor\xoops\xmf\src\Database\Migrate.php
+    // Todo: once we are using setDefinitionFile this part has to be adapted
     //$fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/update_' . $moduleDirName . '_migrate.yml';
     //try {
-    // ToDo: add function setDefinitionFile to .\class\libraries\vendor\xoops\xmf\src\Database\Migrate.php
     //$migrate->setDefinitionFile('update_' . $moduleDirName);
     //} catch (\Exception $e) {
     // as long as this is not done default file has to be created
