@@ -1,0 +1,59 @@
+wgsitenotice_versions:
+    options: 'ENGINE=MyISAM'
+    columns: 
+        -
+            name: version_id
+            attributes: ' INT(8) UNSIGNED NOT NULL AUTO_INCREMENT '
+        -
+            name: version_name
+            attributes: ' VARCHAR(100) NOT NULL DEFAULT '''''''' '
+        -
+            name: version_lang
+            attributes: ' VARCHAR(50) NULL DEFAULT '''''''' '
+        -
+            name: version_descr
+            attributes: ' VARCHAR(200) NULL DEFAULT '''''''' '
+        -
+            name: version_author
+            attributes: ' VARCHAR(100) NOT NULL DEFAULT '''''''' '
+        -
+            name: version_weight
+            attributes: ' INT(8) NOT NULL DEFAULT ''0'' '
+        -
+            name: version_current
+            attributes: ' INT(1) NOT NULL DEFAULT ''0'' '
+        -
+            name: version_online
+            attributes: ' INT(1) NOT NULL DEFAULT ''0'' '
+        -
+            name: version_date
+            attributes: ' INT(8) NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: version_id
+            unique: true
+wgsitenotice_contents:
+    options: 'ENGINE=MyISAM'
+    columns: 
+        -
+            name: cont_id
+            attributes: ' INT(8)   AUTO_INCREMENT '
+        -
+            name: cont_version_id
+            attributes: ' INT(8) NOT NULL DEFAULT ''0'' '
+        -
+            name: cont_header
+            attributes: ' VARCHAR(200) NULL DEFAULT '''''''' '
+        -
+            name: cont_text
+            attributes: ' LONGTEXT NOT NULL '
+        -
+            name: cont_weight
+            attributes: ' INT(8) NOT NULL DEFAULT ''0'' '
+        -
+            name: cont_date
+            attributes: ' INT(8) NOT NULL DEFAULT ''0'' '
+    keys:
+        PRIMARY:
+            columns: cont_id
+            unique: true

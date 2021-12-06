@@ -18,6 +18,7 @@
  * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
 $dirname = \basename( \dirname(__DIR__) ) ;
 $moduleDirNameUpper = \mb_strtoupper($dirname);
 $moduleHandler = \xoops_getHandler('module');
@@ -33,21 +34,21 @@ $adminmenu[] = [
 $adminmenu[] = [
     'title' => \_MI_WGSITENOTICE_ADMENU2,
     'link'  => 'admin/versions.php',
-    'icon'  => 'assets/images/icons/32/sn_versions.png'
+    'icon'  => 'assets/icons/32/sn_versions.png'
 ];
 $adminmenu[] = [
     'title' => \_MI_WGSITENOTICE_ADMENU3,
     'link'  => 'admin/contents.php',
-    'icon'  => 'assets/images/icons/32/sn_contents.png'
+    'icon'  => 'assets/icons/32/sn_contents.png'
 ];
 $adminmenu[] = [
     'title' => \_MI_WGSITENOTICE_ADMENU4,
     'link'  => 'admin/checkonline.php',
-    'icon'  => 'assets/images/icons/32/sn_checkonline.png'
+    'icon'  => 'assets/icons/32/sn_checkonline.png'
 ];
 //Feedback
 $adminmenu[] = [
-    'title' => \constant('CO_' . $moduleDirNameUpper . '_' . 'ADMENU_FEEDBACK'),
+    'title' => \_MI_WGSITENOTICE_ADMENU6,
     'link'  => 'admin/feedback.php',
     'icon'  => $sysPathIcon32 . '/mail_foward.png',
 ];
@@ -56,5 +57,3 @@ $adminmenu[] = [
     'link'  => 'admin/about.php',
     'icon'  => $sysPathIcon32 . '/about.png',
 ];
-
-unset( $i );

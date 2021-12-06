@@ -27,6 +27,7 @@
 \define('_MI_WGSITENOTICE_ADMENU3', 'Contents');
 \define('_MI_WGSITENOTICE_ADMENU4', 'Online versions');
 \define('_MI_WGSITENOTICE_ADMENU5', 'About');
+\define('_MI_WGSITENOTICE_ADMENU6', 'Feedback');
 // ---------------- Admin Nav ----------------
 \define('_MI_WGSITENOTICE_ADMINPAGER', 'Admin pager');
 \define('_MI_WGSITENOTICE_ADMINPAGER_DESC', 'Admin per page list');

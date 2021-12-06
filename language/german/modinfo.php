@@ -27,6 +27,7 @@
 \define('_MI_WGSITENOTICE_ADMENU3', 'Inhalte');
 \define('_MI_WGSITENOTICE_ADMENU4', 'Online-Versionen');
 \define('_MI_WGSITENOTICE_ADMENU5', 'Über das Modul');
+\define('_MI_WGSITENOTICE_ADMENU6', 'Feedback');
 // ---------------- Admin Nav ----------------
 \define('_MI_WGSITENOTICE_ADMINPAGER', 'Listen Admin');
 \define('_MI_WGSITENOTICE_ADMINPAGER_DESC', 'Anzahl Einträge in Listen im Adminbereich');

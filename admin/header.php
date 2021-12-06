@@ -21,6 +21,8 @@
 
 use XoopsModules\Wgsitenotice\Helper;
 
+require \dirname(__DIR__) . '/preloads/autoloader.php';
+
 require_once \dirname(__DIR__, 3). '/include/cp_header.php';
 $thisPath = \dirname(__DIR__);
 include_once $thisPath.'/include/common.php';
