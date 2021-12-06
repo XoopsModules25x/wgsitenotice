@@ -14,11 +14,11 @@ namespace XoopsModules\Wgsitenotice;
 /**
  * wgSitenotice module for xoops
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
  * @since           1.0
- * @min_xoops       2.5.7
+ * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -72,7 +72,8 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             $result = \curl_exec($ch);
             // print_r(\curl_getinfo($ch));
             if (false == $result)  {
-                echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
+                //echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
+                $GLOBALS['xoopsTpl']->assign('error',\curl_error($ch));
             }
 
             \curl_close($ch);
@@ -109,7 +110,8 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             $xml = \explode("\n", $xml_string);
             $errors = \libxml_get_errors();
             foreach ($errors as $error) {
-                echo $this->display_xml_error($error, $xml);
+                //echo $this->display_xml_error($error, $xml);
+                $GLOBALS['xoopsTpl']->assign('error',$this->display_xml_error($error, $xml));
             }
             \libxml_clear_errors();
         }

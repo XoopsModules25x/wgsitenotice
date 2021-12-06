@@ -11,11 +11,11 @@
 /**
  * wgSitenotice module for xoops
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
  * @since           1.0
- * @min_xoops       2.5.7
+ * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 /**
@@ -24,93 +24,47 @@
  *
  * @return bool|null
  */
-function xoops_module_update_wgsitenotice(&$module, $prev_version = null)
+
+use XoopsModules\Wgsitenotice\Common\ {
+    Configurator,
+    Migrate,
+    MigrateHelper
+};
+
+function xoops_module_update_wgsitenotice($module, $prev_version = null)
 {
-    $ret = null;
-    if ($prev_version < 120) {
-        $ret = update_wgsitenotice_v120($module);
-    }
-    if ($prev_version < 128) {
-        $ret = update_wgsitenotice_v128($module);
-    }
-	if ($prev_version < 130) {
-        $ret = update_wgsitenotice_v130($module);
-    }
+
+    $moduleDirName = $module->dirname();
+
+    $configurator = new Configurator();
+    $migrate = new Migrate($configurator);
+
+    $fileSql = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/mysql.sql';
+    // ToDo: add function setDefinitionFile to .\class\libraries\vendor\xoops\xmf\src\Database\Migrate.php
+    // Todo: once we are using setDefinitionFile this part has to be adapted
+    //$fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/update_' . $moduleDirName . '_migrate.yml';
+    //try {
+    //$migrate->setDefinitionFile('update_' . $moduleDirName);
+    //} catch (\Exception $e) {
+    // as long as this is not done default file has to be created
+    $mversion = $module->getInfo('version');
+    $fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/sql/{$moduleDirName}_{$mversion}_migrate.yml";
+    //}
+
+    $migratehelper = new MigrateHelper($fileSql, $fileYaml);
+    $migratehelper->createSchemaFromSqlfile();
+
+    $migrate->getTargetDefinitions();
+    $migrate->synchronizeSchema();
+
+
+    //check upload directory
+    require_once __DIR__ . '/install.php';
+    $ret = xoops_module_install_wgsitenotice($module);
     $errors = $module->getErrors();
     foreach ($errors as $error) {
         xoops_error($error);
     }
 
     return $ret;
-}
-/**
- * @param $module
- *
- * @return bool
- */
-function update_wgsitenotice_v120(&$module)
-{
-    // add fields 'version_online' to table 'mod_wgsitenotice_versions'
-    $sql = 'ALTER TABLE `' . $GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions') . '`';
-    $sql .= " ADD COLUMN `version_online` int(1) NOT NULL default '0' AFTER `version_current`;";
-    if (!$GLOBALS['xoopsDB']->queryF($sql)) {
-        $module->setErrors(\_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />SQL command: ' . $sql);
-        return false;
-    }
-    return true;
-}
-
-/**
- * @param $module
- *
- * @return bool
- */
-function update_wgsitenotice_v128(&$module)
-{
-    // remove 'mod_' from tablename 'mod_wgsitenotice_...'
-    $errors = 0;
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions'))) {
-        $sql    = \sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_versions').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_versions'));
-        $result = $GLOBALS['xoopsDB']->queryF($sql);
-        if (!$result) {
-            $module->setErrors(\_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_versions to wgsitenotice_versions failed<br />SQL command: ' . $sql);
-            $errors++;
-        }
-    }
-    if (tableExists($GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents'))) {
-        $sql    = \sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('mod_wgsitenotice_contents').' RENAME '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents'));
-        $result = $GLOBALS['xoopsDB']->queryF($sql);
-        if (!$result) {
-            $module->setErrors(\_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />Rename table mod_wgsitenotice_contents to wgsitenotice_contents failed<br />SQL command: ' . $sql);
-            $errors++;
-        }
-    }
-
-    return (0 == $errors);
-}
-
-/**
- * @param $module
- *
- * @return bool
- */
-function update_wgsitenotice_v130(&$module)
-{
-    // increase text size for GDPR
-    $errors = 0;
-	$sql    = \sprintf('ALTER TABLE '.$GLOBALS['xoopsDB']->prefix('wgsitenotice_contents').'  CHANGE `cont_text` `cont_text` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;');
-	$result = $GLOBALS['xoopsDB']->queryF($sql);
-	if (!$result) {
-		$module->setErrors(\_MI_WGSITENOTICE_UPGRADEFAILED . '<br />Error: ' . $GLOBALS['xoopsDB']->error() . '<br />CHANGE size for cont_text failed<br />SQL command: ' . $sql);
-		$errors++;
-	}
-
-    return (0 == $errors);
-}
-
-function tableExists($tablename)
-{
-    global $xoopsDB;
-    $result=$xoopsDB->queryF("SHOW TABLES LIKE '$tablename'");
-    return($xoopsDB->getRowsNum($result) > 0);
 }

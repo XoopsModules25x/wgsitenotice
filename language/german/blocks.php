@@ -21,10 +21,10 @@
  *  @author     Goffy ( webmaster@wedega.com )
  * ****************************************************************************
  */
-\define('_MB_WGSITENOTICE_ALL_VERSIONS', 'Alle Versionen');
-\define('_MB_WGSITENOTICE_DISPLAY', 'Anzahl der Listeneinträge');
-\define('_MB_WGSITENOTICE_TITLELENGTH', 'Länge des Versionstextes (0 bedeutet kein Limit)');
-\define('_MB_WGSITENOTICE_SHOW_MORE', 'Weitere anzeigen...');
+\define('_MB_WGSITENOTICE_ALL_VERSIONS', "Alle Versionen");
+\define('_MB_WGSITENOTICE_DISPLAY', "Anzahl der Listeneinträge");
+\define('_MB_WGSITENOTICE_TITLELENGTH', "Länge des Versionstextes (0 bedeutet kein Limit)");
+\define('_MB_WGSITENOTICE_SHOW_MORE', "Weitere anzeigen...");
 // cookie regulation
 \define('_MB_WGSITENOTICE_COOKIE_REG_NONE', "Ohne");
 \define('_MB_WGSITENOTICE_COOKIE_REG_NAME', "Cookie-Name");
@@ -41,8 +41,8 @@
 \define('_MB_WGSITENOTICE_COOKIE_REG_BACKGROUND', "Hintergrundfarbe (gradient von/bis)");
 \define('_MB_WGSITENOTICE_COOKIE_REG_COLOR', "Schriftfarbe");
 \define('_MB_WGSITENOTICE_COOKIE_REG_HEIGHT', "Höhe (in Pixel)");
-\define('_MB_WGSITENOTICE_COOKIE_REG_OPT_SMARTY', "Optionen für '" . \_MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY . "'");
-\define('_MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY_DESC', "Für die korrekte Anzeige bei '" . \_MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY . "' müssen Sie folgende Smarty-Variable in Ihr Theme einbauen");
+\define('_MB_WGSITENOTICE_COOKIE_REG_OPT_SMARTY', "Options for '" . \_MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY . "'");
+\define('_MB_WGSITENOTICE_COOKIE_REG_DISPLAY_SMARTY_DESC', "Wenn Sie 'Anzeigen mit Smarty' wählen, dann müssen Sie in Ihr Theme eine Smarty-Variable mit der folgenden ID einbauen");
 \define('_MB_WGSITENOTICE_COOKIE_REG_POSITION', "Position");
 \define('_MB_WGSITENOTICE_COOKIE_REG_POSITION_TOP', "Oben");
 \define('_MB_WGSITENOTICE_COOKIE_REG_POSITION_BOTTOM', "Unten");

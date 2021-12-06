@@ -41,7 +41,7 @@ class Helper extends \Xmf\Module\Helper
     /**
      * @param bool $debug
      *
-     * @return \XoopsModules\Modulebuilder\Helper
+     * @return \XoopsModules\Wgsitenotice\Helper
      */
     public static function getInstance($debug = false)
     {

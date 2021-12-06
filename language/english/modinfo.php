@@ -11,11 +11,11 @@
 /**
  * wgSitenotice module for xoops
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
  * @since           1.0
- * @min_xoops       2.5.7
+ * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 // ---------------- Admin Main ----------------
@@ -27,6 +27,7 @@
 \define('_MI_WGSITENOTICE_ADMENU3', 'Contents');
 \define('_MI_WGSITENOTICE_ADMENU4', 'Online versions');
 \define('_MI_WGSITENOTICE_ADMENU5', 'About');
+\define('_MI_WGSITENOTICE_ADMENU6', 'Feedback');
 // ---------------- Admin Nav ----------------
 \define('_MI_WGSITENOTICE_ADMINPAGER', 'Admin pager');
 \define('_MI_WGSITENOTICE_ADMINPAGER_DESC', 'Admin per page list');

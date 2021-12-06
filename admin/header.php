@@ -11,15 +11,17 @@
 /**
  * wgSitenotice module for xoops
  *
- * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
  * @since           1.0
- * @min_xoops       2.5.7
+ * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
 use XoopsModules\Wgsitenotice\Helper;
+
+require \dirname(__DIR__) . '/preloads/autoloader.php';
 
 require_once \dirname(__DIR__, 3). '/include/cp_header.php';
 $thisPath = \dirname(__DIR__);
@@ -52,8 +54,9 @@ $xoopsTpl->assign('modPathIcon16', $modPathIcon16);
 $xoopsTpl->assign('modPathIcon32', $modPathIcon32);
 
 //Load languages
-\xoops_loadLanguage('admin');
-\xoops_loadLanguage('modinfo');
+$helper->loadLanguage('admin');
+$helper->loadLanguage('modinfo');
+$helper->loadLanguage('common');
 // Local admin menu class
 include_once $GLOBALS['xoops']->path($pathModuleAdmin.'/moduleadmin.php');
 
