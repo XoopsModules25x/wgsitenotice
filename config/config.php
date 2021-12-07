@@ -41,28 +41,13 @@ return (object)[
     ],
     'uploadFolders'  => [
         \XOOPS_UPLOAD_PATH . '/' . $moduleDirName,
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/categories',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/articles',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/testfields',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/categories',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/articles',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/testfields',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/categories',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/articles',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/files/testfields',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/temp',
     ],
     'copyBlankFiles'  => [
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/categories',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/articles',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images/testfields',
+        //\XOOPS_UPLOAD_PATH . '/' . $moduleDirName . '/images',
     ],
     'copyTestFolders'  => [
-        [\XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/testdata/uploads',
-        \XOOPS_UPLOAD_PATH . '/' . $moduleDirName],
+        //[\XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/testdata/uploads',
+        //\XOOPS_UPLOAD_PATH . '/' . $moduleDirName],
     ],
     'templateFolders'  => [
         '/templates/',
@@ -72,6 +57,8 @@ return (object)[
     'oldFolders'  => [
     ],
     'renameTables'  => [
+        'mod_wgsitenotice_versions' => 'wgsitenotice_versions',
+        'mod_wgsitenotice_contents' => 'wgsitenotice_contents',
     ],
     'moduleStats'  => [
     ],
