@@ -19,7 +19,7 @@
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
-\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 if (!\defined('WGSITENOTICE_MODULE_PATH')) {
     \define('WGSITENOTICE_DIRNAME', \basename(\dirname(__DIR__)));
     \define('WGSITENOTICE_PATH', \XOOPS_ROOT_PATH . '/modules/' . \WGSITENOTICE_DIRNAME);

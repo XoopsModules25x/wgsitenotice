@@ -35,11 +35,11 @@ $modPathIcon32 = $xoopsModule->getInfo('modicons32');
 // Get instance of module
 $helper = Helper::getInstance();
 // versions
-$versionsHandler = $helper->getHandler('versions');
+$versionsHandler = $helper->getHandler('Versions');
 // contents
-$contentsHandler = $helper->getHandler('contents');
+$contentsHandler = $helper->getHandler('Contents');
 // checkonline
-$checkonlineHandler = $helper->getHandler('checkonline');
+$checkonlineHandler = $helper->getHandler('Checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
 if (!isset($xoopsTpl) || !\is_object($xoopsTpl)) {

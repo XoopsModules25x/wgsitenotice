@@ -23,7 +23,7 @@ namespace XoopsModules\Wgsitenotice\Common;
 use Xmf\Request;
 use XoopsModules\Wgsitenotice;
 
-//\defined('\XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
+//\defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 
 require_once \dirname(__DIR__, 4) . '/mainfile.php';
 $moduleDirName      = \basename(\dirname(__DIR__, 2));

@@ -25,7 +25,7 @@ namespace XoopsModules\Wgsitenotice\Common;
 
 use XoopsModules\Wgsitenotice;
 
-\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object XoopsConfirm

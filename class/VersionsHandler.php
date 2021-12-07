@@ -22,7 +22,7 @@ namespace XoopsModules\Wgsitenotice;
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
-\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /*
  * Class Object Handler Versions
@@ -32,9 +32,9 @@ class VersionsHandler extends \XoopsPersistableObjectHandler
     /**
      * Constructor
      *
-     * @param string $db
+     * @param \XoopsDatabase $db
      */
-    public function __construct($db)
+    public function __construct(\XoopsDatabase $db)
     {
         parent::__construct($db, 'wgsitenotice_versions', Versions::class, 'version_id', 'version_name');
     }

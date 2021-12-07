@@ -18,7 +18,7 @@
  * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
-\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 use XoopsModules\Wgsitenotice\Helper;
 
@@ -191,7 +191,7 @@ if ($dirname == $currdirname) {
     // Get instance of module
     $helper = Helper::getInstance();
     // versions
-    $versionsHandler = $helper->getHandler('versions');
+    $versionsHandler = $helper->getHandler('Versions');
     $version_crit = new \CriteriaCompo();
     $version_crit->setSort('version_weight');
     $version_crit->setOrder('ASC');
