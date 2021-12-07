@@ -103,9 +103,8 @@ class Migrate extends \Xmf\Database\Migrate
      */
     protected function preSyncActions()
     {
-        /*
-        // change 'bb' table prefix to 'newbb'
         $this->changePrefix();
+        /*
         // columns dohtml, dosmiley, doxcode, doimage and dobr moved between tables as some point
         $this->moveDoColumns();
         // Convert IP address columns from int to readable varchar(45) for IPv6

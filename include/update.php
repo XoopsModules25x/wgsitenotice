@@ -47,16 +47,17 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
     //$migrate->setDefinitionFile('update_' . $moduleDirName);
     //} catch (\Exception $e) {
     // as long as this is not done default file has to be created
-    $mversion = $module->getInfo('version');
-    $fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/sql/{$moduleDirName}_{$mversion}_migrate.yml";
+    $moduleVersion = $module->getInfo('version');
+    $fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/sql/{$moduleDirName}_{$moduleVersion}_migrate.yml";
     //}
 
+    // create a schema file based on sql/mysql.sql
     $migratehelper = new MigrateHelper($fileSql, $fileYaml);
     $migratehelper->createSchemaFromSqlfile();
 
+    // run standard procedure for db migration
     $migrate->getTargetDefinitions();
     $migrate->synchronizeSchema();
-
 
     //check upload directory
     require_once __DIR__ . '/install.php';
