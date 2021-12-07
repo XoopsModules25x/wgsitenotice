@@ -106,8 +106,8 @@ switch ($op)
         break;
 
     case 'checkonline':
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', \WGSITENOTICE_UPLOAD_URL);
 
         // $xml_text = \file_get_contents($oc_server);
         $xml_text = $checkonlineHandler->getData($oc_server);
@@ -146,8 +146,8 @@ switch ($op)
     default:
         $template_main = 'wgsitenotice_admin_checkonline.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', \WGSITENOTICE_UPLOAD_URL);
         // Get Form
         $checkonlineObj = $checkonlineHandler->create();
         $form = $checkonlineObj->getForm();

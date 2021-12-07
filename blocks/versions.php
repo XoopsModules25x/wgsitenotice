@@ -27,7 +27,7 @@ include_once \XOOPS_ROOT_PATH.'/modules/wgsitenotice/include/common.php';
 function b_wgsitenotice_versions_show($options)
 {
 
-    $version_id = XoopsRequest::getInt('version_id', 0);
+    $version_id = XoopsRequest::getInt('version_id');
 	
     $version = [];
     $nb_versions = $options[0];

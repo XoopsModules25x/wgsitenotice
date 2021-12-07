@@ -82,7 +82,7 @@ class MigrateHelper
         // read remaining lines line by line and create new schema
         foreach ($lines as $key => $value) {
             $line = \trim($value);
-            if ('CREATE TABLE' === \mb_strtoupper(substr($line, 0, 12))) {
+            if ('CREATE TABLE' === \mb_strtoupper(\substr($line, 0, 12))) {
                 // start table definition
                 $tableName = $this->getTableName ($line);
                 $tables[$tableName] = [];
@@ -90,13 +90,13 @@ class MigrateHelper
                 $tables[$tableName]['columns'] = [];
                 $tables[$tableName]['keys'] = [];
             } else {
-                if (')' === \mb_strtoupper(substr($line, 0, 1))) {
+                if (')' === \mb_strtoupper(\substr($line, 0, 1))) {
                     // end of table definition
                     // get options
                     $tables[$tableName]['options'] = $this->getOptions($line);
                 } else {
                     // get keys and fields
-                    switch (\mb_strtoupper(substr($line, 0, 3))) {
+                    switch (\mb_strtoupper(\substr($line, 0, 3))) {
                         case 'KEY':
                         case 'PRI':
                         case 'UNI':
@@ -183,7 +183,7 @@ class MigrateHelper
 
         $columns = [];
 
-        $arrCol = \explode( ' ', trim($line));
+        $arrCol = \explode( ' ', \trim($line));
         if (\count($arrCol) > 0) {
             $name = \str_replace(['`'], '', $arrCol[0]);
         } else {

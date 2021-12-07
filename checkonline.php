@@ -102,6 +102,6 @@ function text2xml ($xml) {
     // replace html tags e.g. in case of links in the text
     $search = array('<', '>', '"');
     $replace  = array('&lt;', '&gt;', '&quot;');
-    $str = \str_replace($search, $replace, (string)$xml);
-    return $str;
+
+    return \str_replace($search, $replace, (string)$xml);
 }
