@@ -64,6 +64,6 @@ xoops_cp_header();
 $adminMenu = new ModuleAdmin();
 
 //load stylesheets and jquery for sortable
-$GLOBALS['xoTheme']->addStylesheet(WGSITENOTICE_URL . '/assets/css/admin/style.css');
-$GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/jquery.js');
-$GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/jquery-ui.js');
+$GLOBALS['xoTheme']->addStylesheet(\WGSITENOTICE_URL . '/assets/css/admin/style.css');
+$GLOBALS['xoTheme']->addScript(\WGSITENOTICE_URL . '/assets/js/jquery.js');
+$GLOBALS['xoTheme']->addScript(\WGSITENOTICE_URL . '/assets/js/jquery-ui.js');

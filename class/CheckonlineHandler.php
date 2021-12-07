@@ -96,9 +96,9 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      * read the given xml string (by getData) and create an array
      *
      * @param string $xml_string
-     * @return array
+     * @return array|\SimpleXMLElement|string
      */
-    public function readXML($xml_string){
+    public function readXML(string $xml_string){
         // creating temporary string for avoiding entitiy errors
         $xml_string = \str_replace('&', '[[avoid_entity_error]]', $xml_string);
         //$search = array('<', '>', '"', '&');
@@ -125,7 +125,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      * @param string $xml
      * @return string
      */
-    public function xml2str($xml){
+    public function xml2str(string $xml){
         // replace temporary string for avoiding entitiy errors
         $str = \str_replace('[[avoid_entity_error]]', '&', (string)$xml);
         // rebuild html tags

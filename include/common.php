@@ -18,19 +18,20 @@
  * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
+
 \defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
 if (!\defined('WGSITENOTICE_MODULE_PATH')) {
     \define('WGSITENOTICE_DIRNAME', \basename(\dirname(__DIR__)));
-    \define('WGSITENOTICE_PATH', \XOOPS_ROOT_PATH.'/modules/'.WGSITENOTICE_DIRNAME);
-    \define('WGSITENOTICE_URL', \XOOPS_URL.'/modules/'.WGSITENOTICE_DIRNAME);
-    \define('WGSITENOTICE_UPLOAD_PATH', XOOPS_UPLOAD_PATH.'/'.WGSITENOTICE_DIRNAME);
-    \define('WGSITENOTICE_UPLOAD_URL', XOOPS_UPLOAD_URL.'/'.WGSITENOTICE_DIRNAME);
-    \define('WGSITENOTICE_IMAGE_PATH', WGSITENOTICE_PATH.'/assets/images');
-    \define('WGSITENOTICE_IMAGE_URL', WGSITENOTICE_URL.'/assets/images/');
-    \define('WGSITENOTICE_ICONS_URL', WGSITENOTICE_URL.'/assets/images/icons/');
-    \define('WGSITENOTICE_ADMIN', WGSITENOTICE_URL . '/admin/index.php');
-    $local_logo = WGSITENOTICE_IMAGE_URL . '/wedega_logo.png';
-    /*if(\is_dir(WGSITENOTICE_IMAGE_PATH) && \file_exists($local_logo)) {
+    \define('WGSITENOTICE_PATH', \XOOPS_ROOT_PATH . '/modules/' . \WGSITENOTICE_DIRNAME);
+    \define('WGSITENOTICE_URL', \XOOPS_URL . '/modules/' . \WGSITENOTICE_DIRNAME);
+    \define('WGSITENOTICE_UPLOAD_PATH', XOOPS_UPLOAD_PATH . '/' . \WGSITENOTICE_DIRNAME);
+    \define('WGSITENOTICE_UPLOAD_URL', XOOPS_UPLOAD_URL . '/' . \WGSITENOTICE_DIRNAME);
+    \define('WGSITENOTICE_IMAGE_PATH', \WGSITENOTICE_PATH . '/assets/images');
+    \define('WGSITENOTICE_IMAGE_URL', \WGSITENOTICE_URL . '/assets/images/');
+    \define('WGSITENOTICE_ICONS_URL', \WGSITENOTICE_URL . '/assets/images/icons/');
+    \define('WGSITENOTICE_ADMIN', \WGSITENOTICE_URL . '/admin/index.php');
+    $local_logo = \WGSITENOTICE_IMAGE_URL . '/wedega_logo.png';
+    /*if(\is_dir(\WGSITENOTICE_IMAGE_PATH) && \file_exists($local_logo)) {
         $logo = $local_logo;
     } else {
         $sysPathIcon32 = $GLOBALS['xoopsModule']->getInfo('icons32');
@@ -39,8 +40,8 @@ if (!\defined('WGSITENOTICE_MODULE_PATH')) {
 }
 // module information
 $copyright = "<a href='https://xoops.wedega.com' title='WEDEGA Webdesign Gabor' target='_blank'>
-                     <img src='".$local_logo."' alt='WEDEGA Webdesign Gabor' /></a>";
+                     <img src='" . $local_logo . "' alt='WEDEGA Webdesign Gabor' /></a>";
 
-include_once \XOOPS_ROOT_PATH.'/class/xoopsrequest.php';
-include_once WGSITENOTICE_PATH.'/class/helper.php';
-include_once WGSITENOTICE_PATH.'/include/functions.php';
+include_once \XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
+include_once \WGSITENOTICE_PATH . '/class/helper.php';
+include_once \WGSITENOTICE_PATH . '/include/functions.php';

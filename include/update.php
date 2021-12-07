@@ -39,16 +39,16 @@ function xoops_module_update_wgsitenotice($module, $prev_version = null)
     $configurator = new Configurator();
     $migrate = new Migrate($configurator);
 
-    $fileSql = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/mysql.sql';
+    $fileSql = \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/mysql.sql';
     // ToDo: add function setDefinitionFile to .\class\libraries\vendor\xoops\xmf\src\Database\Migrate.php
     // Todo: once we are using setDefinitionFile this part has to be adapted
-    //$fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/update_' . $moduleDirName . '_migrate.yml';
+    //$fileYaml = \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/sql/update_' . $moduleDirName . '_migrate.yml';
     //try {
     //$migrate->setDefinitionFile('update_' . $moduleDirName);
     //} catch (\Exception $e) {
     // as long as this is not done default file has to be created
     $moduleVersion = $module->getInfo('version');
-    $fileYaml = XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/sql/{$moduleDirName}_{$moduleVersion}_migrate.yml";
+    $fileYaml = \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/sql/{$moduleDirName}_{$moduleVersion}_migrate.yml";
     //}
 
     // create a schema file based on sql/mysql.sql

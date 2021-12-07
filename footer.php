@@ -24,13 +24,9 @@ use XoopsModules\Wgsitenotice\Helper;
 $helper = Helper::getInstance();
 
 $GLOBALS['xoopsTpl']->assign('sysPathIcon32', $sysPathIcon32);
-$GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-$GLOBALS['xoopsTpl']->assign('adv', xoops_getModuleOption('advertise', $dirname));
+$GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
 //
-$GLOBALS['xoopsTpl']->assign('bookmarks', xoops_getModuleOption('bookmarks', $dirname));
-$GLOBALS['xoopsTpl']->assign('fbcomments', xoops_getModuleOption('fbcomments', $dirname));
-//
-$GLOBALS['xoopsTpl']->assign('admin', WGSITENOTICE_ADMIN);
+$GLOBALS['xoopsTpl']->assign('admin', \WGSITENOTICE_ADMIN);
 if ( $helper->getConfig('show_copyright') ) {
     $GLOBALS['xoopsTpl']->assign('copyright', $copyright);
 }

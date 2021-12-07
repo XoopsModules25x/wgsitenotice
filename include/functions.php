@@ -40,21 +40,6 @@ function wgsitenotice_block_addCatSelect($cats) {
     return $cat_sql;
 }
 
-function wgsitenotice_CleanVars( &$global, $key, $default = '', $type = 'int' ) {
-    switch ( $type ) {
-        case 'string':
-            $ret = isset( $global[$key] ) ? filter_var($global[$key], FILTER_SANITIZE_MAGIC_QUOTES ) : $default;
-            break;
-        case 'int': default:
-            $ret = isset( $global[$key] ) ? filter_var($global[$key], FILTER_SANITIZE_NUMBER_INT ) : $default;
-            break;
-    }
-    if ( false === $ret ) {
-        return $default;
-    }
-    return $ret;
-}
-
 function wgsitenotice_meta_keywords($content)
 {
     global $xoopsTpl, $xoTheme;

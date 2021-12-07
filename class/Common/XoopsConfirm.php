@@ -25,7 +25,7 @@ namespace XoopsModules\Wgsitenotice\Common;
 
 use XoopsModules\Wgsitenotice;
 
-\defined('XOOPS_ROOT_PATH') || die('Restricted access');
+\defined('\XOOPS_ROOT_PATH') || die('Restricted access');
 
 /**
  * Class Object XoopsConfirm
@@ -62,9 +62,9 @@ class XoopsConfirm
     public function getFormXoopsConfirm()
     {
         //in order to be accessable from user and admin area this should be place in language common.php
-        if (!\defined('CO_WGSITENOTICE_DELETE_CONFIRM')) {
-            \define('CO_WGSITENOTICE_DELETE_CONFIRM', 'Confirm delete');
-            \define('CO_WGSITENOTICE_DELETE_LABEL', 'Do you really want to delete:');
+        if (!\defined('CO_\WGSITENOTICE_DELETE_CONFIRM')) {
+            \define('CO_\WGSITENOTICE_DELETE_CONFIRM', 'Confirm delete');
+            \define('CO_\WGSITENOTICE_DELETE_LABEL', 'Do you really want to delete:');
         }
 
         // Get Theme Form
@@ -72,11 +72,11 @@ class XoopsConfirm
             $this->action = \Xmf\Request::getString('REQUEST_URI', '', 'SERVER');
         }
         if ('' === $this->title) {
-            $this->title = \CO_WGSITENOTICE_DELETE_CONFIRM;
+            $this->title = \CO_\WGSITENOTICE_DELETE_CONFIRM;
         }
         if ('' === $this->label) {
 
-            $this->label = \CO_WGSITENOTICE_DELETE_LABEL;
+            $this->label = \CO_\WGSITENOTICE_DELETE_LABEL;
         }
 
         \xoops_load('XoopsFormLoader');

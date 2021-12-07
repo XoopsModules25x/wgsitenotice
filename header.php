@@ -37,7 +37,7 @@ $contentsHandler = $helper->getHandler('Contents');
 $checkonlineHandler = $helper->getHandler('Checkonline');
 //
 $myts = MyTextSanitizer::getInstance();
-$style = WGSITENOTICE_URL . '/assets/css/style.css';
+$style = \WGSITENOTICE_URL . '/assets/css/style.css';
 if(\file_exists($style)) { return true; }
 //
 $sysPathIcon16 = $GLOBALS['xoopsModule']->getInfo('sysicons16');

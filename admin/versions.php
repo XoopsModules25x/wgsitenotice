@@ -35,12 +35,12 @@ switch ($op)
 {
     case 'list':
     default:
-        $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-versions.js');
+        $GLOBALS['xoTheme']->addScript(\WGSITENOTICE_URL . '/assets/js/sortable-versions.js');
         $GLOBALS['xoopsTpl']->assign('start', $start);
         $limit = XoopsRequest::getInt('limit', $helper->getConfig('adminpager'));
         $template_main = 'wgsitenotice_admin_versions.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
-        $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new', 'add');
+        $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
         $version_crit = new \CriteriaCompo();
         $version_crit->setSort('version_weight ASC, version_id');
@@ -79,14 +79,14 @@ switch ($op)
             if ( $versions_rows > $limit ) {
                 include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($versions_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
-                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSITENOTICE_THEREARENT_VERSIONS);
         }
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', \WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', \WGSITENOTICE_ICONS_URL);
     break;
     case 'new':
         $template_main = 'wgsitenotice_admin_versions.tpl';
@@ -161,7 +161,7 @@ switch ($op)
     break;
     case 'edit':
         $template_main = 'wgsitenotice_admin_versions.tpl';
-        $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new', 'add');
+        $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSION_ADD, 'versions.php?op=new');
         $adminMenu->addItemButton(\_AM_WGSITENOTICE_VERSIONS_LIST, 'versions.php', 'list');
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());

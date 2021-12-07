@@ -33,7 +33,7 @@ include_once \XOOPS_ROOT_PATH.'/header.php';
 // Define Stylesheet
 $xoTheme->addStylesheet( $style );
 
-$breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
+$breadcrumb ='<a href="' . \XOOPS_URL . '">' . \_YOURHOME . '</a>  &raquo; ' . $xoopsModule->name();
 
 $version_id = Request::getInt('version_id');
 
@@ -83,11 +83,11 @@ if ($versions_count > 0) {
 }
 
 /* create breadcrumb */
-$breadcrumb ='<a href="' . \XOOPS_URL . '">' . _YOURHOME . '</a>  &raquo; ';
+$breadcrumb ='<a href="' . \XOOPS_URL . '">' . \_YOURHOME . '</a>  &raquo; ';
 if ('' == $breadcrumb_subdir) {
     $breadcrumb .= $xoopsModule->name();
 } else {
-    $breadcrumb .='<a href="' . WGSITENOTICE_URL . '">' . $xoopsModule->name() . '</a>  &raquo; ' . $breadcrumb_subdir;
+    $breadcrumb .='<a href="' . \WGSITENOTICE_URL . '">' . $xoopsModule->name() . '</a>  &raquo; ' . $breadcrumb_subdir;
 }
 $GLOBALS['xoopsTpl']->assign('breadcrumb', $breadcrumb);
 
@@ -98,6 +98,6 @@ unset($keywords);
 // description
 wgsitenotice_meta_description(\_MA_WGSITENOTICE_DESC);
 //
-$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', WGSITENOTICE_URL.'/contents.php');
+$GLOBALS['xoopsTpl']->assign('xoops_mpageurl', \WGSITENOTICE_URL.'/contents.php');
 //
 include_once __DIR__ . '/footer.php';

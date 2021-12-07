@@ -31,12 +31,12 @@ switch ($op)
 {
     case 'list':
     default:
-        $GLOBALS['xoTheme']->addScript(WGSITENOTICE_URL . '/assets/js/sortable-contents.js');
+        $GLOBALS['xoTheme']->addScript(\WGSITENOTICE_URL . '/assets/js/sortable-contents.js');
         $start = Request::getInt('start');
         $limit = Request::getInt('limit', $helper->getConfig('adminpager'));
         $template_main = 'wgsitenotice_admin_contents.tpl';
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
-        $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
+        $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new');
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
         $cont_crit = new \CriteriaCompo();
         $cont_crit->setSort('cont_version_id ASC, cont_weight ASC, cont_id');
@@ -46,9 +46,9 @@ switch ($op)
         $cont_crit->setLimit($limit);
         $contents_arr = $contentsHandler->getAll($cont_crit);
         unset($cont_crit);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', WGSITENOTICE_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', WGSITENOTICE_UPLOAD_URL);
-        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', WGSITENOTICE_ICONS_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_url', \WGSITENOTICE_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_upload_url', \WGSITENOTICE_UPLOAD_URL);
+        $GLOBALS['xoopsTpl']->assign('wgsitenotice_icons_url', \WGSITENOTICE_ICONS_URL);
         $GLOBALS['xoopsTpl']->assign('contents_count', $contents_rows);
         // Table view
         if ($contents_rows > 0)
@@ -91,7 +91,7 @@ switch ($op)
             if ( $contents_rows > $limit ) {
                 include_once \XOOPS_ROOT_PATH . '/class/pagenav.php';
                 $pagenav = new \XoopsPageNav($contents_rows, $limit, $start, 'start', 'op=list&limit=' . $limit);
-                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav(4));
+                $GLOBALS['xoopsTpl']->assign('pagenav', $pagenav->renderNav());
             }
         } else {
             $GLOBALS['xoopsTpl']->assign('error', \_AM_WGSITENOTICE_THEREARENT_CONTENTS);
@@ -140,7 +140,7 @@ switch ($op)
     break;
     case 'edit':
         $template_main = 'wgsitenotice_admin_contents.tpl';
-        $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new', 'add');
+        $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENT_ADD, 'contents.php?op=new');
         $adminMenu->addItemButton(\_AM_WGSITENOTICE_CONTENTS_LIST, 'contents.php', 'list');
         $GLOBALS['xoopsTpl']->assign('navigation', $adminMenu->addNavigation(\basename(__FILE__)));
         $GLOBALS['xoopsTpl']->assign('buttons', $adminMenu->renderButton());
