@@ -55,7 +55,7 @@ function b_wgsitenotice_cookie_reg_show($options)
 
     //get relevant data
     $helper = Helper::getInstance();
-    $versionsHandler = $helper->getHandler('versions');
+    $versionsHandler = $helper->getHandler('Versions');
 
     $block['infotext'] = \_MB_WGSITENOTICE_COOKIE_REG_INFO;
 
@@ -105,7 +105,7 @@ function b_wgsitenotice_cookie_reg_edit($options)
 {
 
     $helper = Helper::getInstance();
-    $versionsHandler = $helper->getHandler('versions');
+    $versionsHandler = $helper->getHandler('Versions');
 
     $criteria = new \CriteriaCompo();
     $criteria->add(new \Criteria('version_current', 1));

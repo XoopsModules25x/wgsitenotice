@@ -24,7 +24,7 @@ namespace XoopsModules\Wgsitenotice;
 
 use XoopsModules\Wgsitenotice\Helper;
 
-\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
  * Class Object Contents
@@ -81,9 +81,9 @@ class Contents extends \XoopsObject
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
         // Contents handler
-        //$contentsHandler = $helper->getHandler('contents');
+        //$contentsHandler = $helper->getHandler('Contents');
         // Form Topic Contents
-        $Handler = $helper->getHandler('versions');
+        $Handler = $helper->getHandler('Versions');
         $_select = new \XoopsFormSelect(\_AM_WGSITENOTICE_CONT_VERSION_ID, 'cont_version_id', $this->getVar('cont_version_id'));
         $_select->addOptionArray($Handler->getList());
         $form->addElement( $_select );

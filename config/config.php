@@ -60,6 +60,9 @@ return (object)[
         'mod_wgsitenotice_versions' => 'wgsitenotice_versions',
         'mod_wgsitenotice_contents' => 'wgsitenotice_contents',
     ],
+    'renameColumns'  => [
+        //'tablename' => ['columnname_old' => 'columnname_new'],
+    ],
     'moduleStats'  => [
     ],
     'modCopyright' => "<a href='https://xoops.org' title='XOOPS Project' target='_blank'><img src='" . \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . "/assets/images/logo/logoModule.png' alt='XOOPS Project'></a>",

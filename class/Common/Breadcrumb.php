@@ -31,7 +31,7 @@ namespace XoopsModules\Wgsitenotice\Common;
 use XoopsModules\Wgsitenotice;
 use XoopsModules\Wgsitenotice\Common;
 
-\defined('\XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+\defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /**
  * Class Breadcrumb

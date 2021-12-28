@@ -31,7 +31,7 @@ echo "<status_connect>successful</status_connect>\n";
 include \dirname(__DIR__, 2) . '/mainfile.php';
 $dirname = \basename(__DIR__);
 
-\defined('\XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+\defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
 require_once \XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
 

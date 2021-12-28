@@ -24,7 +24,7 @@ namespace XoopsModules\Wgsitenotice;
 
 use XoopsModules\Wgsitenotice\Helper;
 
-\defined('\XOOPS_ROOT_PATH') || exit('Restricted access');
+\defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
 /**
  * Class Object Checkonline

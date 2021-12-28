@@ -22,6 +22,7 @@ namespace XoopsModules\Wgsitenotice\Common;
  * @link      https://xoops.org
  */
 
+
 class MigrateHelper
 {
 
@@ -55,8 +56,8 @@ class MigrateHelper
     public function createSchemaFromSqlfile(): bool
     {
         if (!\file_exists($this->fileSql)) {
-            echo 'Error: Sql file not found!';
-            die;
+            \xoops_error('Error: Sql file not found!');
+            return false;
         }
 
         $tables    = [];
@@ -144,7 +145,11 @@ class MigrateHelper
         }
 
         // create new file and write schema array into this file
-        $myfile = \fopen($this->fileYaml, "w") or die("Unable to open file!");
+        $myfile = \fopen($this->fileYaml, "w");
+        if (false == $myfile || \is_null($myfile)) {
+            \xoops_error('Error: Unable to open sql file!');
+            return false;
+        }
         foreach ($schema as $line) {
             \fwrite($myfile, $line);
         }
@@ -160,7 +165,7 @@ class MigrateHelper
      * @param  string $line
      * @return string|bool
      */
-    private function getTableName (string $line): bool|string
+    private function getTableName (string $line)
     {
 
         $arrLine = \explode( '`', $line);
@@ -178,7 +183,7 @@ class MigrateHelper
      * @param string $line
      * @return array|bool
      */
-    private function getColumns (string $line): bool|array
+    private function getColumns (string $line)
     {
 
         $columns = [];
@@ -227,7 +232,7 @@ class MigrateHelper
      * @param string $line
      * @return array|bool
      */
-    private function getKey (string $line): bool|array
+    private function getKey (string $line)
     {
 
         $key = [];
@@ -246,11 +251,14 @@ class MigrateHelper
             $arrName = \explode('(', $line);
             if (\count($arrName) > 0) {
                 $name = \str_replace(['`', ' '], '', $arrName[0]);
+                $columns = \str_replace(['`', '),', ')'], '', $arrName[1]);
+                if ('' == $name) {
+                    $name = $columns;
+                }
                 if (\strpos($name,' ') > 0) {
                     $name = "'" . $name . "'";
                 }
                 $key[$name] = [];
-                $columns = \str_replace(['`', '),', ')'], '', $arrName[1]);
                 if (\strpos($columns,' ') > 0) {
                     $columns = "'" . $columns . "'";
                 }

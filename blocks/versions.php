@@ -33,7 +33,7 @@ function b_wgsitenotice_versions_show($options)
     $nb_versions = $options[0];
     $lenght_title = $options[1];
     $helper = Helper::getInstance();
-    $versionsHandler = $helper->getHandler('versions');
+    $versionsHandler = $helper->getHandler('Versions');
     $criteria = new \CriteriaCompo();
     \array_shift($options);
     \array_shift($options);
