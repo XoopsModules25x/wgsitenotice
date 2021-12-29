@@ -48,9 +48,9 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
     public function getData($oc_server) {
 
         $postdata = \http_build_query(
-            array(
+            [
                 'ptype' => 'get-data'
-            )
+            ]
         );
 
         if (\function_exists('curl_init')) {
@@ -78,13 +78,13 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
 
             \curl_close($ch);
         } else {
-            $opts = array('http' =>
-                array(
+            $opts = ['http' =>
+                [
                     'method'  => 'POST',
                     'header'  => 'Content-type: application/x-www-form-urlencoded',
                     'content' => $postdata
-                )
-            );
+                ]
+            ];
 
             $context  = \stream_context_create($opts);
             $result = \file_get_contents($oc_server, false, $context);
@@ -101,9 +101,6 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
     public function readXML(string $xml_string){
         // creating temporary string for avoiding entitiy errors
         $xml_string = \str_replace('&', '[[avoid_entity_error]]', $xml_string);
-        //$search = array('<', '>', '"', '&');
-        //$replace  = array('&lt;', '&gt;', '&quot;', '&amp;');
-        //$xml_string = \str_replace($search, $replace, (string)$xml_string);
         $xml_arr = \simplexml_load_string($xml_string);
         if (!$xml_arr) {
             //error when loading xml

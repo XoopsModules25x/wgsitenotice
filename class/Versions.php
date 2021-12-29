@@ -85,7 +85,7 @@ class Versions extends \XoopsObject
         $form->addElement( new \XoopsFormText(\_AM_WGSITENOTICE_VERSION_LANG, 'version_lang', 50, 255, $this->getVar('version_lang')) );
         // Form Text Area
         // Form Dhtml Text Area
-        $editor_configs = array();
+        $editor_configs = [];
         $editor_configs['name'] = 'version_descr';
         $editor_configs['value'] = $this->getVar('version_descr', 'e');
         $editor_configs['rows'] = 5;
