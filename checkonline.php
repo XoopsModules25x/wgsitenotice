@@ -100,8 +100,8 @@ echo "</document>\n";
 
 function text2xml ($xml) {
     // replace html tags e.g. in case of links in the text
-    $search = array('<', '>', '"');
-    $replace  = array('&lt;', '&gt;', '&quot;');
+    $search = ['<', '>', '"'];
+    $replace  = ['&lt;', '&gt;', '&quot;'];
 
     return \str_replace($search, $replace, (string)$xml);
 }

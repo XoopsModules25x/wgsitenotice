@@ -90,7 +90,7 @@ class Contents extends \XoopsObject
         // Form cont_header
         $form->addElement( new \XoopsFormText(\_AM_WGSITENOTICE_CONT_HEADER, 'cont_header', 50, 255, $this->getVar('cont_header')), true );
         // Form cont_text
-        $editor_configs = array();
+        $editor_configs = [];
         $editor_configs['name'] = 'cont_text';
         $editor_configs['value'] = $this->getVar('cont_text', 'e');
         $editor_configs['rows'] = 5;
