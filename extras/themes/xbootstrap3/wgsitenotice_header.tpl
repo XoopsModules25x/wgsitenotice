@@ -1,3 +1,3 @@
 <ol class="breadcrumb">
-	<{$breadcrumb|default:''}>
+    <{$breadcrumb|default:''}>
 </ol>

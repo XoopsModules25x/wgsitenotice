@@ -6,7 +6,7 @@
 <{/if}>
 <div class="left"><{$copyright|default:''}></div>
 <{if $pagenav|default:'' != ''}>
-	<div class="right"><{$pagenav}></div>
+    <div class="right"><{$pagenav}></div>
 <{/if}>
 <br />
 <{if $xoops_isadmin|default:false}>

@@ -1,17 +1,17 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
 <{if $contents_list|default:''}>
-	<table class="table table-bordered  table-striped" id="sortable">
-		<thead>
-			<tr class="head">
+    <table class="table table-bordered  table-striped" id="sortable">
+        <thead>
+            <tr class="head">
                 <th class="center">&nbsp;</th>
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_ID}></th>
-				<th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_HEADER}></th>
-				<th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_DATE}></th>
-				<th class="center"><{$smarty.const._AM_WGSITENOTICE_FORMACTION}></th>
-			</tr>
-		</thead>
+                <th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_HEADER}></th>
+                <th class="center"><{$smarty.const._AM_WGSITENOTICE_CONT_DATE}></th>
+                <th class="center"><{$smarty.const._AM_WGSITENOTICE_FORMACTION}></th>
+            </tr>
+        </thead>
         <{if $contents_count|default:''}>
-            <{foreach item=list from=$contents_list}>	
+            <{foreach item=list from=$contents_list}>    
                 <{if $list.new_version|default:'' > 0}> 
                 <tbody>
                     <tr class="odd">
@@ -41,21 +41,21 @@
                 <{/foreach}>
             </tbody>
         <{/if}>
-	</table>
-	<div class="clear">&nbsp;</div>
-	<{if $pagenav|default:''}><br />
-		<!-- Display navigation -->
-	    <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
-	<{/if}>
-<{/if}>	
-<{if $error|default:''}>	
-	<div class="errorMsg">
-		<strong><{$error}></strong>
-	</div>
+    </table>
+    <div class="clear">&nbsp;</div>
+    <{if $pagenav|default:''}><br />
+        <!-- Display navigation -->
+        <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
+    <{/if}>
+<{/if}>    
+<{if $error|default:''}>    
+    <div class="errorMsg">
+        <strong><{$error}></strong>
+    </div>
 <{/if}>
 <{if $form|default:''}>
-	<!-- Display form (add,edit) -->
-	<div class="spacer"><{$form}></div>
+    <!-- Display form (add,edit) -->
+    <div class="spacer"><{$form}></div>
 <{/if}>
 <br />
 <!-- Footer -->

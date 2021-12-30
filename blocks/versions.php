@@ -28,7 +28,7 @@ function b_wgsitenotice_versions_show($options)
 {
 
     $version_id = XoopsRequest::getInt('version_id');
-	
+    
     $version = [];
     $nb_versions = $options[0];
     $lenght_title = $options[1];
@@ -53,7 +53,7 @@ function b_wgsitenotice_versions_show($options)
             $version_name = \substr($version_name, 0, $lenght_title) . '...';
         }
         $version[$i]['version_name'] = $version_name;
-		$version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $version_id);
+        $version[$i]['highlight'] = ($versions_arr[$i]->getVar('version_id') == $version_id);
         $j++;
         if ($j < $version_count) {
             $version[$i]['show_more'] = $version_count;
