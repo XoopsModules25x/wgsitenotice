@@ -8,7 +8,7 @@
  * @link            https://xoops.org XOOPS
  */
 
-use XoopsModules\Wgsimpleacc;
+use XoopsModules\Wgsitenotice;
 
 /**
  * Prepares system prior to attempting to uninstall module
@@ -33,7 +33,7 @@ function xoops_module_uninstall_wgsitenotice(\XoopsModule $module)
 
     $moduleDirName      = \basename(\dirname(__DIR__));
     $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
-    $helper = Wgsimpleacc\Helper::getInstance();
+    $helper = Wgsitenotice\Helper::getInstance();
 
 
     $success = true;
