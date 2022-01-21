@@ -67,6 +67,7 @@ $modversion = [
     'adminmenu'           => 'admin/menu.php',
     'hasMain'             => 1,
     'onInstall'           => 'include/install.php',
+    'onUninstall'         => 'include/uninstall.php',
     'onUpdate'            => 'include/update.php'
 ];
 // ------------------- Templates ------------------- //
