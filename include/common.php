@@ -43,5 +43,4 @@ $copyright = "<a href='https://xoops.wedega.com' title='WEDEGA Webdesign Gabor' 
                      <img src='" . $local_logo . "' alt='WEDEGA Webdesign Gabor' /></a>";
 
 include_once \XOOPS_ROOT_PATH . '/class/xoopsrequest.php';
-include_once \WGSITENOTICE_PATH . '/class/helper.php';
 include_once \WGSITENOTICE_PATH . '/include/functions.php';
