@@ -83,13 +83,13 @@ if ($versions_count > 0) {
 }
 
 /* create breadcrumb */
-$breadcrumb ='<a href="' . \XOOPS_URL . '">' . \_YOURHOME . '</a>  &raquo; ';
 if ('' == $breadcrumb_subdir) {
-    $breadcrumb .= $xoopsModule->name();
+    $xoBreadcrumbs[] = ['title' => $xoopsModule->name()];
 } else {
-    $breadcrumb .='<a href="' . \WGSITENOTICE_URL . '">' . $xoopsModule->name() . '</a>  &raquo; ' . $breadcrumb_subdir;
+    $xoBreadcrumbs[] = ['title' => $GLOBALS['xoopsModule']->getVar('name'), 'link' => \WGSITENOTICE_URL . '/'];
+    $xoBreadcrumbs[] = ['title' => $breadcrumb_subdir];
 }
-$GLOBALS['xoopsTpl']->assign('breadcrumb', $breadcrumb);
+$GLOBALS['xoopsTpl']->assign('xoBreadcrumbs', $xoBreadcrumbs);
 
 
 // keywords
