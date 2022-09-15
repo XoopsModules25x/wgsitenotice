@@ -46,6 +46,8 @@ $pathModuleAdmin = $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin');
 //
 $modPathIcon16 = $xoopsModule->getInfo('modicons16');
 $modPathIcon32 = $xoopsModule->getInfo('modicons32');
+// Breadcrumbs
+$xoBreadcrumbs   = [];
 //
 \xoops_loadLanguage('modinfo', $dirname);
 \xoops_loadLanguage('main', $dirname);
