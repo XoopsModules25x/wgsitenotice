@@ -1,18 +1,18 @@
 <{if $block.infotext|default:''}>
     <style>
     #container-cookies-reg { 
-        <{$block.position}>
-        background: <{$block.bg_from}>; 
-        background: -moz-linear-gradient(top, <{$block.bg_from}> 0%, <{$block.bg_to}> 100%); 
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<{$block.bg_from}>), color-stop(100%,<{$block.bg_to}>)); 
-        background: -webkit-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
-        background: -o-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%);
-        background: -ms-linear-gradient(top, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
-        background: linear-gradient(to bottom, <{$block.bg_from}> 0%,<{$block.bg_to}> 100%); 
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='<{$block.bg_from}>', endColorstr='<{$block.bg_to}>',GradientType=0 ); 
-        opacity: <{$block.opacity}>;
-        color:<{$block.color}>;
-        min-height:<{$block.height}>px;
+        <{$block.position|default:false}>
+        background: <{$block.bg_from|default:''}>;
+        background: -moz-linear-gradient(top, <{$block.bg_from|default:''}> 0%, <{$block.bg_to|default:''}> 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,<{$block.bg_from|default:''}>), color-stop(100%,<{$block.bg_to|default:''}>));
+        background: -webkit-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
+        background: -o-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
+        background: -ms-linear-gradient(top, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
+        background: linear-gradient(to bottom, <{$block.bg_from|default:''}> 0%,<{$block.bg_to|default:''}> 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='<{$block.bg_from|default:''}>', endColorstr='<{$block.bg_to|default:''}>',GradientType=0 );
+        opacity: <{$block.opacity|default:''}>;
+        color:<{$block.color|default:''}>;
+        min-height:<{$block.height|default:''}>px;
         line-height:20px;
         outline: 1px solid #7b92a9; 
         text-align:right; 
@@ -23,11 +23,11 @@
     }
     @media (min-width: 768px) {
         #container-cookies-reg {
-            line-height:<{$block.height}>px;
+            line-height:<{$block.height|default:''}>px;
         }
     }
     #container-cookies-reg a {
-        color:<{$block.color}>;
+        color:<{$block.color|default:''}>;
         text-decoration:none;
         padding:3px;
     }
@@ -62,26 +62,26 @@
 
     <div id="container-cookies-reg">
         <div>
-            <span id="container-cookies-reg-text"><{$block.infotext}> (
+            <span id="container-cookies-reg-text"><{$block.infotext|default:''}> (
                 <{if $block.dataprotect_id|default:''}>
-                    <a href="<{xoAppUrl modules/wgsitenotice/index.php?version_id=}><{$block.dataprotect_id}>"><{$block.dataprotect_text}></a><{$block.seperator}>
+                    <a href="<{xoAppUrl 'modules/wgsitenotice/index.php?version_id=$block.dataprotect_id'}>"><{$block.dataprotect_text|default:''}></a><{$block.seperator|default:''}>
                 <{/if}>
                 <{if $block.cookie_reg_id|default:''}>
-                    <a href="<{xoAppUrl modules/wgsitenotice/index.php?version_id=}><{$block.cookie_reg_id}>"><{$block.cookie_reg_text}></a>
+                    <a href="<{xoAppUrl 'modules/wgsitenotice/index.php?version_id=$block.cookie_reg_id'}>"><{$block.cookie_reg_text|default:''}></a>
                 <{/if}>
             )</span>
             <{if $block.prependToBody|default:''}>
-                <span id="cookies-reg-closer" onclick="document.cookie = '<{$block.unique_id}>=1;path=/';jQuery('#container-cookies-reg').slideUp()">&#10006;</span>
+                <span id="cookies-reg-closer" onclick="document.cookie = '<{$block.unique_id|default:''}>=1;path=/';jQuery('#container-cookies-reg').slideUp()">&#10006;</span>
             <{/if}>
         </div>
         
     </div>
 
     <script>  
-        if (document.cookie.indexOf('<{$block.unique_id}>=1') != -1) {
+        if (document.cookie.indexOf('<{$block.unique_id|default:''}>=1') != -1) {
             jQuery('#container-cookies-reg').hide();
         } else {
-            <{if $block.prependToBody}>
+            <{if $block.prependToBody|default:''}>
             jQuery('#container-cookies-reg').prependTo('body');
             <{/if}>
             jQuery('#cookies-reg-closer').show();
