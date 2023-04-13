@@ -9,6 +9,6 @@
     <div class="right"><{$pagenav}></div>
 <{/if}>
 <br />
-<{if $xoops_isadmin|default:false}>
+<{if !empty($xoops_isadmin)}>
    <div class="center bold"><a href="<{$admin}>"><{$smarty.const._MA_WGSITENOTICE_ADMIN}></a></div><br />
 <{/if}>

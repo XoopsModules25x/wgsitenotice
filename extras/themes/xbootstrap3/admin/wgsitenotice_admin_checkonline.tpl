@@ -2,7 +2,7 @@
 <h1><{$disclaimer|default:''}></h1>
 <p style="font-size:120%;"><{$disclaimer_desc|default:''}></p>
 <br/><br/>
-<{if $form|default:''}>
+<{if !empty($form)}>
     <!-- Display form (add,edit) -->
     <div class="spacer"><{$form}></div>
 <{/if}>
@@ -39,12 +39,12 @@
         </tbody>
     </table>
     <div class="clear">&nbsp;</div>
-    <{if $pagenav|default:''}><br />
+    <{if !empty($pagenav)}><br />
         <!-- Display navigation -->
         <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
     <{/if}>
 <{/if}>
-<{if $error|default:''}>    
+<{if !empty($error)}>    
     <div class="errorMsg">
         <strong><{$error}></strong>
     </div>
