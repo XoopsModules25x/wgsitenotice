@@ -37,10 +37,10 @@
                     <td class="center"><{$list.date}></td>
                     <td class="center">
                         <a href="versions.php?op=edit&amp;version_id=<{$list.id}>" title="<{$smarty.const._EDIT}>">
-                            <img src="<{xoModuleIcons16 edit.png}>" alt="<{$smarty.const._EDIT}>" />
+                            <img src="<{xoModuleIcons16 'edit.png'}>" alt="<{$smarty.const._EDIT}>" />
                         </a>                   
                         <a href="versions.php?op=delete&amp;version_id=<{$list.id}>" title="<{$smarty.const._DELETE}>">
-                            <img src="<{xoModuleIcons16 delete.png}>" alt="<{$smarty.const._DELETE}>" />
+                            <img src="<{xoModuleIcons16 'delete.png'}>" alt="<{$smarty.const._DELETE}>" />
                         </a>
                     </td>
                 </tr>
@@ -48,17 +48,17 @@
         </tbody>
     </table>
     <div class="clear">&nbsp;</div>
-    <{if $pagenav|default:''}><br />
+    <{if !empty($pagenav)}><br />
         <!-- Display navigation -->
         <div class="xo-pagenav floatright"><{$pagenav}></div><div class="clear spacer"></div>
     <{/if}>
 <{/if}>    
-<{if $error|default:''}>    
+<{if !empty($error)}>    
     <div class="errorMsg">
         <strong><{$error}></strong>
     </div>
 <{/if}>
-<{if $form|default:''}>
+<{if !empty($form)}>
     <!-- Display form (add,edit) -->
     <div class="spacer"><{$form}></div>
 <{/if}>
