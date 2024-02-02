@@ -64,10 +64,10 @@
         <div>
             <span id="container-cookies-reg-text"><{$block.infotext}> (
                 <{if $block.dataprotect_id|default:''}>
-                    <a href="<{xoAppUrl modules/wgsitenotice/index.php?version_id=}><{$block.dataprotect_id}>"><{$block.dataprotect_text}></a><{$block.seperator}>
+                    <a href="<{xoAppUrl 'modules/wgsitenotice/index.php?version_id='}><{$block.dataprotect_id}>"><{$block.dataprotect_text}></a><{$block.seperator}>
                 <{/if}>
                 <{if $block.cookie_reg_id|default:''}>
-                    <a href="<{xoAppUrl modules/wgsitenotice/index.php?version_id=}><{$block.cookie_reg_id}>"><{$block.cookie_reg_text}></a>
+                    <a href="<{xoAppUrl 'modules/wgsitenotice/index.php?version_id='}><{$block.cookie_reg_id}>"><{$block.cookie_reg_text}></a>
                 <{/if}>
             )</span>
             <{if $block.prependToBody|default:''}>

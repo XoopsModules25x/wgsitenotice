@@ -1,5 +1,6 @@
 <h5>1.4.2 RC1 [2023/04/08]</h5>  Dev: XOOPS 2.5.11 RC1, PHP 7.4.25, PHP 8.0.1
  - fixed bugs with smarty 3 (goffy)
+ - updates for XOOPS 2.5.11 Stable (goffy)
 
 <h5>1.4.1 RC1 [2023/03/09]</h5>  Dev: XOOPS 2.5.11 Beta, PHP 7.4.25, PHP 8.0.1
  - fixed bug (goffy)
