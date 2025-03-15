@@ -27,7 +27,7 @@ If you like the wgSitenotice module and thanks to the long process for giving th
 
 # Info
 
-**wgSitenotice is ready for PHP 8.0**
+**wgSitenotice is ready for PHP 8.4**
 
 #### Tutorial:
 [![Tutorial Available](https://xoops.org/images/tutorial-available-blue.svg)](https://xoops.gitbook.io/wgsitenotice-tutorial/) Tutorial: on [GitBook](https://xoops.gitbook.io/wgsitenotice-tutorial/).
