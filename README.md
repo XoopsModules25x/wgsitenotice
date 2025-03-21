@@ -3,6 +3,9 @@
 ![alt XOOPS CMS](https://xoops.org/images/logoXoopsPhp8.png)
 
 # wgSitenotice
+
+![module image](./assets/images/wgsitenotice.jpg)
+
 A simple Xoops module for presentation of one or more legal notice. This module includes also the possibility to download ready-to-use text components.
 
 # Support
