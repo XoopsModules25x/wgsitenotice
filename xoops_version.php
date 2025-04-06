@@ -186,25 +186,10 @@ $modversion['config'][] = [
 
 $currdirname = isset($GLOBALS['xoopsModule'])&& \is_object($GLOBALS['xoopsModule']) ? $GLOBALS['xoopsModule']->getVar('dirname') : 'system';
 if ($dirname == $currdirname) {
-    $subcount = 1 ;
-    $pathname = \XOOPS_ROOT_PATH. '/modules/'.$dirname;
-    include_once $pathname . '/include/common.php';
-    // Get instance of module
-    $helper = Helper::getInstance();
-    // versions
-    $versionsHandler = $helper->getHandler('Versions');
-    $version_crit = new \CriteriaCompo();
-    $version_crit->setSort('version_weight');
-    $version_crit->setOrder('ASC');
-    $version_crit->add(new \Criteria('version_current', '1'));
-    $versions_rows = $versionsHandler->getCount($version_crit);
-    $versions_arr = $versionsHandler->getAll($version_crit);
-
-    if ($versions_rows > 0) {
-        foreach (\array_keys($versions_arr) as $i)
-        {
-            $modversion['sub'][$subcount]['name'] = $versions_arr[$i]->getVar('version_name');
-            $modversion['sub'][$subcount++]['url'] = 'index.php?version_id=' . $versions_arr[$i]->getVar('version_id') ;
-        }
+    $submenu = new \XoopsModules\Wgsitenotice\Modulemenu;
+    $menuItems = $submenu->getMenuitemsDefault();
+    foreach ($menuItems as $key => $menuItem) {
+        $modversion['sub'][$key]['name'] = $menuItem['name'];
+        $modversion['sub'][$key]['url'] = $menuItem['url'];
     }
 }

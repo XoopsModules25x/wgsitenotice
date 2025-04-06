@@ -22,18 +22,19 @@
 use Xmf\Request;
 use XoopsModules\Wgsitenotice\Helper;
 
-$helper = Helper::getInstance();
+$dirname = \basename(__DIR__);
+require_once \dirname(__DIR__) . '/' . $dirname . '/preloads/autoloader.php';
+
+//\defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+include \dirname(__DIR__, 2) . '/mainfile.php';
+require __DIR__ . '/header.php';
+
+$helper = \XoopsModules\Wgsitenotice\Helper::getInstance();
 echo "<?xml version='1.0' encoding='utf-8'?>\n";
 
 /* <?xml version="1.0" encoding="utf-8"?> */
 echo "<document>\n";
 echo "<status_connect>successful</status_connect>\n";
-include \dirname(__DIR__, 2) . '/mainfile.php';
-$dirname = \basename(__DIR__);
-
-\defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
-
-require_once \XOOPS_ROOT_PATH . '/modules/' . $dirname . '/header.php';
 
 $version_id = Request::getInt('version_id');
 echo '<version_id>' . $version_id . "</version_id>\n";
