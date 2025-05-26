@@ -27,15 +27,19 @@ class Modulemenu
 
     /** function to create an array for XOOPS main menu
      *
+     * @param bool $includeUrl
      * @return array
      */
-    public function getMenuitemsDefault()
+    public function getMenuitemsDefault($includeUrl = false)
     {
 
         $moduleDirName = \basename(\dirname(__DIR__));
-        $subcount      = 1;
         $pathname      = \XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/';
-        $urlModule     = \XOOPS_URL . '/modules/' . $moduleDirName . '/';
+
+        $urlModule = '';
+        if ($includeUrl) {
+            $urlModule = \XOOPS_URL . '/modules/' . $moduleDirName . '/';
+        }
 
         require_once $pathname . 'include/common.php';
         $helper = \XoopsModules\Wgsitenotice\Helper::getInstance();
@@ -56,7 +60,7 @@ class Modulemenu
             {
                 $items[] = [
                     'name' => $versions_arr[$i]->getVar('version_name'),
-                    'url'  =>  $urlModule . 'index.php?version_id=' . $versions_arr[$i]->getVar('version_id'),
+                    'url'  => $urlModule . 'index.php?version_id=' . $versions_arr[$i]->getVar('version_id'),
                 ];
             }
         }
@@ -71,7 +75,7 @@ class Modulemenu
      */
     public function getMenuitemsSbadmin5()
     {
-        return $this->getMenuitemsDefault();
+        return $this->getMenuitemsDefault(true);
     }
 
 
