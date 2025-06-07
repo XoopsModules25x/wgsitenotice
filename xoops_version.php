@@ -28,7 +28,9 @@ $dirname = \basename(__DIR__);
 $modversion = [
     'name'                => \_MI_WGSITENOTICE_NAME,
     'version'             => '1.4.2',
-    'module_status'       => 'RC1',
+    'module_status'       => 'Stable',
+    'release'             => '2025/06/07',
+    'release_date'        => '2025/06/07', // format: yyyy/mm/dd
     'description'         => \_MI_WGSITENOTICE_DESC,
     'author'              => 'Goffy (xoops.wedega.com)',
     'author_mail'         => 'webmaster@wedega.com',
@@ -40,7 +42,6 @@ $modversion = [
     'license_url'         => 'www.gnu.org/licenses/gpl-2.0.html/',
     'release_info'        => '',
     'release_file'        => \XOOPS_URL."/modules/{$dirname}/docs/release_info file",
-    'release_date'        => '2023/04/08', // format: yyyy/mm/dd
     'manual'              => 'link to manual file',
     'manual_file'         => \XOOPS_URL."/modules/{$dirname}/docs/install.txt",
     'min_php'             => '7.4',
@@ -60,7 +61,6 @@ $modversion = [
     'support_name'        => 'Support Forum',
     'module_website_url'  => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',
-    'release'             => '2023/04/08',
     'system_menu'         => 1,
     'hasAdmin'            => 1,
     'adminindex'          => 'admin/index.php',
@@ -186,25 +186,10 @@ $modversion['config'][] = [
 
 $currdirname = isset($GLOBALS['xoopsModule'])&& \is_object($GLOBALS['xoopsModule']) ? $GLOBALS['xoopsModule']->getVar('dirname') : 'system';
 if ($dirname == $currdirname) {
-    $subcount = 1 ;
-    $pathname = \XOOPS_ROOT_PATH. '/modules/'.$dirname;
-    include_once $pathname . '/include/common.php';
-    // Get instance of module
-    $helper = Helper::getInstance();
-    // versions
-    $versionsHandler = $helper->getHandler('Versions');
-    $version_crit = new \CriteriaCompo();
-    $version_crit->setSort('version_weight');
-    $version_crit->setOrder('ASC');
-    $version_crit->add(new \Criteria('version_current', '1'));
-    $versions_rows = $versionsHandler->getCount($version_crit);
-    $versions_arr = $versionsHandler->getAll($version_crit);
-
-    if ($versions_rows > 0) {
-        foreach (\array_keys($versions_arr) as $i)
-        {
-            $modversion['sub'][$subcount]['name'] = $versions_arr[$i]->getVar('version_name');
-            $modversion['sub'][$subcount++]['url'] = 'index.php?version_id=' . $versions_arr[$i]->getVar('version_id') ;
-        }
+    $submenu = new \XoopsModules\Wgsitenotice\Modulemenu;
+    $menuItems = $submenu->getMenuitemsDefault();
+    foreach ($menuItems as $key => $menuItem) {
+        $modversion['sub'][$key]['name'] = $menuItem['name'];
+        $modversion['sub'][$key]['url'] = $menuItem['url'];
     }
 }
