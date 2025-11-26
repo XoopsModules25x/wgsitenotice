@@ -17,8 +17,6 @@ namespace XoopsModules\Wgsitenotice;
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -34,8 +32,6 @@ class Checkonline extends \XoopsObject
 
     /**
      * Constructor
-     *
-     * @param null
      */
     public function __construct()
     {
@@ -44,7 +40,7 @@ class Checkonline extends \XoopsObject
 
     /**
      * @static function &getInstance
-     * @param null
+     *
      * @return Checkonline
      */
     public static function getInstance()
@@ -62,14 +58,14 @@ class Checkonline extends \XoopsObject
      * @param mixed $action
      * @return \XoopsThemeForm
      */
-    public function getForm($action = false)
+    public function getForm(mixed $action = false)
     {
         $helper = Helper::getInstance();
         if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = \sprintf(\_AM_WGSITENOTICE_OC_FORM);
+        $title = \_AM_WGSITENOTICE_OC_FORM;
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);

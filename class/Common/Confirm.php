@@ -18,8 +18,6 @@ namespace XoopsModules\Wgsitenotice\Common;
  * @copyright     2020 XOOPS Project (https://xoops.org)
  * @license        GPL 2.0 or later
  * @package        general
- * @since          1.0
- * @min_xoops      2.5.9
  * @author         Goffy - Email:<goffy@myxoops.org> - Website:<https://xoops.org>
  *
  *
@@ -40,21 +38,21 @@ namespace XoopsModules\Wgsitenotice\Common;
  */
 class Confirm
 {
-    private $hiddens = [];
-    private $action  = '';
-    private $title   = '';
-    private $label   = '';
-    private $object  = '';
+    private array $hiddens = [];
+    private string $action  = '';
+    private string $title   = '';
+    private string $label   = '';
+    private string $object  = '';
 
     /**
      * @public function constructor class
-     * @param        $hiddens
-     * @param        $action
-     * @param        $object
+     * @param string $hiddens
+     * @param string $action
+     * @param string $object
      * @param string $title
      * @param string $label
      */
-    public function __construct($hiddens, $action, $object, $title = '', $label = '')
+    public function __construct(string $hiddens, string $action, $object, null|string $title = '', null|string $label = '')
     {
         $this->hiddens = $hiddens;
         $this->action  = $action;

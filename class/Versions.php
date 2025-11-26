@@ -17,8 +17,6 @@ namespace XoopsModules\Wgsitenotice;
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -34,8 +32,6 @@ class Versions extends \XoopsObject
 
     /**
      * Constructor
-     *
-     * @param null
      */
     public function __construct()
     {
@@ -74,7 +70,7 @@ class Versions extends \XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = $this->isNew() ? \sprintf(\_AM_WGSITENOTICE_VERSION_ADD) : \sprintf(\_AM_WGSITENOTICE_VERSION_EDIT);
+        $title = $this->isNew() ? \_AM_WGSITENOTICE_VERSION_ADD : \_AM_WGSITENOTICE_VERSION_EDIT;
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);

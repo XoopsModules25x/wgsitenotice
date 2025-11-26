@@ -18,23 +18,21 @@ namespace XoopsModules\Wgsitenotice\Common;
  * @copyright      module for xoops
  * @license        GPL 2.0 or later
  * @package        XOOPS common
- * @since          1.0
- * @min_xoops      2.5.9
  * @author         Goffy - Wedega - Email:<webmaster@wedega.com> - Website:<https://wedega.com>
  * @version        $Id: 1.0 Resizer.php 1 Mon 2019-02-09 10:04:49Z XOOPS Project (www.xoops.org) $
  */
 class Resizer
 {
-    public $sourceFile    = '';
-    public $endFile       = '';
-    public $maxWidth      = 0;
-    public $maxHeight     = 0;
-    public $imageMimetype = '';
-    public $jpgQuality    = 90;
-    public $mergeType     = 0;
-    public $mergePos      = 0;
-    public $degrees       = 0;
-    public $error         = '';
+    public string $sourceFile    = '';
+    public string $endFile       = '';
+    public int $maxWidth      = 0;
+    public int $maxHeight     = 0;
+    public string $imageMimetype = '';
+    public int $jpgQuality    = 90;
+    public int $mergeType     = 0;
+    public int $mergePos      = 0;
+    public int $degrees       = 0;
+    public string $error         = '';
 
     /**
      * resize image if size exceed given width/height

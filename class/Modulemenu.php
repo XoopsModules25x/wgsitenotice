@@ -30,7 +30,7 @@ class Modulemenu
      * @param bool $includeUrl
      * @return array
      */
-    public function getMenuitemsDefault($includeUrl = false)
+    public function getMenuitemsDefault(bool $includeUrl = false)
     {
 
         $moduleDirName = \basename(\dirname(__DIR__));

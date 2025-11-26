@@ -17,8 +17,6 @@ namespace XoopsModules\Wgsitenotice;
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -34,8 +32,6 @@ class Contents extends \XoopsObject
 
     /**
      * Constructor
-     *
-     * @param null
      */
     public function __construct()
     {
@@ -45,12 +41,12 @@ class Contents extends \XoopsObject
         $this->initVar('cont_text', \XOBJ_DTYPE_TXTAREA);
         $this->initVar('cont_weight', \XOBJ_DTYPE_INT);
         $this->initVar('cont_date', \XOBJ_DTYPE_INT);
-        $this->initVar('dohtml', \XOBJ_DTYPE_INT, 1, false);
+        $this->initVar('dohtml', \XOBJ_DTYPE_INT, 1);
     }
 
     /**
      * @static function &getInstance
-     * @param null
+     *
      * @return Contents
      */
     public static function getInstance()
@@ -68,14 +64,14 @@ class Contents extends \XoopsObject
      * @param mixed $action
      * @return \XoopsThemeForm
      */
-    public function getForm($action = false)
+    public function getForm(mixed $action = false)
     {
         $helper = Helper::getInstance();
         if (false === $action) {
             $action = $_SERVER['REQUEST_URI'];
         }
         // Title
-        $title = $this->isNew() ? \sprintf(\_AM_WGSITENOTICE_CONTENT_ADD) : \sprintf(\_AM_WGSITENOTICE_CONTENT_EDIT);
+        $title = $this->isNew() ? \_AM_WGSITENOTICE_CONTENT_ADD : \_AM_WGSITENOTICE_CONTENT_EDIT;
         // Get Theme Form
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);

@@ -14,8 +14,6 @@
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 \defined('XOOPS_ROOT_PATH') || exit('Restricted access');
@@ -27,10 +25,10 @@ $dirname = \basename(__DIR__);
 // ------------------- Informations ------------------- //
 $modversion = [
     'name'                => \_MI_WGSITENOTICE_NAME,
-    'version'             => '1.4.2',
-    'module_status'       => 'Stable',
-    'release'             => '2025/06/07',
-    'release_date'        => '2025/06/07', // format: yyyy/mm/dd
+    'version'             => '1.4.4',
+    'module_status'       => 'Beta',
+    'release'             => '2025/11/17',
+    'release_date'        => '2025/11/17', // format: yyyy/mm/dd
     'description'         => \_MI_WGSITENOTICE_DESC,
     'author'              => 'Goffy (xoops.wedega.com)',
     'author_mail'         => 'webmaster@wedega.com',
@@ -41,15 +39,15 @@ $modversion = [
     'help'                => 'page=help',
     'license_url'         => 'www.gnu.org/licenses/gpl-2.0.html/',
     'release_info'        => '',
-    'release_file'        => \XOOPS_URL."/modules/{$dirname}/docs/release_info file",
+    'release_file'        => \XOOPS_URL."/modules/$dirname/docs/release_info file",
     'manual'              => 'link to manual file',
-    'manual_file'         => \XOOPS_URL."/modules/{$dirname}/docs/install.txt",
-    'min_php'             => '7.4',
-    'min_xoops'           => '2.5.11 Stable',
-    'min_admin'           => '1.1',
-    'min_db'              => ['mysql' => '5.0.7', 'mysqli' => '5.0.7'],
+    'manual_file'         => \XOOPS_URL."/modules/$dirname/docs/install.txt",
+    'min_php'             => '8.4',
+    'min_xoops'           => '2.5.12',
+    'min_admin'           => '1.2',
+    'min_db'              => ['mysql' => '5.7.8'],
     'image'               => 'assets/images/wgsitenotice_logo.png',
-    'dirname'             => "{$dirname}",
+    'dirname'             => "$dirname",
     'dirmoduleadmin'      => 'Frameworks/moduleclasses/moduleadmin',
     'sysicons16'          => '../../Frameworks/moduleclasses/icons/16',
     'sysicons32'          => '../../Frameworks/moduleclasses/icons/32',
@@ -57,7 +55,7 @@ $modversion = [
     'modicons32'          => 'assets/icons/32',
     'demo_site_url'       => 'https://xoops.wedega.com',
     'demo_site_name'      => 'Wedega Demo Site',
-    'support_url'         => 'http://',
+    'support_url'         => 'https://',
     'support_name'        => 'Support Forum',
     'module_website_url'  => 'xoops.wedega.com',
     'module_website_name' => 'WEDEGA Webdesign Gabor (powered by XOOPS Project)',

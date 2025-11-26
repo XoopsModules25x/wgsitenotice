@@ -28,16 +28,14 @@ namespace XoopsModules\Wgsitenotice\Common;
  */
 class ModuleFeedback extends \XoopsObject
 {
-    public $name    = '';
-    public $email   = '';
-    public $site    = '';
-    public $type    = '';
-    public $content = '';
+    public string $name    = '';
+    public string $email   = '';
+    public string $site    = '';
+    public string $type    = '';
+    public string $content = '';
 
     /**
      * Constructor
-     *
-     * @param null
      */
     public function __construct()
     {
@@ -45,8 +43,6 @@ class ModuleFeedback extends \XoopsObject
 
     /**
      * @static function &getInstance
-     *
-     * @param null
      */
     public static function getInstance()
     {
