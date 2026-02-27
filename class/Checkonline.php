@@ -70,7 +70,7 @@ class Checkonline extends \XoopsObject
         \xoops_load('XoopsFormLoader');
         $form = new \XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
-        $oc_server = $helper->getConfig('wgsitenotice_oc_server').'checkonline.php';
+        $oc_server = $helper->getConfig('wgsitenotice_oc_server') . 'Checkonline.php';
         // Form Text oc_server
         $form->addElement( new \XoopsFormText(\_MI_WGSITENOTICE_OC_SERVER, 'oc_server', 50, 255, $oc_server), true );
         // Send

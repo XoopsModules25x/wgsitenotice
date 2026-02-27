@@ -52,7 +52,7 @@ class Confirm
      * @param string $title
      * @param string $label
      */
-    public function __construct(string $hiddens, string $action, $object, null|string $title = '', null|string $label = '')
+    public function __construct(array $hiddens, string $action, $object, null|string $title = '', null|string $label = '')
     {
         $this->hiddens = $hiddens;
         $this->action  = $action;

@@ -94,7 +94,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      * read the given xml string (by getData) and create an array
      *
      * @param string $xml_string
-     * @return \SimpleXMLElement
+     * @return \SimpleXMLElement|false
      */
     public function readXML(string $xml_string){
         // creating temporary string for avoiding entitiy errors
@@ -109,6 +109,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
                 $GLOBALS['xoopsTpl']->assign('error',$this->display_xml_error($error, $xml));
             }
             \libxml_clear_errors();
+            return false;
         }
 
         return $xml_arr;
