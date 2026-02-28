@@ -28,12 +28,12 @@ class MigrateHelper
     /**
      * @var string
      */
-    private $fileYaml;
+    private string $fileYaml;
 
     /**
      * @var string
      */
-    private $fileSql;
+    private string $fileSql;
 
 
     /**
@@ -49,7 +49,6 @@ class MigrateHelper
     /**
      * Create a yaml file based on a sql file
      *
-     * @param null
      * @return bool
      */
     public function createSchemaFromSqlfile(): bool
@@ -74,7 +73,7 @@ class MigrateHelper
                 unset($lines[$key]);
             }
             // remove comment lines
-            if ('#' === \substr($line, 0, 1)) {
+            if (str_starts_with($line, '#')) {
                 unset($lines[$key]);
             }
         }
@@ -83,7 +82,7 @@ class MigrateHelper
         $skipWords = ['CREATE DATABASE ', 'CREATE VIEW ', 'INSERT INTO ', 'SELECT ', 'DELETE ', 'UPDATE ', 'ALTER ', 'DROP '];
         $options = '';
         // read remaining lines line by line and create new schema
-        foreach ($lines as $key => $value) {
+        foreach ($lines as $value) {
             $line = \trim($value);
             foreach ($skipWords as $skipWord) {
                 if ($skipWord === \mb_strtoupper(\substr($line, 0, \strlen($skipWord)))) {
@@ -100,7 +99,7 @@ class MigrateHelper
                 $tables[$tableName]['columns'] = [];
                 $tables[$tableName]['keys'] = [];
             } else {
-                if (false == $skip) {
+                if (!$skip) {
                     if (')' === \mb_strtoupper(\substr($line, 0, 1))) {
                         // end of table definition
                         // get options
@@ -137,11 +136,11 @@ class MigrateHelper
         $level3 = \str_repeat(' ', 12);
 
         foreach ($tables as $tkey => $table) {
-            $schema[] = "{$tkey}:\n";
+            $schema[] = "$tkey:\n";
             foreach ($table as $lkey => $line) {
                 if ('keys' == $lkey) {
                     $schema[] = $level1 . "keys:\n";
-                    foreach ($line as $kkey => $kvalue) {
+                    foreach ($line as $kvalue) {
                         foreach ($kvalue as $kkey2 => $kvalue2) {
                             $schema[] = $level2 . $kkey2 . ":\n";
                             $schema[] = $level3 . 'columns: ' . $kvalue2['columns'] . "\n";
@@ -152,7 +151,7 @@ class MigrateHelper
                     $schema[] = $level1 . 'options: ' . $line . "\n";
                 } else {
                     $schema[] = $level1 . 'columns: ' . "\n";
-                    foreach ($line as $kkey => $kvalue) {
+                    foreach ($line as $kvalue) {
                         $schema[] = $level2 . '-' . "\n";
                         foreach ($kvalue as $kkey2 => $kvalue2) {
                             $schema[] = $level3 . $kkey2 . ": " . $kvalue2 . "\n";
@@ -164,7 +163,7 @@ class MigrateHelper
 
         // create new file and write schema array into this file
         $myfile = \fopen($this->fileYaml, "w");
-        if (false == $myfile || \is_null($myfile)) {
+        if (!$myfile || \is_null($myfile)) {
             \xoops_error('Error: Unable to open sql file!');
             return false;
         }
@@ -214,7 +213,7 @@ class MigrateHelper
         }
 
         $attributes = \trim(\str_replace([$name, '`'], '', $line));
-        if (',' == \substr($attributes, - 1)) {
+        if (str_ends_with($attributes, ',')) {
             $attributes = substr($attributes, 0, strlen($attributes) - 1);
         }
         $columns['name'] = $name;

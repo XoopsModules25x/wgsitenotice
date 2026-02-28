@@ -14,8 +14,6 @@
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -62,11 +60,10 @@ function b_wgsitenotice_cookie_reg_show($options)
     if ("smarty" == $display_type) {
         if ('top' == $position) {
             $block['position'] = 'top:0px;position:fixed;left:0px;';
-            $block['prependToBody'] = '1';
         } else {
             $block['position'] = 'bottom:0px;position:fixed;left:0px;';
-            $block['prependToBody'] = '1';
         }
+        $block['prependToBody'] = '1';
     } else {
         $block['position'] = '';
     }

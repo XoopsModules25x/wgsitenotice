@@ -1,6 +1,6 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
 <{if $contents_list|default:''}>
-    <table class="table table-bordered  table-striped" id="sortable">
+    <table class="outer" id="sortable">
         <thead>
             <tr class="head">
                 <th class="center">&nbsp;</th>

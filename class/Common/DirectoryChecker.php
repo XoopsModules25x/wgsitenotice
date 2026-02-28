@@ -36,13 +36,13 @@ $moduleDirNameUpper = \mb_strtoupper($moduleDirName);
 class DirectoryChecker
 {
     /**
-     * @param     $path
+     * @param string $path
      * @param int $mode
-     * @param     $redirectFile
+     * @param null|string $redirectFile
      *
      * @return bool|string
      */
-    public static function getDirectoryStatus($path, $mode = 0777, $redirectFile = null)
+    public static function getDirectoryStatus(string $path, int $mode = 0777, null|string $redirectFile = null)
     {
         $pathIcon16 = \Xmf\Module\Admin::iconUrl('', '16');
 

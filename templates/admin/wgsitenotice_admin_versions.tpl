@@ -1,6 +1,6 @@
 <{include file="db:wgsitenotice_admin_header.tpl"}>
 <{if $versions_list|default:''}>
-    <table class="outer versions width100">
+    <table class="outer">
         <thead>
             <tr class="head">
                 <th class="center">&nbsp;</th>

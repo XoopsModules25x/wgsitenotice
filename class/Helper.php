@@ -43,7 +43,7 @@ class Helper extends \Xmf\Module\Helper
      *
      * @return \XoopsModules\Wgsitenotice\Helper
      */
-    public static function getInstance($debug = false)
+    public static function getInstance(bool $debug = false)
     {
         static $instance;
         if (null === $instance) {
@@ -67,6 +67,7 @@ class Helper extends \Xmf\Module\Helper
      * @param string $name name of handler to load
      *
      * @return bool|\XoopsObjectHandler|\XoopsPersistableObjectHandler
+     * @throws \Exception
      */
     public function getHandler($name)
     {
@@ -78,7 +79,7 @@ class Helper extends \Xmf\Module\Helper
         $db     = \XoopsDatabaseFactory::getDatabaseConnection();
         $helper = self::getInstance();
         $ret    = new $class($db, $helper);
-        $this->addLog("Getting handler '{$name}'");
+        $this->addLog("Getting handler '$name'");
 
         return $ret;
     }

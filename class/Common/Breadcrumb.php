@@ -38,8 +38,8 @@ use XoopsModules\Wgsitenotice\Common;
  */
 class Breadcrumb
 {
-    public $dirname;
-    private $bread = [];
+    public string $dirname;
+    private array $bread = [];
 
     public function __construct()
     {
@@ -52,7 +52,7 @@ class Breadcrumb
      * @param string $title
      * @param string $link
      */
-    public function addLink($title = '', $link = '')
+    public function addLink(string $title = '', string $link = '')
     {
         $this->bread[] = [
             'link'  => $link,

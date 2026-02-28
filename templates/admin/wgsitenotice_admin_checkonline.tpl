@@ -8,7 +8,7 @@
 <{/if}>
 <{if $versions_list|default:''}>
     <h2><{$smarty.const._AM_WGSITENOTICE_OC_RESULT}></h2>
-    <table class="outer versions width100">
+    <table class="outer">
         <thead>
             <tr class="head">
                 <th class="center"><{$smarty.const._AM_WGSITENOTICE_VERSION_ID}></th>

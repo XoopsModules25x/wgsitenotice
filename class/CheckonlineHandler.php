@@ -17,8 +17,6 @@ namespace XoopsModules\Wgsitenotice;
  * @copyright       XOOPS Project (https://xoops.org)
  * @license         GPL 2.0 or later
  * @package         wgsitenotice
- * @since           1.0
- * @min_xoops       2.5.11
  * @author          Goffy (xoops.wedega.com) - Email:<webmaster@wedega.com> - Website:<https://xoops.wedega.com>
  */
 
@@ -71,7 +69,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
             //execute post
             $result = \curl_exec($ch);
             // print_r(\curl_getinfo($ch));
-            if (false == $result)  {
+            if (!$result)  {
                 //echo '<br>unexpected curl_error:' . \curl_error($ch) . '<br>';
                 $GLOBALS['xoopsTpl']->assign('error',\curl_error($ch));
             }
@@ -96,7 +94,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      * read the given xml string (by getData) and create an array
      *
      * @param string $xml_string
-     * @return array|\SimpleXMLElement|string
+     * @return \SimpleXMLElement|false
      */
     public function readXML(string $xml_string){
         // creating temporary string for avoiding entitiy errors
@@ -111,6 +109,7 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
                 $GLOBALS['xoopsTpl']->assign('error',$this->display_xml_error($error, $xml));
             }
             \libxml_clear_errors();
+            return false;
         }
 
         return $xml_arr;
@@ -124,12 +123,11 @@ class CheckonlineHandler extends \XoopsPersistableObjectHandler
      */
     public function xml2str(string $xml){
         // replace temporary string for avoiding entitiy errors
-        $str = \str_replace('[[avoid_entity_error]]', '&', (string)$xml);
+        $str = \str_replace('[[avoid_entity_error]]', '&', $xml);
         // rebuild html tags
         $search  = ['&lt;', '&gt;', '&quot;', '&amp;'];
         $replace = ['<', '>', '"', '&'];
-        $str = \str_replace($search, $replace, (string)$str);
-        return $str;
+        return \str_replace($search, $replace, (string)$str);
     }
 
     /**
